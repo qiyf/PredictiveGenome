@@ -1,12 +1,12 @@
 # Predictive Genome Model
 Code and lammps input files for predictive genome model
 
-**Chromatin states**
+>**Chromatin states**
 
-**CTCF sites**
+>**CTCF sites**
 
-**Run LAMMPS**
+>**Run LAMMPS**
 
-**Contact map**
+>**Contact map**
 
 chr_region
