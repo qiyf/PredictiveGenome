@@ -19,9 +19,9 @@ def combine_cmaps(celltype,chromid,runnum):
 			nf_tot += nf
 
 		comb_map /= nf_tot
-		np.savetxt('./cmap/contact_map_CG_comb_chr%d.txt'\
-					%chromid,comb_map,fmt = '%.8f')
-		print('contact_map_CG_%d is combined sucessfully!'%chromid)
+		np.savetxt('./cmap/contact_map_CG_comb_%s_chr%d.txt'\
+					%(celltype,chromid),comb_map,fmt = '%.8f')
+		print('contact_map_CG_%s_%d is combined sucessfully!'%(celltype,chromid))
 	
 	else:
 		print('''

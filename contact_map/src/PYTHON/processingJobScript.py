@@ -5,7 +5,7 @@ Params()
 
 def proc(celltype,chromid,runid,job_name,ptn_name):
 
-	glb_path  = '../lammps_input/run_folder'
+	glb_path  = '../lammps_input/run_folder/'
 	dcd_path  = '%s/%s/chr%d/run%02d/'\
 				%(glb_path,celltype,chromid,runid)
 	cmap_path = './%s/chr%d/run%02d/'\
