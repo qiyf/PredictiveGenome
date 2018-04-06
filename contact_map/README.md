@@ -4,12 +4,12 @@ By using the script, simply execute the python script:
 ```
 python parallel_cmap.py [cell_type] [runnum] [chromosome_id_array]
 ```
+through indication of cell_type, the total number of parallel simulations and the array of chromosome id that contact maps are needed to be calculated
 or
 ```
 python parallel_cmap.py
 ```
-is calculating by default: Gm12878, chromosome 1
-the runnum is the total number of parallel simulations, default is 8
+is calculating by default: Gm12878, 8 parallel runs, chromosome 1
 
 [cell_type] can be selected from the following list:  
 >Gm12878  
