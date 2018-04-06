@@ -19,5 +19,5 @@ is calculating by default: Gm12878, 8 parallel runs, chromosome 1
 >Huvec  
 >K562  
 
-[chromosome_id_array] can be a subset selected from:  
+[chromosome_id_array] can be any non-repeated subset selected from:  
 >1 ~ 22

@@ -24,4 +24,6 @@ def combine_cmaps(celltype,chromid,runnum):
 		print('contact_map_CG_%d is combined sucessfully!'%chromid)
 	
 	else:
-		print('Error in combining the contact maps of chromosome %d!'%chromid)
+		print('''
+Error in combining the contact maps of chromosome %d!
+Individual contact maps are not correctly calculated.'''%chromid)

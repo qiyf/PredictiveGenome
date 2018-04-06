@@ -3,11 +3,11 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def check_status(usr_name):
+def check_status(usr_name,job_name):
 
 	njob = -1
 	while True:
-		cmd = 'squeue |grep %s |grep cmap |wc -l'%(usr_name)
+		cmd = 'squeue |grep %s |grep %s |wc -l'%(usr_name,job_name)
 		q = Popen(cmd, shell=True, stdout=PIPE)
 		njob = int(q.communicate()[0])
 		print (njob)
