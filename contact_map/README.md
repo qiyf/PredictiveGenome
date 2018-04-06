@@ -2,10 +2,13 @@
 
 By using the script, simply execute the python script:
 ```
-python parallel_cmap.py [cell_type] [iterid] [runnum] [chromosome_id_array]
+python parallel_cmap.py [cell_type] [runnum] [chromosome_id_array]
 ```
-is calculating by default : Gm12878, chromosome 1
-the iterid indicated the iteration number that you would like to calculate with
+or
+```
+python parallel_cmap.py
+```
+is calculating by default: Gm12878, chromosome 1
 the runnum is the total number of parallel simulations, default is 8
 
 [cell_type] can be selected from the following list:  
@@ -16,5 +19,5 @@ the runnum is the total number of parallel simulations, default is 8
 >Huvec  
 >K562  
 
-[chromosome_id] can be selected from:  
+[chromosome_id_array] can be a subset selected from:  
 >1 ~ 22

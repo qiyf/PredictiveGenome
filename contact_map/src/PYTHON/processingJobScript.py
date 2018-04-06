@@ -3,13 +3,13 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def proc(celltype,chromid,iterid,runid,job_name,ptn_name):
+def proc(celltype,chromid,runid,job_name,ptn_name):
 
 	glb_path  = '../lammps_input/run_folder'
-	dcd_path  = '%s/%s/chr%d/iter%02d/run%02d/'\
-				%(glb_path,celltype,chromid,iterid,runid)
-	cmap_path = './%s/chr%d/iter%03d/run%02d/'\
-				%(celltype,chromid,iterid,runid)
+	dcd_path  = '%s/%s/chr%d/run%02d/'\
+				%(glb_path,celltype,chromid,runid)
+	cmap_path = './%s/chr%d/run%02d/'\
+				%(celltype,chromid,runid)
 
 	if not os.path.exists(cmap_path):
 		os.makedirs(cmap_path)

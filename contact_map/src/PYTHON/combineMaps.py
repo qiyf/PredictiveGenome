@@ -3,12 +3,12 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def combine_cmaps(celltype,chromid,iterid,runnum):
+def combine_cmaps(celltype,chromid,runnum):
 	nf_tot = 0
 	comb_map = np.zeros([nbead_cg,nbead_cg])
 
-	cmap_path = './%s/chr%d/iter%03d/run%02d/'\
-				%(celltype,chromid,iterid,runid)
+	cmap_path = './%s/chr%d/run%02d/'\
+				%(celltype,chromid,runid)
 
 	if os.path.exists('%s/contact_map_CG.txt'%cmap_path):
 		for run_id in range(0,runnum):
@@ -19,8 +19,8 @@ def combine_cmaps(celltype,chromid,iterid,runnum):
 			nf_tot += nf
 
 		comb_map /= nf_tot
-		np.savetxt('./cmap/contact_map_CG_comb_chr%d_iter%d.txt'\
-					%(chromid,iterid),comb_map,fmt = '%.8f')
+		np.savetxt('./cmap/contact_map_CG_comb_chr%d.txt'\
+					%chromid,comb_map,fmt = '%.8f')
 		print('contact_map_CG_%d is combined sucessfully!'%chromid)
 	
 	else:
