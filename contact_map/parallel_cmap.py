@@ -4,6 +4,8 @@ sys.path.append('./src/PYTHON/')
 from Ipt_module import *
 from Params import *
 Params()
+from Settings import *
+Settings()
 from processingJobScript import proc
 from checkStatus import check_status
 from combineMaps import combine_cmaps
