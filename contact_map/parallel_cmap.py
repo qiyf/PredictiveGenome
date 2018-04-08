@@ -13,7 +13,7 @@ from combineMaps import combine_cmaps
 
 if __name__ == '__main__':
 
-	clus_opt=input('Computing clusters available?[y/n]')
+	clus_opt=raw_input("\nComputing clusters available?[y/n] ")
 
 	if len(sys.argv) == 1:
 		# celltype = 'Gm12878'
@@ -27,14 +27,14 @@ if __name__ == '__main__':
 		chrom_lst = map(eval, chrom_lst)
 
 	if clus_opt == 'y':
-	# job_name = 'cmap'										# name of the jobs running cmaps
-	ptn_name = input('Input the partition name: ')			# name of the partition name
+		# job_name = 'cmap'									# name of the jobs running cmaps
+		ptn_name = raw_input('Input the partition name: ')		# name of the partition name
 															# need to be changed accordingly
-		for chromid in chrom_lst:
-			for runid in xrange(runnum):
-				processingJobScript(celltype,chromid,runid,job_name,ptn_name)
-																# prepare the job script for calculating cmaps
-		check_status()											# check the job status
+		# for chromid in chrom_lst:
+		# 	for runid in xrange(runnum):
+		# 		processingJobScript(celltype,chromid,runid,job_name,ptn_name)
+		# 														# prepare the job script for calculating cmaps
+		# check_status()											# check the job status
 
 	else:
 		calMapLocal(celltype,chromid,runid)

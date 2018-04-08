@@ -7,13 +7,13 @@ def combine_cmaps(celltype,chromid,runnum):
 	nf_tot = 0
 	comb_map = np.zeros([nbead_cg,nbead_cg])
 
-	cmap_path = './%s/chr%d/run%02d/'\
-				%(celltype,chromid,runid)
+	cmap_path = './%s/chr%d/'\
+				%(celltype,chromid)
 
-	if os.path.exists('%s/contact_map_CG.txt'%cmap_path):
-		for run_id in range(0,runnum):
-			in_temp = np.loadtxt('%s/contact_map_CG.txt'%cmap_path)
-			nf = np.loadtxt('%s/nframes.txt'%cmap_path)
+	if os.path.exists('%s/run%02d/contact_map_CG.txt'%(cmap_path,runnum)):
+		for runid in range(0,runnum):
+			in_temp = np.loadtxt('%s/run%02d/contact_map_CG.txt'%(cmap_path,runid))
+			nf = np.loadtxt('%s/run%02d/nframes.txt'%(cmap_path,runid))
 
 			comb_map += in_temp*nf
 			nf_tot += nf
@@ -25,5 +25,5 @@ def combine_cmaps(celltype,chromid,runnum):
 	
 	else:
 		print('''
-Error in combining the contact maps of chromosome %d!
-Individual contact maps are not correctly calculated.'''%chromid)
+>>>> Error in combining the contact maps of chromosome %d!
+     Individual contact maps are not correctly calculated.\n'''%chromid)
