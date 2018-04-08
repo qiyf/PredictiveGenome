@@ -14,5 +14,3 @@ class Settings():
 
 #	---- default: the job and partition name if calculate on cluster
 	job_name = 'cmap'
-	ptn_name = 'sched_mit'
-	

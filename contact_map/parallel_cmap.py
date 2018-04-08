@@ -28,8 +28,8 @@ if __name__ == '__main__':
 
 	if clus_opt == 'y':
 	# job_name = 'cmap'										# name of the jobs running cmaps
-	# ptn_name = 'sched_mit'									# name of the partition name
-	# 														# need to be changed accordingly
+	ptn_name = input('Input the partition name: ')			# name of the partition name
+															# need to be changed accordingly
 		for chromid in chrom_lst:
 			for runid in xrange(runnum):
 				processingJobScript(celltype,chromid,runid,job_name,ptn_name)
