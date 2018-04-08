@@ -13,15 +13,18 @@ from combineMaps import combine_cmaps
 
 if __name__ == '__main__':
 
-	if len(sys.argv) == 1:
-		celltype = 'Gm12878'
-		runnum = 8
-		chrom_lst = [1]
-	else:
-		celltype = sys.argv[1]
-		runnum = int(sys.argv[2])
-		chrom_lst = sys.argv[3:]
-		chrom_lst = map(eval, chrom_lst)
+	clus_opt=input('Computing clusters available?[y/n]')
+	if clus_opt == 'y':
+		if len(sys.argv) == 1:
+			# celltype = 'Gm12878'
+			# runnum = 8
+			# chrom_lst = [1]
+			pass
+		else:
+			celltype = sys.argv[1]
+			runnum = int(sys.argv[2])
+			chrom_lst = sys.argv[3:]
+			chrom_lst = map(eval, chrom_lst)
 
 	job_name = 'cmap'										# name of the jobs running cmaps
 	ptn_name = 'sched_mit'									# name of the partition name
