@@ -6,6 +6,8 @@ from Params import *
 Params()
 from Settings import *
 Settings()
+
+from getSettings import getSettings
 from processingJobScript import proc
 from checkStatus import check_status
 from combineMaps import combine_cmaps
