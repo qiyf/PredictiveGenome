@@ -15,16 +15,15 @@ if __name__ == '__main__':
 
 	clus_opt=raw_input("\nComputing clusters available?[y/n] ")
 
-	if len(sys.argv) == 1:
-		# celltype = 'Gm12878'
-		# runnum = 8
-		# chrom_lst = [1]
-		pass
+	if len(sys.argv) == 1: pass								# go with the default settings
 	else:
 		celltype = sys.argv[1]
 		runnum = int(sys.argv[2])
 		chrom_lst = sys.argv[3:]
 		chrom_lst = map(eval, chrom_lst)
+
+		celltype,runnum,chrom_lst=\
+						getSettings(sys.argv[1:])
 
 	if clus_opt == 'y':
 		# job_name = 'cmap'									# name of the jobs running cmaps
