@@ -15,18 +15,17 @@ from combineMaps import combine_cmaps
 
 if __name__ == '__main__':
 
-	clus_opt=raw_input("\nComputing clusters available?[y/n] ")
-
 	if len(sys.argv) == 1: pass								# go with the default settings
 	else:
 		# celltype = sys.argv[1]
 		# runnum = int(sys.argv[2])
 		# chrom_lst = sys.argv[3:]
 		# chrom_lst = map(eval, chrom_lst)
-
 		celltype,runnum,chromid=\
 						getSettings(sys.argv[1:])
 
+	print celltype,runnum,chromid
+	clus_opt=raw_input("\nComputing clusters available?[y/n] ")
 	if clus_opt == 'y':
 		# job_name = 'cmap'									# name of the jobs running cmaps
 		ptn_name = raw_input('Input the partition name: ')		# name of the partition name
