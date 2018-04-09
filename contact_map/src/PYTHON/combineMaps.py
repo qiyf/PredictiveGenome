@@ -3,7 +3,7 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def combine_cmaps(celltype,chromid,runnum):
+def combine_cmaps(celltype,runnum,chromid):
 	nf_tot = 0
 	comb_map = np.zeros([nbead_cg,nbead_cg])
 

@@ -21,10 +21,9 @@ if __name__ == '__main__':
 		# runnum = int(sys.argv[2])
 		# chrom_lst = sys.argv[3:]
 		# chrom_lst = map(eval, chrom_lst)
-		celltype,runnum,chromid=\
+		celltype,runnum,chrom_lst=\
 						getSettings(sys.argv[1:])
 
-	print(chromid)
 	clus_opt=raw_input("\nComputing clusters available?[y/n] ")
 	if clus_opt == 'y':
 		# job_name = 'cmap'									# name of the jobs running cmaps
@@ -37,8 +36,8 @@ if __name__ == '__main__':
 		# check_status()											# check the job status
 
 	else:
-		calMapLocal(celltype,chromid,runid)
+		calMapLocal(celltype,runnum,chrom_lst)
 
 	for chromid in chrom_lst:
-		combine_cmaps(celltype,chromid,runnum)		# combine the parallel cmaps to ensemble average
+		combine_cmaps(celltype,runnum,chromid)		# combine the parallel cmaps to ensemble average
 
