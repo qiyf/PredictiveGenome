@@ -19,12 +19,12 @@ if __name__ == '__main__':
 
 	if len(sys.argv) == 1: pass								# go with the default settings
 	else:
-		celltype = sys.argv[1]
-		runnum = int(sys.argv[2])
-		chrom_lst = sys.argv[3:]
-		chrom_lst = map(eval, chrom_lst)
+		# celltype = sys.argv[1]
+		# runnum = int(sys.argv[2])
+		# chrom_lst = sys.argv[3:]
+		# chrom_lst = map(eval, chrom_lst)
 
-		celltype,runnum,chrom_lst=\
+		celltype,runnum,chromid=\
 						getSettings(sys.argv[1:])
 
 	if clus_opt == 'y':
