@@ -27,7 +27,8 @@ def getSettings(argv):
 		elif opt in ('-n','--runnum'):
 			runnum = int(arg)
 		elif opt in ('-c','--chrom'):
-			chrom_lst = arg[0:]
-			chrom_lst = map(eval, chrom_lst)
+			chrom1st	= [int(arg)]
+			chrom2te	= map(eval, args)
+			chrom_lst	= chrom1st+chrom2te
 
 	return Celltype,runnum,chrom_lst

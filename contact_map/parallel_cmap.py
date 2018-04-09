@@ -24,6 +24,7 @@ if __name__ == '__main__':
 		celltype,runnum,chromid=\
 						getSettings(sys.argv[1:])
 
+	print(chromid)
 	clus_opt=raw_input("\nComputing clusters available?[y/n] ")
 	if clus_opt == 'y':
 		# job_name = 'cmap'									# name of the jobs running cmaps
