@@ -12,6 +12,9 @@ def check_status(usr_name,job_name):
 		njob = int(q.communicate()[0])
 		print (njob)
 		if njob == 0:
+			print('''
+>>>> Start to combine the contact maps....
+''')
 			break
 		else:
 			time.sleep(10)
