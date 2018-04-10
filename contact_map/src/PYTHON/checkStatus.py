@@ -3,7 +3,7 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def check_status(usr_name,job_name):
+def checkStatus(usr_name,job_name):
 
 	njob = -1
 	while True:

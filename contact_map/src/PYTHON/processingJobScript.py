@@ -3,7 +3,7 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def proc(celltype,chromid,runid,job_name,ptn_name):
+def processingJobScript(celltype,chromid,runid,job_name,ptn_name):
 
 	glb_path  = '../lammps_input/run_folder/'
 	dcd_path  = '%s/%s/chr%d/run%02d/'\

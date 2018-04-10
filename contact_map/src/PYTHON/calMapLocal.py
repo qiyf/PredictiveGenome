@@ -3,7 +3,7 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def proc_local(celltype,chromid,runid):
+def calMapLocal(celltype,chromid,runid):
 
 	glb_path  = '../lammps_input/run_folder/'
 	dcd_path  = '%s/%s/chr%d/run%02d/'\
