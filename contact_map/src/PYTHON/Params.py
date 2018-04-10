@@ -2,7 +2,7 @@
 
 class Params():
 
-	global cg_fac,num_kb,nbead_cg,startb,endb,startfr
+	global cg_fac,num_kb,nbead_cg,startb,endb,startfr,glb_path
 	
 #	---- default: visulize the map at 50kb
 	cg_fac = 10
@@ -16,3 +16,5 @@ class Params():
 #	---- default: start calculation from the 1st frame	
 	startfr = 1
 	
+#	---- default: global path
+	glb_path  = '../lammps_input/run_folder/'

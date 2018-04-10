@@ -3,18 +3,19 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def processingJobScript(celltype,chromid,runid,job_name,ptn_name):
+def processingJobScript(celltype,runnum,chrom_lst,job_name,ptn_name):
 
-	glb_path  = '../lammps_input/run_folder/'
-	dcd_path  = '%s/%s/chr%d/run%02d/'\
-				%(glb_path,celltype,chromid,runid)
-	cmap_path = './%s/chr%d/run%02d/'\
-				%(celltype,chromid,runid)
+	for chromid in chrom_lst:
+		for runid in xrange(runnum):
+			dcd_path  = '%s/%s/chr%d/run%02d/'\
+						%(glb_path,celltype,chromid,runid)
+			cmap_path = './%s/chr%d/run%02d/'\
+						%(celltype,chromid,runid)
+			if not os.path.exists(cmap_path):
+				os.makedirs(cmap_path)
 
-	if not os.path.exists(cmap_path):
-		os.makedirs(cmap_path)
-	fo = open('%s/job_cg.pbs'%(cmap_path),'w')
-	fo.writelines('''#!/bin/bash
+			fo = open('%s/job_cg.pbs'%(cmap_path),'w')
+			fo.writelines('''#!/bin/bash
 
 #SBATCH --job-name=%s
 #SBATCH -N 1
@@ -26,8 +27,8 @@ def processingJobScript(celltype,chromid,runid,job_name,ptn_name):
 
 ./src/FORTRAN/cmap %s/DUMP_FILE.dcd %d %d %d %d'''\
 %(job_name,ptn_name,dcd_path,cg_fac,startb,endb,startfr))
-	fo.close()
+			fo.close()
 
-	cmd = 'cd %s;sbatch job_cg.pbs;'%(cmap_path)
-	q = Popen(cmd, shell=True, stdout=PIPE)
-	q.communicate()
+			cmd = 'cd %s;sbatch job_cg.pbs;'%(cmap_path)
+			q = Popen(cmd, shell=True, stdout=PIPE)
+			q.communicate()
