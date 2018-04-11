@@ -1,4 +1,4 @@
-
+from Ipt_module import *
 
 class Params():
 
@@ -17,4 +17,9 @@ class Params():
 	startfr = 1
 	
 #	---- default: global path
-	glb_path  = '../lammps_input/run_folder/'
+	_cmd = 'pwd'
+	q = Popen(_cmd, shell=True, stdout=PIPE)
+	path_tpl = q.communicate()
+	glb_path = path_tpl[0].split('\n')[0]
+
+	# glb_path  = '../lammps_input/run_folder/'
