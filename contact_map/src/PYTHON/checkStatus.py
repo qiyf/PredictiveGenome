@@ -10,7 +10,7 @@ def checkStatus(usr_name,job_name):
 		cmd = 'squeue |grep %s |grep %s |wc -l'%(usr_name,job_name)
 		q = Popen(cmd, shell=True, stdout=PIPE)
 		njob = int(q.communicate()[0])
-		print (njob)
+		print("Number of jobs calculating cmap on the cluster: %d"%njob)
 		if njob == 0:
 			print('''
 >>>> Start to combine the contact maps....

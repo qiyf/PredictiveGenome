@@ -1,20 +1,16 @@
-#!/usr/bin/env python
-
+# generate chromatin states from Epigenetic data
 import sys
-import os
-import numpy as np
-import fileinput as fi
 sys.path.append('./src/')
+from Ipt_module import *
+from Params import *
+Params()
+
 from extraction import convert_to_raw
 from genStates import genState
 from precheck import checkcell
 
 
 if __name__=='__main__':
-
-    chr_region = np.loadtxt('../chr_region.txt')
-    res = 5000
-    Mb = 1000000
 
     if len(sys.argv) == 1: celltype0 = 'Gm12878'; chrId = 1
     else: celltype0 = sys.argv[1]; chrId = int(sys.argv[2])
@@ -36,8 +32,10 @@ if __name__=='__main__':
         convert_to_raw(infile, csfile, chrId, res)
         outfile = '%s/%s_chr%d_chromatin_states.txt'%(todir,celltype,chrId)
         genState(csfile, outfile, chrId, res, csta, cend)
-        print('''\n>>>> Successfully generate: %s, chromosome %d
-     located in the path: \'./model_input/%s/\'.\n'''%(celltype,chrId,celltype))
+        print('''
+>>>> Successfully generate: %s, chromosome %d
+     located in the path: \'./model_input/%s/\'.
+'''%(celltype,chrId,celltype))
 
     except IOError:
 		pass
