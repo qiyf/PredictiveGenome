@@ -43,8 +43,8 @@ def writein_2d(to_path,to_path_file,writeinfile):
 		os.makedirs(to_path)
 	fw = open(to_path+to_path_file,'w')
 	for ii in xrange(len(writeinfile)):
-		fw.writelines(writeinfile[ii][0]+'\t'\
-						+writeinfile[ii][1]+'\n')
+		fw.writelines(str(int(writeinfile[ii][0]))+'\t'\
+						+str(int(writeinfile[ii][1]))+'\n')
 	fw.close()
 
 
@@ -52,8 +52,8 @@ def writein_ctcf(celltype,chrId,cap,writeinfile):
 
 #	----	write in the matrix in the original form	----
 	to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
-    to_path_file = 'ctcf_%d.txt'%chrId
-    writein_2d(to_path,to_path_file,writeinfile)
+	to_path_file = 'ctcf_%d.txt'%chrId
+	writein_2d(to_path,to_path_file,writeinfile)
 
 
 def writein_motif(chrId,opt,writeinfile):

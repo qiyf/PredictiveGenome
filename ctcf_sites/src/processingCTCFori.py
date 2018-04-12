@@ -11,16 +11,16 @@ orientation_list_known, orientation_list_disc,bind_flxb,cap):
 #
 
 	in_path = '%s/raw.narrowPeak'%(glb_path)
-	ctcf_peaks = np.loadtxt('%s/%s/ctcf/chip-seq_peak_%d.txt'
+	ctcf_peaks = np.loadtxt('%s/%s/ctcf/chip-seq_peak_%d.txt' \
 							%(in_path,celltype,chrId))
-    rad21_peaks = np.loadtxt('%s/%s/rad21/chip-seq_peak_%d.txt'
-    						%(in_path,celltype,chrId))
+	rad21_peaks = np.loadtxt('%s/%s/rad21/chip-seq_peak_%d.txt' \
+							%(in_path,celltype,chrId))
 
 	ctcf_states = []
 	final_ctcf_states = []
 	count_with_rad = 0		# count for the number of ctcf whose orientation has to be decided by cohesin
 	count_no_rad = 0		# count for the number of ctcf who do not have near cohesin
-	posSta = chr_region[chrid-1][1]*Mb
+	posSta = chr_region[chrId-1][1]*Mb
 
 	for i in range(len(ctcf_peaks)):
 		temp_pls_mns = []

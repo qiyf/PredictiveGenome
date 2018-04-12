@@ -2,7 +2,10 @@ import sys
 import getopt
 
 def getSettings(argv):
-#
+#	-------------------------------------------------------------------
+#	This function is to obtain the settings for CTCF-binding processing
+#	-------------------------------------------------------------------
+
 #	---- default values ----
 #
 	Celltype = 'Gm12878';chrom_lst=[1];bind_flxb=100;cap=50;
@@ -29,7 +32,7 @@ def getSettings(argv):
 			elif opt in ('-p','--cap'):
 				cap = arg
 
-		print("Starting to calculate CTCF-binding sites of %s ......"%Celltype)
+		print("Calculating CTCF-binding sites of %s ......"%Celltype)
 		return Celltype,chrom_lst,bind_flxb,cap
 
 	except getopt.GetoptError:
@@ -41,7 +44,10 @@ def getSettings(argv):
 
 
 def getMotifSettings(argv):
-#
+#	------------------------------------------------------------
+#	This function is to obtain the settings for motif processing
+#	------------------------------------------------------------
+
 #	---- default values ----
 #
 	motif_fi = 'hg19.motifs.txt';chrom_lst=[1];option='lbm';
@@ -66,7 +72,7 @@ def getMotifSettings(argv):
 			elif opt in ('-p','--option'):
 				option = arg
 
-		print("Starting to preprocess the motif file: %s ......"%motif_fi)
+		print("Preprocessing the motif file: %s ......"%motif_fi)
 		return motif_fi,chrom_lst,option
 
 	except getopt.GetoptError:

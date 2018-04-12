@@ -1,12 +1,9 @@
 #!/usr/bin/env python
-
 import sys
-import os
-from numpy import *
-
-#   ----    chromatin state scripts     ----    #
-sys.path.append('./lmps_data_scripts/')
-sys.path.append('./simulation_scripts/')
+sys.path.append('./src/')
+from Ipt_module import *
+from Params import *
+Params()
 
 from parse_chromhmm_files import *
 from extract_neighboring_ctcf import *
@@ -52,7 +49,7 @@ def create_lmps_data(folder, chrId):
     #
 
     ctcf_file = '../ctcf_sites/processingctcf/model_input/%s/ctcf_position_%s_chr%d_From%dMbTo%dMb.txt'\
-    			%(celltype,celltype,chrId, chr_seg[chrId-1,1], chr_seg[chrId-1,2])
+    			%(celltype,celltype,chrId, chr_region[chrId-1,1], chr_region[chrId-1,2])
     extract_nearby_ctcf(ctcf_file, ctcf_folder)
 
     #   
@@ -124,15 +121,15 @@ if __name__ == '__main__':
     celltype   = 'Gm12878'
     iterId = int(sys.argv[1])
     
-    chr_seg = loadtxt('chr_region.txt')
+    chr_region = loadtxt('chr_region.txt')
     
     resolution = 5000
     Mb = 1000000
 
     for chrId in [2,3,4,5,6,7,8,9,13,14,15,16,20,22]:
 
-        gpos_sta   = chr_seg[chrId-1,1]*Mb + 1
-        gpos_end   = chr_seg[chrId-1,2]*Mb
+        gpos_sta   = chr_region[chrId-1,1]*Mb + 1
+        gpos_end   = chr_region[chrId-1,2]*Mb
 
         main(chrId, iterId)
 

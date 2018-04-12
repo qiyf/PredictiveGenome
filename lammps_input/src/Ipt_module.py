@@ -1,6 +1,5 @@
 
-print '''
-Initializing CTCF-binding sites calculation ......
+print '''Initializing simulations......
 '''
 
 import random

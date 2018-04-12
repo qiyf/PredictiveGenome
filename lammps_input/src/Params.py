@@ -2,12 +2,12 @@ from Ipt_module import *
 
 class Params():
 
-	global Mb,resolution,nbead,glb_path,chr_region
+	global Mb,resolution,glb_path,chr_region
 	
 #	---- default: 25Mb segment, at resolution of 5kb
 	Mb=1E6
 	resolution=5000
-	nbead=int(25*Mb/resolution)
+	nbead=25*Mb/resolution
 
 #	---- default: global path
 	_cmd = 'pwd'

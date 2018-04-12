@@ -3,7 +3,7 @@
 import fileinput
 from numpy import *
 
-def extract_nearby_ctcf(infile, out_folder):
+def extractCtcfConv(infile, out_folder):
 
     ctcfL = []
     ctcfR = []
@@ -63,7 +63,7 @@ def extract_nearby_ctcf(infile, out_folder):
     savetxt(out_folder + '/ctcfList.txt', ctcfList, fmt='%d')
     savetxt(out_folder + '/ctcfInd.txt', ctcfInd, fmt='%d')
 
-def extract_nearby_ctcf_non_convergent(infile, out_folder):
+def extractCtcfnonConv(infile, out_folder):
 
     ctcf = []
     natom = 0
