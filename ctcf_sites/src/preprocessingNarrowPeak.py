@@ -1,8 +1,9 @@
 from Ipt_module import *
+from Params import *
+Params()
 
 def extract_interval(raw_mat,chromid):
 
-	Mb = 1E6
 	shift = 0
 	startid = chr_region[chromid-1][1]*Mb
 	endid = chr_region[chromid-1][2]*Mb

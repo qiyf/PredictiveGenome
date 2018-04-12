@@ -1,9 +1,8 @@
 from Ipt_module import *
+from Params import *
+Params()
 
-def extract_orientation(file_name, chrid):
-
-	Mb = 1E6
-	chr_region = np.loadtxt('../chr_region.txt')
+def prepMotif(file_name, chrid):
 
 	all_chr = []
 	orientation_list = []

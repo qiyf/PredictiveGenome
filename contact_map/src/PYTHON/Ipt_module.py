@@ -1,5 +1,5 @@
 
-print '''Initializing......
+print '''Initializing contact map calculation......
 '''
 
 import random

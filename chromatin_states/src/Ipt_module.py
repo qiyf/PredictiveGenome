@@ -1,5 +1,5 @@
 
-print '''Initializing......
+print '''Initializing chromatin states calculation......
 '''
 
 import random

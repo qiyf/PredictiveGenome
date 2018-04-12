@@ -1,3 +1,7 @@
+
+print '''Initializing CTCF-binding sites calculation......
+'''
+
 import random
 import numpy as np
 from scipy import stats
@@ -6,3 +10,4 @@ import os
 import time
 import fileinput as fi
 from math import *
+from subprocess import *

@@ -1,13 +1,20 @@
 from Ipt_module import *
+from Params import *
+Params()
 
-def extract_ctcf_states_orientations(ctcf_peaks,rad21_peaks,orientation_list_lieberman, \
+from assitingfunc import *
+
+def processingCTCFori(celltype,chrId,orientation_list_lieberman, \
 orientation_list_known, orientation_list_disc,bind_flxb,cap):
 #
 #	----	the output would be the atomic types with ctcf+ as 1, ctcf- as 2, other as 3, ctcf+- as 4 
 #
 
-	resolution = 5000								# resoltion for each bead
-	Mb = 1E6
+	in_path = '%s/raw.narrowPeak'%(glb_path)
+	ctcf_peaks = np.loadtxt('%s/%s/ctcf/chip-seq_peak_%d.txt'
+							%(in_path,celltype,chrId))
+    rad21_peaks = np.loadtxt('%s/%s/rad21/chip-seq_peak_%d.txt'
+    						%(in_path,celltype,chrId))
 
 	ctcf_states = []
 	final_ctcf_states = []
