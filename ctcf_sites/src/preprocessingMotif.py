@@ -3,9 +3,10 @@ from Params import *
 Params()
 
 def prepMotif(file_name, chrid):
+#	----	This function is to pre-process the motif file 	----
 
 	all_chr = []
-	orientation_list = []
+	oriList = []
 	start = chr_region[chrid-1][0]*Mb
 	end = chr_region[chrid-1][1]*Mb
 
@@ -17,6 +18,6 @@ def prepMotif(file_name, chrid):
 			temp = []
 			temp.append(every_line[2])		# starting position
 			temp.append(every_line[4])		# orientation
-			orientation_list.append(temp)	# with orientations as '+' or '-'
+			oriList.append(temp)			# with orientations as '+' or '-'
 
-	return orientation_list
+	return oriList

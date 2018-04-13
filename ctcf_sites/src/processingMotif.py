@@ -4,7 +4,7 @@ Params()
 
 def extractMotif(motif_type,chrId):
 #
-#	----	this function is to extract the pre-processed motif file
+#	----	this function is to extract the pre-processed motif file 	----
 # 
 	motif_name = '%s/motif_file/motif_%s/motif_chr%d.txt'\
 					%(glb_path,motif_type,chrId)

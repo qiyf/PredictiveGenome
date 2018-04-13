@@ -26,4 +26,4 @@ def combineMaps(celltype,runnum,chromid):
 	else:
 		print('''
 >>>> [Warning] Error in combining the contact maps of %s, chromosome %d!
-               Individual contact maps are not correctly calculated.\n'''%(celltype,chromid))
+			   Individual contact maps are not correctly calculated.\n'''%(celltype,chromid))

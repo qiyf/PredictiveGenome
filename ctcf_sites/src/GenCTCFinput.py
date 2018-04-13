@@ -70,14 +70,14 @@ class GenCTCFinput():
 
 
 	def generate(self,celltype,chrId,cap):
-	# generate the input data format for the model
-	# common bead:3	CTCF+:1	CTCF-:2	CTCF+-:4
+	#	----	generate the input data format for the model 	----
+	#	----	common bead:3	CTCF+:1	CTCF-:2	CTCF+-:4 		----
 
-	#	----	path to raw CTCF list
+		#	----	path to raw CTCF list
 		to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
 		ctcf_path = '%s/ctcf_%d.txt'%(to_path,chrId)
 
-	#	----	path to input CTCF list
+		#	----	path to input CTCF list
 		gen_path = '%s/processedCTCF/model_input/%s/'%(glb_path,celltype)
 		if not os.path.exists(gen_path):
 			os.makedirs(gen_path)
@@ -87,5 +87,5 @@ class GenCTCFinput():
 		ctcfSeq = self.convert2sq(ctcf_path)
 		ctcfInd = self.extractCtcfConv(ctcfSeq)
 
-	#	----	write to path for output
+		#	----	write to path for output
 		writein_2d(gen_path,gen_path_file,ctcfInd)

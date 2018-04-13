@@ -12,9 +12,11 @@ from precheck import checkcell
 
 if __name__=='__main__':
 
+    # ---- input settings ----
     celltype,chrom_lst=getSettings(sys.argv[1:])
     Extn = Extraction()
 
+    # ---- two-step extranction ----
     try:
         for chrId in chrom_lst:
             Extn.convert2raw(celltype, chrId)

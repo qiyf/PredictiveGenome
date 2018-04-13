@@ -7,6 +7,7 @@ from assitingfunc import *
 def processingCTCFori(celltype,chrId,orientation_list_lieberman, \
 orientation_list_known, orientation_list_disc,bind_flxb,cap):
 #
+#	----	This function is to process the CTCF-binding sites with orientation
 #	----	the output would be the atomic types with ctcf+ as 1, ctcf- as 2, other as 3, ctcf+- as 4 
 #
 

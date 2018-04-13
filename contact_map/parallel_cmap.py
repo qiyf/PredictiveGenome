@@ -16,17 +16,26 @@ from combineMaps import combineMaps
 
 if __name__ == '__main__':
 
-	celltype,runnum,chrom_lst=getSettings(sys.argv[1:])						# settings
+	# ---- input settings ----
+	celltype,runnum,chrom_lst=getSettings(sys.argv[1:])
 	clus_opt=raw_input("Computing clusters available?[y/n] ")				# Cluster computing or locally
 	
+	# ---- cluster available ----
 	if clus_opt == 'y':
 		job_name = 'cmap'													# name of the jobs running cmaps
 		usr_name = raw_input('Input cluster user name: ')					# user name on the cluster
 		ptn_name = raw_input('Input the partition name: ')					# input partition name if cluster available 
-		processingJobScript(celltype,runnum,chrom_lst,job_name,ptn_name)	# prepare the job script for calculating cmaps
-		checkStatus(usr_name,job_name)										# check the job status
-	else:
-		calMapLocal(celltype,runnum,chrom_lst)								# calculate the cmap locally
+		
+		# ---- prepare the job script for calculating cmaps ----
+		processingJobScript(celltype,runnum,chrom_lst,job_name,ptn_name)
 
+		# ---- check the job status ----
+		checkStatus(usr_name,job_name)
+
+	# ---- compute locally ----
+	else:
+		calMapLocal(celltype,runnum,chrom_lst)
+
+	# ---- combine the parallel cmaps to ensemble average ----
 	for chromid in chrom_lst:
-		combineMaps(celltype,runnum,chromid)								# combine the parallel cmaps to ensemble average
+		combineMaps(celltype,runnum,chromid)

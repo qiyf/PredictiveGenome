@@ -3,10 +3,9 @@ import getopt
 
 def getSettings(argv):
 #
-#	---- default values ----
-#
+# ---- default values ----
 	Celltype = 'Gm12878';runnum=8;chrom_lst=[1];
-#	------------------------
+# ------------------------
 
 	try:
 		opts,args = getopt.getopt(argv,'hC:n:c:',\
@@ -15,7 +14,7 @@ def getSettings(argv):
 			if opt=='-h':
 				print('''
 >>>> Options: parallel_cmap.py -C <Celltype> -n <run number> -c <chromosome id>
-          or: parallel_cmap.py --Cell <Celltype> --runnum <run number> --chrom <chromosome id>
+		  or: parallel_cmap.py --Cell <Celltype> --runnum <run number> --chrom <chromosome id>
 ''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
@@ -31,7 +30,7 @@ def getSettings(argv):
 		print('''
 >>>> By default, calculate 8 parallel simulations of chromosome 1, GM12878.
 >>>> To see the manual and change the settings:
-     type: parallel_cmap.py -h 
+	 type: parallel_cmap.py -h 
 ''')
 
 	return Celltype,runnum,chrom_lst

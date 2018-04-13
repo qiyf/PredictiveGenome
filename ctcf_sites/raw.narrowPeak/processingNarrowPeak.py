@@ -1,22 +1,23 @@
 # output the reads of certain resolutions
-
-import os
 import sys
-import numpy as np
 sys.path.append('../src/')
+from Ipt_module import *
+from Params import *
+Params()
+
 from assitingfunc import *
-from preprocessingNarrowPeak import extract_interval
+from preprocessingNarrowPeak import prepNarrowPeak
 
 if __name__ == '__main__':
 
 	#
-    # ---- input settings ----
-    #	
-	chr_region = np.loadtxt('../../chr_region.txt')
+	# ---- input settings ----
+	#	
 	tf = ['ctcf','rad21']
 
 	if len(sys.argv) == 1: celltype='Gm12878'; chrId=1;
 	else: celltype=sys.argv[1]; chrId=int(sys.argv[2]);
+	
 	try:
 		for tf_type in tf:
 			raw_data = '../../raw.narrowPeak/narrowPeak/%s_%s.narrowPeak'%(celltype,tf_type)
@@ -31,4 +32,7 @@ if __name__ == '__main__':
 			print('%s, %s is completed!'%(celltype,tf_type))
 
 	except IOError:
-		print('\n[WARNING]: Please recheck the README about the available cell types....\n')
+		print('''
+>>>> [WARNING]: Error in calculating narrow peaks of %s, chromosome %d!
+				Please recheck the README file for detail.'''
+%(celltype,chrId))
