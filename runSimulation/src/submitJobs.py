@@ -1,4 +1,6 @@
 from Ipt_module import *
+from Params import *
+Params()
 
 def submitJobs(celltype,chrId,runId):
 

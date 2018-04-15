@@ -17,7 +17,8 @@ if __name__ == '__main__':
 	nNode,ncpu,ptn,time,lmpsdir,\
 		nearCtcfThreshold,runStep=getSettings(sys.argv[1:])
 
-	clus_opt=raw_input("Computing clusters available?[y/n] ")				# Cluster computing or locally
+	# ---- cluster computing or locally ---- #
+	clus_opt=raw_input("Computing clusters available?[y/n] ")
 
 	for chrId in chrom_lst:
 		for runId in xrange(runnum):
@@ -30,12 +31,15 @@ if __name__ == '__main__':
 
 			if clus_opt == 'y':
 				# ---- create and submit the job to the cluster ---- #
-				Clf.createLocalBash()
-				submitJobs(celltype,chrId,runId)
+				Clf.createJobScript()
+				# submitJobs(celltype,chrId,runId)
+				print('''
+>>>> Job for %s, chromosome %d, parrallel running %02d is processed for submission.'''\
+								%(celltype,chrId,runId))
 			else:
 				# ---- create the bash script to run locally ---- #
 				Clf.createLocalBash()
-		print('''
+				print('''
 >>>> [Warning] The local simulation bash script is generated located at:
-			   ./run_folder/%s/chr%d/run00~%02d/run.sh
-'''%(celltype,chrId,runnum))
+			   ./run_folder/%s/chr%d/run%02d/run.sh'''\
+								%(celltype,chrId,runId))

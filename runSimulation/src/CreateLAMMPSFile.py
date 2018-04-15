@@ -67,7 +67,7 @@ class CreateLAMMPSFile():
 		if not os.path.exists(_rundir):
 			os.makedirs(_rundir)
 
-		# lammps input file with custom random seed
+		# ----  lammps input file with custom random seed
 		_inFile = _rundir + "in.chromosome"
 		in_tmp = fi.input(self._lmpsTemplate)
 		pf = open(_inFile, 'w')
@@ -79,8 +79,11 @@ class CreateLAMMPSFile():
 %(self._same_mol_flag_ideal,\
 self._paramsFolder,_csFile,\
 self._paramsFolder,_ctcfIndFile,self.nearCtcfThreshold))
+			elif line[0:16] == 'pair_coeff_softc':
+				pf.write(
+'''pair_coeff        * * table %s/soft_core_lj_4kT.table soft_core_lj 1.12\n'''%(self._paramsFolder))
 			elif line[0:3] == 'run':
-				pf.write('run        %d'%(self.runStep))
+				pf.write('run             %d'%(self.runStep))
 			else:
 				pf.write(line)
 
@@ -88,7 +91,7 @@ self._paramsFolder,_ctcfIndFile,self.nearCtcfThreshold))
 
 
 	def createJobScript(self):
-		# create pbs job script (parallel run)
+		# ----  create pbs job script (parallel run)
 		pbsFile = _rundir + "job.pbs"
 		pf = open(pbsFile, 'w')
 		pbs = '''#!/bin/bash
@@ -112,7 +115,7 @@ mpirun -np %d $lammpsdir/lmp_openmpi -in in.chromosome
 
 
 	def createLocalBash(self):
-		# create local bash script (serial run)
+		# ----  create local bash script (serial run)
 		localtime = time.asctime( time.localtime(time.time()) )
 		runFile = _rundir+"run.sh"
 		pf = open(runFile, 'w')

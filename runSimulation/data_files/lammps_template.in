@@ -9,7 +9,7 @@ boundary        s   s   s
 
 special_bonds   lj 0.0 0.0 1.0 extra 512
 
-read_data       ../../lmps_data/data.chromatin_states
+read_data       ../../lmps_data/data.chromosome
 
 neighbor        0.4 bin
 neigh_modify    every 1 delay 1
@@ -22,7 +22,7 @@ angle_coeff   	1 2.0
 
 #   ----    Energy funtion  ----
 pair_style      XXXX
-pair_coeff      * * table ../../../../../simulation_scripts/soft_core_lj_4kT.table soft_core_lj 1.12
+pair_coeff_softc
 pair_coeff      * *  tanhlr/cut/ideal     0.0  1.76  3.72
 pair_coeff      * *  tanhlr/cut/ideala     0.0 1.76  3.72
 pair_modify     tabinner 0.0000000001 shift yes
@@ -38,23 +38,22 @@ fix             wall all wall/region nucleus lj126 1.0 1.0 1.12
 #  ----    Minimization  ----
 minimize        1.0e-4 1.0e-6 100 1000
 
-#  ----    High temperature equilibration  ----
+#  ----    Energy and velocity  ----
 fix             1 all   nve
-timestep        0.006
-
 velocity        all create ${hT} ${rseed} rot yes mom yes dist gaussian
-dump            1 all dcd 2000 DUMP_FILE_highT.dcd 
-dump_modify     1 unwrap yes
-fix             2 all langevin ${hT} ${T} 0.5 ${rseed} 
-#run            1000000
+
+#  ----    High temperature equilibration  ----
+#dump            1 all dcd 2000 DUMP_FILE_highT.dcd 
+#dump_modify     1 unwrap yes
+#timestep        0.006
+#fix             2 all langevin ${hT} ${T} 0.5 ${rseed} 
+#run		 1000000
 
 # ----    Normal temperature  ----
-undump          1
+#undump          1
+#unfix           2
 dump            2 all dcd 2000 DUMP_FILE.dcd 
 dump_modify     2 unwrap yes
-
 timestep        0.012
-unfix           2
 fix             3 all langevin ${T} ${T} 0.5 ${rseed} 
-
 run             40000000 

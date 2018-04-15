@@ -2,7 +2,9 @@ from Ipt_module import *
 
 class Params():
 
-	global Mb,resolution,glb_path,chr_region
+	global Mb,resolution,nbead
+	global glb_path
+	global chr_region
 	
 	# ---- default: 25Mb segment, at resolution of 5kb
 	Mb=1E6
@@ -10,10 +12,7 @@ class Params():
 	nbead=25*Mb/resolution
 
 	# ---- default: global path
-	_cmd = 'pwd'
-	q = Popen(_cmd, shell=True, stdout=PIPE)
-	path_tpl = q.communicate()
-	glb_path = path_tpl[0].split('\n')[0]
+	glb_path = os.getcwd()
 
 	# ---- chromosome segment region
 	chr_region = np.loadtxt('%s/../chr_region.txt'%glb_path)

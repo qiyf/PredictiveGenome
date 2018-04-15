@@ -719,7 +719,8 @@ class Data(object):
     # Header
     f.write('%s\n\n' % self.header)
     f.write('%d atoms\n' % len(self.atoms))
-    f.write('%d ellipsoids\n' % len(self.atoms))
+    if ellipsoidFlag ==1:
+      f.write('%d ellipsoids\n' % len(self.atoms))
     if len(self.bonds) > 0:
       f.write('%d bonds\n' % len(self.bonds))
     if len(self.angles) > 0:
@@ -855,8 +856,8 @@ class Data(object):
         for atom in self.atoms:
             #TODO assume atom_style is full
             if 'comment' in atom and atom['comment'] is not None:
-                #f.write('%d %d %d %.4f %13.6e %13.6e %13.6e # %s\n' % (atom['i'], atom['mol_i'], atom['atom_type_i'], atom['charge'], atom['x'], atom['y'], atom['z'], atom['comment']))
-                f.write('%d %d %f %f %f %d 0 1.90986 # %s\n' % (atom['i'], atom['atom_type_i'], atom['x'], atom['y'], atom['z'], atom['mol_i'], atom['comment']))
+                f.write('%d %d %d %.4f %13.6e %13.6e %13.6e # %s\n' % (atom['i'], atom['mol_i'], atom['atom_type_i'], atom['charge'], atom['x'], atom['y'], atom['z'], atom['comment']))
+                # f.write('%d %d %f %f %f %d 0 1.90986 # %s\n' % (atom['i'], atom['atom_type_i'], atom['x'], atom['y'], atom['z'], atom['mol_i'], atom['comment']))
             else:
                 #f.write('%d %d %d %.4f %13.6e %13.6e %13.6e\n' % (atom['i'], atom['mol_i'], atom['atom_type_i'], atom['charge'], atom['x'], atom['y'], atom['z']))
                 f.write('%d %d %d %f %f %f 1 0 1.90986\n' % (atom['i'], atom['mol_i'], atom['atom_type_i'], atom['x'], atom['y'], atom['z']))

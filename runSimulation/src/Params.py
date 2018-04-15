@@ -13,16 +13,13 @@ class Params():
 	nbead=25*Mb/resolution
 
 #	---- default: global path
-	_cmd = 'pwd'
-	q = Popen(_cmd, shell=True, stdout=PIPE)
-	path_tpl = q.communicate()
-	glb_path = path_tpl[0].split('\n')[0]
+	glb_path = os.getcwd()
 
 #	---- chromosome segment region
 	chr_region = np.loadtxt('%s/../chr_region.txt'%glb_path)
 
 #	---- LAMMPS input parameters
-	comment = 'no-use'
+	comment = 'coor'
 	bond_coeffs = [30.0, 1.5, 1.0, 1.0]
 	angle_coeffs = [10.0, 30.0]
 

@@ -2,7 +2,11 @@ from Ipt_module import *
 
 class Params():
 
-	global cg_fac,num_kb,nbead_cg,startb,endb,startfr,glb_path
+	global Mb,resolution,nbead
+	global cg_fac,num_kb,nbead_cg
+	global startb,endb
+	global startfr
+	global glb_path
 	
 	# ---- default: 25Mb segment, at resolution of 5kb
 	Mb=1E6
@@ -22,8 +26,5 @@ class Params():
 	startfr = 1
 	
 	# ---- default: global path
-	_cmd = 'pwd'
-	q = Popen(_cmd, shell=True, stdout=PIPE)
-	path_tpl = q.communicate()
-	glb_path = path_tpl[0].split('\n')[0]
+	glb_path = os.getcwd()
 	
