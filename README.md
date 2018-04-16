@@ -28,27 +28,27 @@ To construct the chromatin states for GM12878, chromosome 1, run the following c
 ```
 ./example/genChromState.sh
 ```
-The generated chromatin states file is located at ./chromatinStates/model_input/Gm12878/Gm12878_chr1_chromatin_states.txt  
-To process other chromosomes and cell types, go to folder ./chromatinStates/ and refer to ./chromatinStates/README.md for details.  
+The generated chromatin states file is located at `./chromatinStates/model_input/Gm12878/Gm12878_chr1_chromatin_states.txt`  
+To process other chromosomes and cell types, go to folder `./chromatinStates/` and refer to `./chromatinStates/README.md` for details.  
 ### CTCF-binding sites derived from ChIP-Seq experiments.
 To construct the CTCF-binding sites for GM12878, chromosome 1, run the following command:
 ```
 ./example/genCTCFbinding.sh
 ```
-The generated chromatin states file is located at ./ctcfBindingSites/processedCTCF/model_input/  
-To process other chromosomes and cell types, go to folder ./ctcfBindingSites/ and refer to ./ctcfBindingSites/README.md for details.  
+The generated chromatin states file is located at `./ctcfBindingSites/processedCTCF/model_input/`  
+To process other chromosomes and cell types, go to folder `./ctcfBindingSites/` and refer to `./ctcfBindingSites/README.md` for details.  
 ### Run the simulation
 To initialize the simulation for GM12878, chromosome 1, run the following command:  
 ```
 ./example/runSimulation.sh [-p ncpu] [-i partition] [-t simulation_time] [-l Lammps_dir]
 ```
 There would be an option for the availability of the computing cluster. If cluster resource is available, specify the number of cpu, the name of the partition available on the cluster, and the time limit of the node.  
-To process other chromosomes and cell types, go to folder ./runSimulation/ and refer to ./runSimulation/README.md for details.  
+To process other chromosomes and cell types, go to folder `./runSimulation/` and refer to `./runSimulation/README.md` for details.  
 ### Contact map
 To calculate the contact map for GM12878, chromosomes 1 after run the simulation, run the following command:
 ```
 ./example/calContactMap.sh [-u username] [-i partition]
 ```
 There would be an option for the availability of the computing cluster. If cluster resource is available, specify the number of cpu, the name of the partition available on the cluster, and the time limit of the node.  
-To process other chromosomes and cell types, go to folder ./contactMap/ and refer to ./contactMap/README.md for details.  
+To process other chromosomes and cell types, go to folder `./contactMap/` and refer to `./contactMap/README.md` for details.  
 The experimental Hi-C data is available with GEO accession number GSE63525 [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525).
