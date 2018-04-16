@@ -3,34 +3,40 @@ import getopt
 
 def getSettings(argv):
 #
-# ---- default values ----
-	Celltype = 'Gm12878';runnum=8;chrom_lst=[1];
-# ------------------------
+# ---- default values ---- #
+	Celltype = 'Gm12878';runnum=8;
+	jobname='cmap';usrname='user';ptn='mit';
+	chrom_lst=[1];
+# ------------------------ #
 
 	try:
-		opts,args = getopt.getopt(argv,'hC:n:c:',\
-								['Cell=','runnum=','chrom='])
+		opts,args = getopt.getopt(argv,'hC:n:j:u:i:c:',\
+								['Cell=','runnum=','job','user','ptn','chrom='])
 		for opt,arg in opts:
 			if opt=='-h':
 				print('''
->>>> Options: parallel_cmap.py -C <Celltype> -n <run number> -c <chromosome id>
-		  or: parallel_cmap.py --Cell <Celltype> --runnum <run number> --chrom <chromosome id>
+>>>> Options: parallel_cmap.py -C <Celltype> -n <run number> -j <jobname> -u <username> -i <partition> -c <chromosome id>
+     or: parallel_cmap.py --Cell <Celltype> --runnum <run number> --job <jobname> --user <username> --ptn <partition> --chrom <chromosome id>
 ''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
 				Celltype = arg
 			elif opt in ('-n','--runnum'):
 				runnum = int(arg)
+			elif opt in ('-j','--job'):
+				jobname = arg
+			elif opt in ('-u','--user'):
+				usrname = arg
+			elif opt in ('-i','--ptn'):
+				ptn = arg
 			elif opt in ('-c','--chrom'):
 				chrom1st	= [int(arg)]
 				chrom2te	= map(eval, args)
 				chrom_lst	= chrom1st+chrom2te
 
 	except getopt.GetoptError:
-		print('''
->>>> By default, calculate 8 parallel simulations of chromosome 1, GM12878.
+		print('''>>>> [Warning] Error in setting options.
 >>>> To see the manual and change the settings:
-	 type: parallel_cmap.py -h 
-''')
+     type: parallel_cmap.py -h''')
 
-	return Celltype,runnum,chrom_lst
+	return Celltype,runnum,jobname,usrname,ptn,chrom_lst

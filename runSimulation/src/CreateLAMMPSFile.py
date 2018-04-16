@@ -11,7 +11,7 @@ class CreateLAMMPSFile():
 	_paramsFolder = '%s/data_files/'%glb_path
 	_lmpsTemplate = _paramsFolder+'lammps_template.in'
 
-	def __init__(self,celltype,chrId,runId,nNode,ncpu,ptn,time,lmpsdir,nearCtcfThreshold,runStep):
+	def __init__(self,celltype,chrId,runId,nNode,ncpu,ptn,simtime,lmpsdir,nearCtcfThreshold,runStep):
 
 		self.celltype           = celltype
 		self.chrId              = chrId
@@ -19,7 +19,7 @@ class CreateLAMMPSFile():
 		self.nNode              = nNode
 		self.ncpu               = ncpu
 		self.ptn                = ptn
-		self.time               = time
+		self.simtime            = simtime
 		self.lmpsdir            = lmpsdir
 		self.nearCtcfThreshold  = nearCtcfThreshold
 		self.runStep            = runStep
@@ -109,7 +109,7 @@ module add mvapich2/gcc
 
 lammpsdir="%s"
 mpirun -np %d $lammpsdir/lmp_openmpi -in in.chromosome
-'''%(self.celltype,self.chrId,self.nNode,self.ncpu,self.ptn,self.time,self.lmpsdir,self.ncpu)
+'''%(self.celltype,self.chrId,self.nNode,self.ncpu,self.ptn,self.simtime,self.lmpsdir,self.ncpu)
 		pf.write(pbs)
 		pf.close()
 

@@ -1,6 +1,5 @@
 
-print '''Initializing simulations......
-'''
+print '''>>>> Initializing simulations ......'''
 
 import random
 import numpy as np

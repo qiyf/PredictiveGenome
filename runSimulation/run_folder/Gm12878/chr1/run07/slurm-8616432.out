@@ -1,0 +1,100 @@
+/var/spool/slurmd/job8616432/slurm_script: /cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd: No such file or directory
+/var/spool/slurmd/job8616432/slurm_script: /cm/local/apps/environment-modules/3.2.10/Modules/3.2.10/bin/modulecmd: No such file or directory
+LAMMPS (5 Nov 2016)
+Reading data file ...
+  orthogonal box = (-10.802 -10.361 -10.553) to (10.411 10.522 10.247)
+  7 by 2 by 1 MPI processor grid
+  reading atoms ...
+  5000 atoms
+  scanning bonds ...
+  1 = max bonds/atom
+  scanning angles ...
+  1 = max angles/atom
+  reading bonds ...
+  4999 bonds
+  reading angles ...
+  4998 angles
+Finding 1-2 1-3 1-4 neighbors ...
+ Special bond factors lj:   0          0          1         
+ Special bond factors coul: 0          0          0         
+  2 = max # of 1-2 neighbors
+  2 = max # of 1-3 neighbors
+  4 = max # of 1-4 neighbors
+  518 = max # of special neighbors
+WARNING: 4174 of 10006 force values in table are inconsistent with -dE/dr.
+  Should only be flagged at inflection points (../pair_table.cpp:474)
+WARNING: 9976 of 10006 distance values in table with relative error
+  over 1e-06 to re-computed values (../pair_table.cpp:483)
+WARNING: 1 of 10006 lines in table were incomplete
+  or could not be parsed completely (../pair_table.cpp:492)
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Neighbor list info ...
+  3 neighbor list requests
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.4
+  ghost atom cutoff = 6.4
+  binsize = 3.2, bins = 7 7 7
+Setting up cg style minimization ...
+  Unit style    : lj
+Memory usage per processor = 39.3419 Mbytes
+Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
+           0            0    208399.66    208399.66   -15308.675    217346.75    6361.5834    14.154312    9188.2709 
+         0.5            0    3564.7898    3564.7898    -9973.022    473.47911    13064.333  -0.17598858    11281.857 
+Loop time of 2.29604 on 14 procs for 100 steps with 5000 atoms
+
+96.3% CPU use with 14 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = max iterations
+  Energy initial, next-to-last, final = 
+         208399.661662      3603.72383205      3564.78977645
+  Force two-norm initial, final = 9808.75 150.336
+  Force max component initial, final = 368.017 32.615
+  Final line search alpha, max atom move = 0.00200771 0.0654815
+  Iterations, force evaluations = 100 105
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.10688    | 0.92182    | 2.001      |  65.0 | 40.15
+Bond    | 0.00062346 | 0.0024114  | 0.0041356  |   2.6 |  0.11
+Neigh   | 0.26341    | 0.26524    | 0.26666    |   0.2 | 11.55
+Comm    | 0.017991   | 1.0434     | 1.753      |  54.6 | 45.44
+Output  | 6.485e-05  | 8.1062e-05 | 0.0002811  |   0.6 |  0.00
+Modify  | 0.00018287 | 0.00064785 | 0.0010891  |   1.3 |  0.03
+Other   |            | 0.06246    |            |       |  2.72
+
+Nlocal:    357.143 ave 612 max 91 min
+Histogram: 4 0 0 0 4 0 0 1 3 2
+Nghost:    2600.64 ave 3573 max 1635 min
+Histogram: 4 0 0 0 4 0 0 0 4 2
+Neighs:    142584 ave 300170 max 19038 min
+Histogram: 4 0 1 3 0 0 1 3 1 1
+
+Total # of neighbors = 1996172
+Ave neighs/atom = 399.234
+Ave special neighs/atom = 5.9976
+Neighbor list builds = 35
+Dangerous builds = 0
+Neighbor list info ...
+  3 neighbor list requests
+  update every 1 steps, delay 1 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.4
+  ghost atom cutoff = 6.4
+  binsize = 3.2, bins = 8 8 8
+Setting up Verlet run ...
+  Unit style    : lj
+  Current step  : 100
+  Time step     : 0.012
+Memory usage per processor = 38.2825 Mbytes
+Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
+           0            3    3564.7898     26060.29    -9973.022    473.47911    13064.333    1.1539707    11275.436 
+       118.8    1.0124445     5703.722    13295.537   -3779.9005    2460.7276    7022.8949  0.023171309    59448.582 
+       238.8    1.0267248    5914.6989    13613.595   -3194.5283    2375.6807    6733.5465 0.0037372295    88777.602 
+       358.8    1.0001818    5966.7405    13466.604   -2967.5147    2393.1967    6541.0585 -0.0034288791    90607.868 
+       478.8    1.0032232    5976.7214     13499.39   -2821.1251    2337.1483    6460.6981 0.0056672985    100860.99 
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 8616432.0 ON node465 CANCELLED AT 2018-04-15T19:49:46 ***
+slurmstepd: error: *** JOB 8616432 ON node465 CANCELLED AT 2018-04-15T19:49:46 ***

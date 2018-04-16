@@ -6,13 +6,13 @@ class Params():
 	global glb_path
 	global chr_region
 	
-	# ---- default: 25Mb segment, at resolution of 5kb
+	# ---- default: 25Mb segment, at resolution of 5kb ---- #
 	Mb=1E6
 	resolution=5000
 	nbead=25*Mb/resolution
 
-	# ---- default: global path
+	# ---- default: global path ---- #
 	glb_path = os.getcwd()
 
-	# ---- chromosome segment region
+	# ---- chromosome segment region ---- #
 	chr_region = np.loadtxt('%s/../chr_region.txt'%glb_path)

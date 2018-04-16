@@ -3,7 +3,7 @@ from Params import *
 Params()
 
 def prepNarrowPeak(raw_mat,chromid):
-#	----	This function is to pre-process the narrow peak file 	----
+#	----	This function is to pre-process the narrow peak file 	---- #
 
 	shift = 0
 	startid = chr_region[chromid-1][1]*Mb

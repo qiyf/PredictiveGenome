@@ -3,14 +3,14 @@ from Ipt_module import *
 from Params import *
 Params()
 
-def processingJobScript(celltype,runnum,chrom_lst,job_name,ptn_name):
-
-	for chromid in chrom_lst:
+def processingJobScript(celltype,runnum,jobname,ptn,chrom_lst):
+# ---- generate the job script for calculating the contact map ---- #
+	for chrId in chrom_lst:
 		for runid in xrange(runnum):
-			dcd_path  = '%s/%s/chr%d/run%02d/'\
-						%(glb_path,celltype,chromid,runid)
+			dcd_path  = '%s/../runSimulation/run_folder/%s/chr%d/run%02d/'\
+						%(glb_path,celltype,chrId,runid)
 			cmap_path = './%s/chr%d/run%02d/'\
-						%(celltype,chromid,runid)
+						%(celltype,chrId,runid)
 			if not os.path.exists(cmap_path):
 				os.makedirs(cmap_path)
 
@@ -25,10 +25,13 @@ def processingJobScript(celltype,runnum,chrom_lst,job_name,ptn_name):
 #SBATCH --time=4:00:00
 #SBATCH --export=ALL
 
-./src/FORTRAN/cmap %s/DUMP_FILE.dcd %d %d %d %d'''\
-%(job_name,ptn_name,dcd_path,cg_fac,startb,endb,startfr))
+%s/src/FORTRAN/cmap %s/DUMP_FILE.dcd %d %d %d %d'''\
+%(jobname,ptn,glb_path,dcd_path,cg_fac,startb,endb,startfr))
 			fo.close()
 
 			cmd = 'cd %s;sbatch job_cg.pbs;'%(cmap_path)
 			q = Popen(cmd, shell=True, stdout=PIPE)
 			q.communicate()
+		print('''   > Jobs for calculating contact map for %s, chromosome %d are submitted.'''\
+				%(celltype,chrId))
+	print

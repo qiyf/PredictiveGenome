@@ -1,23 +1,27 @@
-# This is to build up parallel simulations for calculation of contact maps
-
-By using the script, simply execute the python script:
+# This is a branch program to calculate the contact maps based on the trajectories of the MD simulation
+Usage:
 ```
-python parallel_cmap.py [cell_type] [runnum] [chromosome_id_array]
+python calContactMap.py [-C Celltype] [-n runnumber] [-j jobname] [-u username] [-i partition] [-c chromosome_id_array]
 ```
-through indication of cell_type, the total number of parallel simulations and the array of chromosome id that contact maps are needed to be calculated
-or
+or default:
 ```
-python parallel_cmap.py
+python calContactMap.py
 ```
-is calculating by default: Gm12878, 8 parallel runs, chromosome 1
-
-[cell_type] can be selected from the following list:  
+Note items in [] are optional. By default is calculating: Gm12878, chromosome 1, 8 parallel running.  
+[Celltype] can be selected from the following list (case sensitive):
 >Gm12878  
 >H1hesc  
->Helas3  
+>Hela  
 >Hepg2  
 >Huvec  
 >K562  
-
-[chromosome_id_array] can be any non-repeated subset selected from:  
->1 ~ 22
+[runnumber] specifies the number of parallel running. By default the value is 8.  
+[jobname] specifies the name of the job on the cluster.  
+[number_of_cpu] [partition] should be specified based on the cluster account and available cluster partition.
+[chromosome id array] can be any non-repeated subset selected from:
+>1 ~ 22  
+The processed output of the individual contact maps are located in the folder './Celltype/chrId/runId/', the combined maps are located in the folder './cmap/'.  
+The manual would be available by executing:  
+```
+python calContactMap.py -h
+```

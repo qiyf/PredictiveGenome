@@ -3,12 +3,12 @@ import getopt
 
 def getSettings(argv):
 #
-# ---- default values ----
+# ---- default values ---- #
 	Celltype = 'Gm12878';runnum=8;
-	nNode=1;ncpu=14;ptn='sched_mit_binz';time=48;lmpsdir='../LAMMPS-PreGenome/src/';
+	nNode=1;ncpu=14;ptn='mit';simtime=48;lmpsdir='../../LAMMPS-PreGenome/src/';
 	ctcfthres=4;step=40000000;
 	chrom_lst=[1];
-# ------------------------
+# ------------------------ #
 
 	try:
 		opts,args = getopt.getopt(argv,'hC:n:N:p:i:t:l:d:r:c:',\
@@ -17,10 +17,9 @@ def getSettings(argv):
 			if opt=='-h':
 				print('''
 >>>> Options: parallel_cmap.py -C <Celltype> -n <run number> -N <number of Node> -p <number of cpu> -i <partition> 
-							   -t <simulation time> -l <Lammps dir> -d <near CTCF threshold> -r <simulation steps> -c <chromosome id> 
+                               -t <simulation time> -l <Lammps dir> -d <near CTCF threshold> -r <simulation steps> -c <chromosome id> 
           or: parallel_cmap.py --Cell <Celltype> --runnum <run number> --nNode <number of Node> --ncpu <number of cpu> --ptn <partition>
-							   --time <simulation time> --lmpsdir <Lammps dir> --ctcfthres <near CTCF threshold> --step <simulation steps> --chrom <chromosome id> 
-''')
+                               --time <simulation time> --lmpsdir <Lammps dir> --ctcfthres <near CTCF threshold> --step <simulation steps> --chrom <chromosome id>''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
 				Celltype = arg
@@ -33,7 +32,7 @@ def getSettings(argv):
 			elif opt in ('-i','--ptn'):
 				ptn = arg
 			elif opt in ('-t','--time'):
-				time = int(arg)
+				simtime = int(arg)
 			elif opt in ('-l','--lmpsdir'):
 				lmpsdir = arg
 			elif opt in ('-d','--ctcfthres'):
@@ -46,10 +45,8 @@ def getSettings(argv):
 				chrom_lst	= chrom1st+chrom2te
 
 	except getopt.GetoptError:
-		print('''
->>>> [Warning] Error in intializing the simulation!
+		print('''>>>> [Warning] Error in setting options amd intializing the simulation!
 >>>> To see the manual and change the settings:
-	 type: parallel_cmap.py -h 
-''')
+     type: parallel_cmap.py -h''')
 
-	return Celltype,chrom_lst,runnum,nNode,ncpu,ptn,time,lmpsdir,ctcfthres,step
+	return Celltype,chrom_lst,runnum,nNode,ncpu,ptn,simtime,lmpsdir,ctcfthres,step

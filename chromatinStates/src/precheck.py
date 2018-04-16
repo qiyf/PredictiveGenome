@@ -13,9 +13,7 @@ def checkcell(celltype0):
 	celltype = celltype0
 	if celltype0 not in cellList:
 		flag = 0
-		print('''
->>>> [WARNING]: Please recheck the README about the available cell types.
-''')
+		print('''>>>> [WARNING]: Please recheck the README about the available cell types.''')
 	elif celltype0 == 'Helas3':
 		celltype = 'Hela'
 

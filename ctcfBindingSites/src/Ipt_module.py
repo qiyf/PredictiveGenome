@@ -1,7 +1,5 @@
 
-print '''
-Initializing CTCF-binding sites calculation ......
-'''
+print '''>>>> Initializing CTCF-binding sites calculation ......'''
 
 import random
 import numpy as np

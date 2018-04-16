@@ -3,7 +3,7 @@ from Params import *
 Params()
 
 def prepMotif(file_name, chrid):
-#	----	This function is to pre-process the motif file 	----
+#	----	This function is to pre-process the motif file 	---- #
 
 	all_chr = []
 	oriList = []

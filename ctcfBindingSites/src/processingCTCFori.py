@@ -7,8 +7,8 @@ from assitingfunc import *
 def processingCTCFori(celltype,chrId,orientation_list_lieberman, \
 orientation_list_known, orientation_list_disc,bind_flxb,cap):
 #
-#	----	This function is to process the CTCF-binding sites with orientation
-#	----	the output would be the atomic types with ctcf+ as 1, ctcf- as 2, other as 3, ctcf+- as 4 
+#	----	This function is to process the CTCF-binding sites with orientation	---- #
+#	----	the output would be the atomic types with ctcf+ as 1, ctcf- as 2, other as 3, ctcf+- as 4	---- #
 #
 
 	in_path = '%s/raw.narrowPeak'%(glb_path)
@@ -50,7 +50,7 @@ orientation_list_known, orientation_list_disc,bind_flxb,cap):
 				cs = 2
 			else:
 				if temp_pls_mns != []:
-					print('First check: sign vec is not empty, Error!')
+					print('> First check: sign vec is not empty, Error!')
 					break
 				for ori in range(len(orientation_list_known)):
 					ori_pos = int(orientation_list_known[ori][0])
@@ -65,7 +65,7 @@ orientation_list_known, orientation_list_disc,bind_flxb,cap):
 					cs = 2
 				else:
 					if temp_pls_mns != []:
-						print('Second check: sign vec is not empty, Error!')
+						print('> Second check: sign vec is not empty, Error!')
 						break
 					for ori in range(len(orientation_list_disc)):
 						ori_pos = int(orientation_list_disc[ori][0])
@@ -110,7 +110,7 @@ orientation_list_known, orientation_list_disc,bind_flxb,cap):
 			idx = ctcf_id.index(numid)
 			ctcf_type[idx] = update_cs_type(ctcf_type[idx],typeid)
 	if len(ctcf_id) != len(ctcf_type):
-		print('Double check error here.')
+		print('> Double check error here.')
 
 	for i in range(len(ctcf_type)):
 		final_ctcf_states.append([ctcf_id[i],ctcf_type[i]])

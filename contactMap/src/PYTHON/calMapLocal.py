@@ -4,7 +4,7 @@ from Params import *
 Params()
 
 def calMapLocal(celltype,runnum,chrom_lst):
-
+# ---- calculate the contact map locally ---- #
 	src_path = '%s/src/'%glb_path
 	ipt_path = '../lammps_input/'
 
@@ -26,7 +26,6 @@ def calMapLocal(celltype,runnum,chrom_lst):
 
 			cmd = 'cd %s;chmod 744 cal_cmap.sh;./cal_cmap.sh;'%(cmap_path)
 			q = Popen(cmd, shell=True, stdout=PIPE)
-			print('''
->>>> Calculating contact map of %s, chromosome %d, parallel running %d....
-'''%(celltype,chromid,runid))
+			print('''> Calculating contact map of %s, chromosome %d, parallel running %d ......'''\
+																	%(celltype,chromid,runid))
 			q.communicate()

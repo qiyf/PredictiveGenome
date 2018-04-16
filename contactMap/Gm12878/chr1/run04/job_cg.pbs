@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#SBATCH --job-name=cmap
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH --partition=sched_mit_binz
+#SBATCH --mem-per-cpu=2G
+#SBATCH --time=4:00:00
+#SBATCH --export=ALL
+
+/nobackup1b/users/qiyf/project_3d_genome/Github_code/contactMap/src/FORTRAN/cmap /nobackup1b/users/qiyf/project_3d_genome/Github_code/contactMap/../runSimulation/run_folder/Gm12878/chr1/run04//DUMP_FILE.dcd 10 400 4400 1

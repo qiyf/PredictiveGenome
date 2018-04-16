@@ -7,7 +7,7 @@ from assitingfunc import *
 class GenCTCFinput():
 
 	def convert2sq(self,ctcf_path):
-	#	----	processing into complete sequence
+	#	----	processing into complete sequence	---- #
 		tmp = np.loadtxt(ctcf_path)
 		mat = np.zeros((nbead,2),dtype='int')
 		for i in range(len(mat)):
@@ -26,7 +26,7 @@ class GenCTCFinput():
 		return mat
 
 	def extractCtcfConv(self,ctcfSeq):
-	#	----	processing into CTCF index sequence
+	#	----	processing into CTCF index sequence	---- #
 		ctcfL = []
 		ctcfR = []
 		ctcfInd = np.zeros((nbead,2),dtype='int')
@@ -70,8 +70,8 @@ class GenCTCFinput():
 
 
 	def generate(self,celltype,chrId,cap):
-	#	----	generate the input data format for the model 	----
-	#	----	common bead:3	CTCF+:1	CTCF-:2	CTCF+-:4 		----
+	#	----	generate the input data format for the model 	---- #
+	#	----	common bead:3	CTCF+:1	CTCF-:2	CTCF+-:4 		---- #
 
 		#	----	path to raw CTCF list
 		to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
@@ -87,5 +87,5 @@ class GenCTCFinput():
 		ctcfSeq = self.convert2sq(ctcf_path)
 		ctcfInd = self.extractCtcfConv(ctcfSeq)
 
-		#	----	write to path for output
+		#	----	write to path for output	---- #
 		writein_2d(gen_path,gen_path_file,ctcfInd)

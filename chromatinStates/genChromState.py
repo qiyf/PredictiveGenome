@@ -12,22 +12,20 @@ from precheck import checkcell
 
 if __name__=='__main__':
 
-    # ---- input settings ----
+    # ---- input settings ---- #
     celltype,chrom_lst=getSettings(sys.argv[1:])
     Extn = Extraction()
 
-    # ---- two-step extranction ----
+    # ---- two-step extranction ---- #
     try:
         for chrId in chrom_lst:
             Extn.convert2raw(celltype, chrId)
             Extn.raw2state(celltype, chrId)
-            print('''
->>>> Successfully generate: %s, chromosome %d
+            print('''>>>> Successfully generate chromatin state for %s, chromosome %d
      located in the path: \'./model_input/%s/\'.
 '''%(celltype,chrId,celltype))
 
     except IOError:
-		print('''
->>>> [Warning] Error in calculating chromatin states of %s!
-               Please check the README file for detail.
+		print('''>>>> [Warning] Error in calculating chromatin states of %s!
+     Please check the README file for detail.
 '''%celltype)

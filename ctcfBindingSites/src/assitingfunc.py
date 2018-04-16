@@ -4,7 +4,7 @@ Params()
 
 def process_minabs(ctcfPos,rad21_peaks):
 
-#	----	find the nearest radPos to each ctcf	----
+#	----	find the nearest radPos to each ctcf	---- #
 	radPos = rad21_peaks[0][0]
 	radPos_min = radPos
 	dist_min = abs(radPos-ctcfPos)
@@ -22,7 +22,7 @@ def process_minabs(ctcfPos,rad21_peaks):
 
 def update_cs_type(org,ext):
 
-#	----	update the chromatin state	----
+#	----	update the chromatin state	---- #
 	if org == 4 or ext == 4:
 		upd = 4
 	elif org == 0 or ext == 0:
@@ -38,7 +38,7 @@ def update_cs_type(org,ext):
 
 def writein_2d(to_path,to_path_file,writeinfile):
 
-#	----	templating the writing of a 2d matrix	----
+#	----	templating the writing of a 2d matrix	---- #
 	if not os.path.exists(to_path):
 		os.makedirs(to_path)
 	fw = open(to_path+to_path_file,'w')
@@ -50,7 +50,7 @@ def writein_2d(to_path,to_path_file,writeinfile):
 
 def writein_ctcf(celltype,chrId,cap,writeinfile):
 
-#	----	write in the matrix in the original form	----
+#	----	write in the matrix in the original form	---- #
 	to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
 	to_path_file = 'ctcf_%d.txt'%chrId
 	writein_2d(to_path,to_path_file,writeinfile)
@@ -58,7 +58,7 @@ def writein_ctcf(celltype,chrId,cap,writeinfile):
 
 def writein_motif(chrId,opt,writeinfile):
 
-#	----	write in the motif orientation file		----
+#	----	write in the motif orientation file		---- #
 	to_path = '%s/motif_%s/'%(glb_path,opt)
 	to_path_file = 'motif_chr%d.txt'%chrId
 	writein_2d(to_path,to_path_file,writeinfile)

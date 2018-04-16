@@ -6,7 +6,7 @@ Please be aware to compile the ChromHMM from the following link before using:
 Chromatin states are defined based the epigenetic information of the following 6 cell types:
 >GM12878  
 >H1hesc  
->Helas3  
+>Hela  
 >Hepg2  
 >Huvec  
 >K562  
