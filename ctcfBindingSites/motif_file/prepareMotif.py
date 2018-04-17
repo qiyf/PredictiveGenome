@@ -12,7 +12,7 @@ if __name__ == '__main__':
 #	----	extract the motif information with the start position and orientation	---- #
 #
     # ---- input settings ---- #
-    motif_fi,chrom_lst,option=getMotifSettings(sys.argv[1:])
+    motif_fi,option,chrom_lst=getMotifSettings(sys.argv[1:])
 
 	try:
 		oriList = prepMotif(motif_fi,chrId)

@@ -21,11 +21,8 @@ if __name__=='__main__':
         for chrId in chrom_lst:
             Extn.convert2raw(celltype, chrId)
             Extn.raw2state(celltype, chrId)
-            print('''>>>> Successfully generate chromatin state for %s, chromosome %d
-     located in the path: \'./model_input/%s/\'.
-'''%(celltype,chrId,celltype))
-
     except IOError:
-		print('''>>>> [Warning] Error in calculating chromatin states of %s!
-     Please check the README file for detail.
-'''%celltype)
+		print('''
+>>>> [Warning] Error in calculating chromatin states of %s!
+     Please check the README file for detail.'''%celltype)
+    print

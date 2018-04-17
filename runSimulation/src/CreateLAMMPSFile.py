@@ -112,7 +112,8 @@ mpirun -np %d $lammpsdir/lmp_openmpi -in in.chromosome
 '''%(self.celltype,self.chrId,self.nNode,self.ncpu,self.ptn,self.simtime,self.lmpsdir,self.ncpu)
 		pf.write(pbs)
 		pf.close()
-
+		print('''   > Job for %s, chromosome %d, parrallel running %02d is processed for submission.'''\
+									%(self.celltype,self.chrId,self.runId))
 
 	def createLocalBash(self):
 		# ----  create local bash script (serial run)
@@ -130,3 +131,5 @@ mpirun -np %d $lammpsdir/lmp_openmpi -in in.chromosome
 		_cmd = 'chmod 744 %s'%(runFile)
 		q = Popen(_cmd, shell=True, stdout=PIPE)
 		q.communicate()
+		print('''   > Local simulation bash script is generated located at: ./run_folder/%s/chr%d/run%02d/run.sh'''\
+									%(self.celltype,self.chrId,self.runId))

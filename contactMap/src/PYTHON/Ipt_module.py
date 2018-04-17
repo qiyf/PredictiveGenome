@@ -1,5 +1,6 @@
 
-print '''>>>> Initializing contact map calculation ......'''
+print '''
+>>>> Initializing contact map calculation ......'''
 
 import random
 import numpy as np

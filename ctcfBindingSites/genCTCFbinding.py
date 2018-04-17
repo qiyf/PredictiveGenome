@@ -14,7 +14,9 @@ from GenCTCFinput import *
 if __name__ == '__main__':
 
 	# ---- input settings ---- #
-	celltype,chrom_lst,bind_flxb,cap=getSettings(sys.argv[1:])
+	celltype,\
+	bind_flxb,cap,\
+		chrom_lst=getSettings(sys.argv[1:])
 
 	for chrId in chrom_lst:
 		# ---- prepare ctcf motif ---- #
@@ -35,10 +37,10 @@ if __name__ == '__main__':
 			GCInput = GenCTCFinput()
 			GCInput.generate(celltype,chrId,cap)
 
-			print('''>>>> CTCF-binding sites for %s, chromosome %d is successfully constructed.
-'''%(celltype,chrId))
-
+			print('''   > CTCF-binding sites for %s, chromosome %d is successfully constructed.'''\
+							%(celltype,chrId))
 		except IOError:
-			print('''>>>> [WARNING]: Error in calculating CTCF-binding sites of %s, chromosome %d!
-     Please recheck the README file for detail.
-'''%celltype,chrId)
+			print('''
+>>>> [WARNING]: Error in calculating CTCF-binding sites of %s, chromosome %d!
+     Please recheck the README file for detail.'''%celltype,chrId)
+	print

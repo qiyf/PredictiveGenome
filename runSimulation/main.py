@@ -13,9 +13,10 @@ from submitJobs import *
 if __name__ == '__main__':
 
 	# ---- input settings ---- #
-	celltype,chrom_lst,runnum,\
+	celltype,runnum,\
 	nNode,ncpu,ptn,simtime,lmpsdir,\
-		nearCtcfThreshold,runStep=getSettings(sys.argv[1:])
+	nearCtcfThreshold,runStep,\
+		chrom_lst=getSettings(sys.argv[1:])
 
 	# ---- cluster computing or locally ---- #
 	clus_opt=raw_input('''   > Computing clusters available?[y/n] ''')
@@ -32,12 +33,8 @@ if __name__ == '__main__':
 			if clus_opt == 'y':
 				# ---- create and submit the job to the cluster ---- #
 				Clf.createJobScript()
-				print('''   > Job for %s, chromosome %d, parrallel running %02d is processed for submission.'''\
-								%(celltype,chrId,runId))
-				submitJobs(celltype,chrId,runId); time.sleep(2);
+				submitJobs(celltype,chrId,runId); time.sleep(5);
 			else:
 				# ---- create the bash script to run locally ---- #
 				Clf.createLocalBash()
-				print('''   > Local simulation bash script is generated located at: ./run_folder/%s/chr%d/run%02d/run.sh'''\
-								%(celltype,chrId,runId))
 	print

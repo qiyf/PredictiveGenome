@@ -47,8 +47,8 @@ To process other chromosomes and cell types, go to folder `./runSimulation/` and
 ### Contact map
 To calculate the contact map for GM12878, chromosomes 1 after run the simulation, run the following command:
 ```
-./example/calContactMap.sh [-u username] [-i partition]
+./example/calContactMap.sh [-n runnumber] [-u username] [-i partition]
 ```
-There would be an option for the availability of the computing cluster. If cluster resource is available, specify the number of cpu, the name of the partition available on the cluster, and the time limit of the node.  
+There would be an option for the availability of the computing cluster. If cluster resource is available, specify the number of parallel running be included to calculate the contact map, the user name on the cluster, and the name of the partition available on the cluster.  
 To process other chromosomes and cell types, go to folder `./contactMap/` and refer to `./contactMap/README.md` for details.  
 The experimental Hi-C data is available with GEO accession number GSE63525 [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525).

@@ -6,14 +6,14 @@ Params()
 def calMapLocal(celltype,runnum,chrom_lst):
 # ---- calculate the contact map locally ---- #
 	src_path = '%s/src/'%glb_path
-	ipt_path = '../lammps_input/'
+	ipt_path = '../runSimulation/run_folder/'
 
-	for chromid in chrom_lst:
+	for chrId in chrom_lst:
 		for runid in xrange(runnum):
 			dcd_path  = '%s/%s/%s/chr%d/run%02d/'\
-						%(glb_path,ipt_path,celltype,chromid,runid)
+						%(glb_path,ipt_path,celltype,chrId,runid)
 			cmap_path = './%s/chr%d/run%02d/'\
-						%(celltype,chromid,runid)
+						%(celltype,chrId,runid)
 
 			if not os.path.exists(cmap_path):
 				os.makedirs(cmap_path)
@@ -26,6 +26,6 @@ def calMapLocal(celltype,runnum,chrom_lst):
 
 			cmd = 'cd %s;chmod 744 cal_cmap.sh;./cal_cmap.sh;'%(cmap_path)
 			q = Popen(cmd, shell=True, stdout=PIPE)
-			print('''> Calculating contact map of %s, chromosome %d, parallel running %d ......'''\
-																	%(celltype,chromid,runid))
+			print('''   > Calculating contact map of %s, chromosome %d, parallel running %02d ......'''\
+																	%(celltype,chrId,runid))
 			q.communicate()

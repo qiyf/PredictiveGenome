@@ -1,5 +1,6 @@
 
-print '''>>>> Initializing chromatin states calculation ......'''
+print '''
+>>>> Initializing chromatin states calculation ......'''
 
 import random
 import numpy as np

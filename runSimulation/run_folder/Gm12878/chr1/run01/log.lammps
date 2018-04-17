@@ -71,43 +71,43 @@ Neighbor list info ...
   binsize = 3.2 -> bins = 7 7 7
 Memory usage per processor = 39.3419 Mbytes
 Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
-           0            0    208399.66    208399.66   -15308.675    217346.75    6361.5834    14.154312    9188.2709 
-         0.5            0    3564.7898    3564.7898    -9973.022    473.47911    13064.333  -0.17598858    11281.857 
-Loop time of 2.55751 on 14 procs for 100 steps with 5000 atoms
+           0            0    208461.01    208461.01   -15247.321    217346.75    6361.5834    14.160362    9188.2709 
+         0.5            0    3712.1522    3712.1522   -9873.7584    480.42057     13105.49  -0.16446355     11155.83 
+Loop time of 2.91169 on 14 procs for 100 steps with 5000 atoms
 
-96.6% CPU use with 14 MPI tasks x no OpenMP threads
+96.5% CPU use with 14 MPI tasks x no OpenMP threads
 
 Minimization stats:
   Stopping criterion = max iterations
   Energy initial, next-to-last, final = 
-         208399.661662      3603.72383205      3564.78977645
-  Force two-norm initial, final = 9808.75 150.336
-  Force max component initial, final = 368.017 32.615
-  Final line search alpha, max atom move = 0.00200771 0.0654815
-  Iterations, force evaluations = 100 105
+         208461.014719      3736.35373565      3712.15219548
+  Force two-norm initial, final = 9809.1 195.071
+  Force max component initial, final = 367.965 42.7689
+  Final line search alpha, max atom move = 0.000961925 0.0411405
+  Iterations, force evaluations = 100 111
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.17471    | 1.1064     | 2.2654     |  66.2 | 43.26
-Bond    | 0.00068069 | 0.0025024  | 0.004185   |   2.5 |  0.10
-Neigh   | 0.25892    | 0.26032    | 0.26198    |   0.2 | 10.18
-Comm    | 0.019147   | 1.1109     | 1.8878     |  58.1 | 43.44
-Output  | 8.2016e-05 | 9.8348e-05 | 0.00030208 |   0.6 |  0.00
-Modify  | 0.00027061 | 0.00070695 | 0.0011172  |   1.2 |  0.03
-Other   |            | 0.07652    |            |       |  2.99
+Pair    | 0.17811    | 1.2079     | 2.5852     |  71.0 | 41.49
+Bond    | 0.00073028 | 0.0026633  | 0.0044866  |   2.6 |  0.09
+Neigh   | 0.28483    | 0.28643    | 0.28787    |   0.2 |  9.84
+Comm    | 0.026476   | 1.3275     | 2.1785     |  59.6 | 45.59
+Output  | 7.4148e-05 | 0.00010564 | 0.00051403 |   1.1 |  0.00
+Modify  | 0.00026155 | 0.00075672 | 0.0012245  |   1.2 |  0.03
+Other   |            | 0.08626    |            |       |  2.96
 
-Nlocal:    357.143 ave 612 max 91 min
+Nlocal:    357.143 ave 602 max 92 min
 Histogram: 4 0 0 0 4 0 0 1 3 2
-Nghost:    2600.64 ave 3573 max 1635 min
+Nghost:    2606.71 ave 3572 max 1650 min
 Histogram: 4 0 0 0 4 0 0 0 4 2
-Neighs:    142584 ave 300170 max 19038 min
-Histogram: 4 0 1 3 0 0 1 3 1 1
+Neighs:    142297 ave 299907 max 17944 min
+Histogram: 4 0 1 2 1 0 1 4 0 1
 
-Total # of neighbors = 1996172
-Ave neighs/atom = 399.234
+Total # of neighbors = 1992160
+Ave neighs/atom = 398.432
 Ave special neighs/atom = 5.9976
-Neighbor list builds = 35
+Neighbor list builds = 36
 Dangerous builds = 0
 
 #  ----    Energy and velocity  ----
@@ -140,12 +140,7 @@ Neighbor list info ...
   max neighbors/atom: 2000, page size: 100000
   master list distance cutoff = 6.4
   ghost atom cutoff = 6.4
-  binsize = 3.2 -> bins = 8 8 8
-Memory usage per processor = 38.2825 Mbytes
+  binsize = 3.2 -> bins = 7 8 7
+Memory usage per processor = 38.2898 Mbytes
 Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
-           0            3    3564.7898     26060.29    -9973.022    473.47911    13064.333    1.1539707    11275.436 
-       118.8    1.0004358    5557.0454    13058.813   -3890.5528    2379.7374    7067.8608 0.0018006682    65019.676 
-       238.8    1.0167957    5675.4559    13299.898   -3331.3171    2370.6107    6636.1624 0.0038899566    79529.303 
-       358.8    1.0064873    6002.1491    13549.294   -3126.3151    2464.1934    6664.2708 0.00072094843    92585.436 
-       478.8   0.99222612    6114.7982    13555.006   -2856.7545    2490.6235    6480.9293 -0.0017105169     101754.3 
-       598.8    1.0033275    6104.6902    13628.142   -2731.0938     2358.099     6477.685 0.0044384121    110198.66 
+           0            3    3712.1522    26207.652   -9873.7584    480.42057     13105.49     1.179856     11155.83 

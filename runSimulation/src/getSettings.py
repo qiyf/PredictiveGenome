@@ -19,7 +19,8 @@ def getSettings(argv):
 >>>> Options: parallel_cmap.py -C <Celltype> -n <run number> -N <number of Node> -p <number of cpu> -i <partition> 
                                -t <simulation time> -l <Lammps dir> -d <near CTCF threshold> -r <simulation steps> -c <chromosome id> 
           or: parallel_cmap.py --Cell <Celltype> --runnum <run number> --nNode <number of Node> --ncpu <number of cpu> --ptn <partition>
-                               --time <simulation time> --lmpsdir <Lammps dir> --ctcfthres <near CTCF threshold> --step <simulation steps> --chrom <chromosome id>''')
+                               --time <simulation time> --lmpsdir <Lammps dir> --ctcfthres <near CTCF threshold> --step <simulation steps> --chrom <chromosome id>
+''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
 				Celltype = arg
@@ -27,7 +28,7 @@ def getSettings(argv):
 				runnum = int(arg)
 			elif opt in ('-N','--nNode'):
 				nNode = int(arg)
-			elif opt in ('p','--ncpu'):
+			elif opt in ('-p','--ncpu'):
 				ncpu = int(arg)
 			elif opt in ('-i','--ptn'):
 				ptn = arg
@@ -43,10 +44,12 @@ def getSettings(argv):
 				chrom1st	= [int(arg)]
 				chrom2te	= map(eval, args)
 				chrom_lst	= chrom1st+chrom2te
+		return Celltype,runnum,nNode,ncpu,ptn,simtime,lmpsdir,ctcfthres,step,chrom_lst
 
 	except getopt.GetoptError:
-		print('''>>>> [Warning] Error in setting options amd intializing the simulation!
->>>> To see the manual and change the settings:
-     type: parallel_cmap.py -h''')
-
-	return Celltype,chrom_lst,runnum,nNode,ncpu,ptn,simtime,lmpsdir,ctcfthres,step
+		print('''
+>>>> [Warning] Error in setting options amd intializing the simulation!
+   > To see the manual and change the settings:
+     python parallel_cmap.py -h
+''')
+		sys.exit()

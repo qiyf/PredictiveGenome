@@ -58,4 +58,5 @@ class Extraction():
 					fo.write('%8d %4d\n'%((gpos-csta)/resolution+1,\
 											int(items[1][1::])))
 		fo.close()
-
+		print('''   > Chromatin state for %s, chromosome %d is successfully generated.'''\
+																		%(celltype,chrId))

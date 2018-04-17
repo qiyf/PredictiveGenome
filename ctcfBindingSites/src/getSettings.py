@@ -13,8 +13,9 @@ def getSettings(argv):
 								['Cell=','bindflex=','cap=','chrom='])
 		for opt,arg in opts:
 			if opt=='-h':
-				print('''>>>> Options: processingCTCF.py -C <Celltype> -b <binding flexbility> -p <CTCF-cohesin nearest dist> -c <chromosome id> 
-                                   or: processingCTCF.py --Cell <Celltype> --bindflex <binding flexbility> --cap <CTCF-cohesin nearest dist> --chrom <chromosome id> 
+				print('''
+>>>> Options: genCTCFbinding.py -C <Celltype> -b <binding flexbility> -p <CTCF-cohesin nearest dist> -c <chromosome id> 
+          or: genCTCFbinding.py --Cell <Celltype> --bindflex <binding flexbility> --cap <CTCF-cohesin nearest dist> --chrom <chromosome id> 
 ''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
@@ -27,15 +28,18 @@ def getSettings(argv):
 				chrom1st	= [int(arg)]
 				chrom2te	= map(eval, args)
 				chrom_lst	= chrom1st+chrom2te
+		print('''
+>>>> Calculating CTCF-binding sites of %s ......'''%Celltype)
 
-		print('''   > Calculating CTCF-binding sites of %s ......
-'''%Celltype)
-		return Celltype,chrom_lst,bind_flxb,cap
+		return Celltype,bind_flxb,cap,chrom_lst
 
 	except getopt.GetoptError:
-		print('''>>>> [Warning] Error in setting options for calculating the CTCF-binding sites.
->>>> To see the manual and change the settings:
-     type: processingCTCF.py -h''')
+		print('''
+>>>> [Warning] Error in setting options for calculating the CTCF-binding sites.
+   > To see the manual and change the settings:
+     python genCTCFbinding.py -h
+''')
+		sys.exit()
 
 
 def getMotifSettings(argv):
@@ -44,14 +48,15 @@ def getMotifSettings(argv):
 #	---- default values ---- #
 	motif_fi = 'hg19.motifs.txt';option='lbm';chrom_lst=[1];
 #	------------------------ #
-
+	
 	try:
 		opts,args = getopt.getopt(argv,'hm:p:c:',\
 								['motif=','option=','chrom='])
 		for opt,arg in opts:
 			if opt=='-h':
-				print('''>>>> Options: prepareMotif.py -m <motif_name> -p <motif_folder_name_option> -c <chromosome id>
-                                   or: prepareMotif.py -motif <motif_name> -option <motif_folder_name_option> -chrom <chromosome id>
+				print('''
+>>>> Options: prepareMotif.py -m <motif_name> -p <motif_folder_name_option> -c <chromosome id>
+          or: prepareMotif.py -motif <motif_name> -option <motif_folder_name_option> -chrom <chromosome id>
 ''')
 				sys.exit()
 			elif opt in ('-m','--motif'):
@@ -62,15 +67,19 @@ def getMotifSettings(argv):
 				chrom1st	= [int(arg)]
 				chrom2te	= map(eval, args)
 				chrom_lst	= chrom1st+chrom2te
+		print('''
+>>>> Preprocessing the motif file: %s ......'''%motif_fi)
 
-		print('''    > Preprocessing the motif file: %s ......
-'''%motif_fi)
-		return motif_fi,chrom_lst,option
+		return motif_fi,option,chrom_lst
 
 	except getopt.GetoptError:
-		print('''>>>> [Warning] Error in setting options for processing the motif files.
->>>> To see the manual and change the settings:
-     type: prepareMotif.py -h''')
+		print('''
+>>>> [Warning] Error in setting options for processing the motif files.
+   > To see the manual and change the settings:
+     python prepareMotif.py -h
+''')
+		sys.exit()
+
 
 def getNarrowPeakSettings(argv):
 #	----	This function is to obtain the settings for narrow peak processing 	---- #
@@ -78,14 +87,16 @@ def getNarrowPeakSettings(argv):
 #	---- default values ---- #
 	Celltype = 'Gm12878';tf='ctcf';chrom_lst=[1];
 #	------------------------ #
-
+	
 	try:
 		opts,args = getopt.getopt(argv,'hC:t:c:',\
 								['Cell=','tf=','chrom='])
 		for opt,arg in opts:
 			if opt=='-h':
-				print('''>>>> Options: processingNarrowPeak.py -C <Celltype> -t <transcriptional factor> -c <chromosome id>
-                                   or: processingNarrowPeak.py --Cell <Celltype> --tf <transcriptional factor> --chrom <chromosome id>''')
+				print('''
+>>>> Options: processingNarrowPeak.py -C <Celltype> -t <transcriptional factor> -c <chromosome id>
+          or: processingNarrowPeak.py --Cell <Celltype> --tf <transcriptional factor> --chrom <chromosome id>
+''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
 				Celltype = arg
@@ -95,13 +106,15 @@ def getNarrowPeakSettings(argv):
 				chrom1st	= [int(arg)]
 				chrom2te	= map(eval, args)
 				chrom_lst	= chrom1st+chrom2te
-
-		print('''    > Calculating narrow binding peak of %s, %s ......
-'''%(tf,Celltype))
-		return Celltype,chrom_lst,tf
+		print('''
+>>>> Processing narrow binding peak of %s, %s ......'''%(tf,Celltype))
+		return Celltype,tf,chrom_lst
 
 	except getopt.GetoptError:
-		print('''>>>> [Warning] Error in setting options for processing the NarrowPeak files.
->>>> To see the manual and change the settings:
-     type: processingNarrowPeak.py -h''')
+		print('''
+>>>> [Warning] Error in setting options for processing the NarrowPeak files.
+   > To see the manual and change the settings:
+     python processingNarrowPeak.py -h
+''')
+		sys.exit()
 

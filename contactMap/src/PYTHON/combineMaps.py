@@ -22,9 +22,9 @@ def combineMaps(celltype,runnum,chrId):
 		comb_map /= nf_tot
 		np.savetxt('./cmap/contact_map_CG_comb_%s_chr%d.txt'\
 					%(celltype,chrId),comb_map,fmt = '%.8f')
-		print('   > Contact_map_CG_%s_chrom%d is combined sucessfully!'%(celltype,chrId))
+		print('   > Contact_map_CG_%s_chrom%d is processed to be combined.'%(celltype,chrId))
 	
 	else:
 		print('''
 >>>> [Warning] Error in combining the contact maps of %s, chromosome %d!
-               Individual contact maps are not correctly calculated.\n'''%(celltype,chrId))
+               Individual contact maps are not correctly calculated.'''%(celltype,chrId))
