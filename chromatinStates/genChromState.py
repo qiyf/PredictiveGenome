@@ -16,7 +16,7 @@ if __name__=='__main__':
     celltype,chrom_lst=getSettings(sys.argv[1:])
     Extn = Extraction()
 
-    # ---- two-step extranction ---- #
+    # ---- two-step extraction ---- #
     try:
         for chrId in chrom_lst:
             Extn.convert2raw(celltype, chrId)

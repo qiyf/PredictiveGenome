@@ -22,4 +22,4 @@ The original narrowPeak data (located in the folder `./narrowPeak/`) is download
 ./narrowPeak/download.sh
 ```
 
-by default, the output of the binding narrow peak located in the folder `./[Celltype]/ctcf(rad21)/'.
+by default, the output of the binding narrow peak located in the folder `./[Celltype]/ctcf(rad21)/`.

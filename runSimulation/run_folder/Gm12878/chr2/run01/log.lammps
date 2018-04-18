@@ -1,0 +1,159 @@
+LAMMPS (5 Nov 2016)
+variable        rseed equal   4928460
+#  ----    Settings  ----
+variable        hT   equal   3.0
+variable        T   equal   1.0
+
+units           lj
+atom_style      full
+bond_style      class2
+boundary        s   s   s
+
+special_bonds   lj 0.0 0.0 1.0 extra 512
+
+read_data       ../../lmps_data/data.chromosome
+  orthogonal box = (-10.802 -10.361 -10.553) to (10.411 10.522 10.247)
+  7 by 2 by 1 MPI processor grid
+  reading atoms ...
+  5000 atoms
+  scanning bonds ...
+  1 = max bonds/atom
+  scanning angles ...
+  1 = max angles/atom
+  reading bonds ...
+  4999 bonds
+  reading angles ...
+  4998 angles
+  2 = max # of 1-2 neighbors
+  2 = max # of 1-3 neighbors
+  4 = max # of 1-4 neighbors
+  518 = max # of special neighbors
+
+neighbor        0.4 bin
+neigh_modify    every 1 delay 1
+atom_modify     sort 0 0.0
+
+#   ----    Force Field     ----
+bond_coeff    	1 2.0 20.0 20.0 20.0
+angle_style  	cosine
+angle_coeff   	1 2.0
+
+#   ----    Energy funtion  ----
+pair_style        hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 0 15 /nobackup1b/users/qiyf/project_3d_genome/Github_code/runSimulation/data_files//ucs_chrom.txt /nobackup1b/users/qiyf/project_3d_genome/Github_code/runSimulation/../chromatinStates/model_input/Gm12878/Gm12878_chr2_chromatin_states.txt tanhlr/cut/ideal 6.0 /nobackup1b/users/qiyf/project_3d_genome/Github_code/runSimulation/data_files//uctcf_chrom.txt /nobackup1b/users/qiyf/project_3d_genome/Github_code/runSimulation/../ctcfBindingSites/processedCTCF/model_input/Gm12878/ctcf_index_Gm12878_chr2_From20MbTo45Mb.txt 0.75 4
+pair_coeff        * * table /nobackup1b/users/qiyf/project_3d_genome/Github_code/runSimulation/data_files//soft_core_lj_4kT.table soft_core_lj 1.12
+WARNING: 4174 of 10006 force values in table are inconsistent with -dE/dr.
+  Should only be flagged at inflection points (../pair_table.cpp:474)
+WARNING: 9976 of 10006 distance values in table with relative error
+  over 1e-06 to re-computed values (../pair_table.cpp:483)
+WARNING: 1 of 10006 lines in table were incomplete
+  or could not be parsed completely (../pair_table.cpp:492)
+pair_coeff      * *  tanhlr/cut/ideal     0.0  1.76  3.72
+pair_coeff      * *  tanhlr/cut/ideala     0.0 1.76  3.72
+pair_modify     tabinner 0.0000000001 shift yes
+
+thermo          10000
+thermo_style    custom time temp pe etotal epair ebond eangle press vol
+thermo_modify   norm no flush yes
+
+#  ----    Spherical confinement  ----
+region          nucleus sphere 0.0 0.0 0.0 26.56193 side in
+fix             wall all wall/region nucleus lj126 1.0 1.0 1.12
+
+#  ----    Minimization  ----
+minimize        1.0e-4 1.0e-6 100 1000
+WARNING: Resetting reneighboring criteria during minimization (../min.cpp:168)
+Neighbor list info ...
+  3 neighbor list requests
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.4
+  ghost atom cutoff = 6.4
+  binsize = 3.2 -> bins = 7 7 7
+Memory usage per processor = 39.3419 Mbytes
+Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
+           0            0    208460.74    208460.74   -15247.593    217346.75    6361.5834    14.157771    9188.2709 
+         0.5            0    3490.5461    3490.5461   -10009.355    473.78435    13026.117  -0.16950529    11206.431 
+Loop time of 2.64764 on 14 procs for 100 steps with 5000 atoms
+
+96.8% CPU use with 14 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = max iterations
+  Energy initial, next-to-last, final = 
+         208460.742913      3522.49416757      3490.54606156
+  Force two-norm initial, final = 9809.41 168.276
+  Force max component initial, final = 367.972 39.9564
+  Final line search alpha, max atom move = 0.00279969 0.111866
+  Iterations, force evaluations = 100 114
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.16033    | 1.1748     | 2.3288     |  73.2 | 44.37
+Bond    | 0.00070953 | 0.0026788  | 0.0045059  |   2.7 |  0.10
+Neigh   | 0.28065    | 0.28262    | 0.28474    |   0.2 | 10.67
+Comm    | 0.025665   | 1.1656     | 2.1432     |  72.0 | 44.02
+Output  | 7.081e-05  | 8.5405e-05 | 0.00026703 |   0.5 |  0.00
+Modify  | 0.00022101 | 0.00074526 | 0.0012622  |   1.3 |  0.03
+Other   |            | 0.02111    |            |       |  0.80
+
+Nlocal:    357.143 ave 600 max 89 min
+Histogram: 4 0 0 0 4 0 0 0 4 2
+Nghost:    2622 ave 3590 max 1641 min
+Histogram: 4 0 0 0 4 0 0 1 3 2
+Neighs:    142289 ave 294913 max 18250 min
+Histogram: 4 0 1 2 1 0 1 2 2 1
+
+Total # of neighbors = 1992052
+Ave neighs/atom = 398.41
+Ave special neighs/atom = 5.9976
+Neighbor list builds = 35
+Dangerous builds = 0
+
+#  ----    Energy and velocity  ----
+fix             1 all   nve
+velocity        all create ${hT} ${rseed} rot yes mom yes dist gaussian
+velocity        all create 3 ${rseed} rot yes mom yes dist gaussian
+velocity        all create 3 4928460 rot yes mom yes dist gaussian
+
+#  ----    High temperature equilibration  ----
+#dump            1 all dcd 2000 DUMP_FILE_highT.dcd
+#dump_modify     1 unwrap yes
+#timestep        0.006
+#fix             2 all langevin ${hT} ${T} 0.5 ${rseed}
+#run		 1000000
+
+# ----    Normal temperature  ----
+#undump          1
+#unfix           2
+dump            2 all dcd 2000 DUMP_FILE.dcd
+dump_modify     2 unwrap yes
+timestep        0.012
+fix             3 all langevin ${T} ${T} 0.5 ${rseed}
+fix             3 all langevin 1 ${T} 0.5 ${rseed}
+fix             3 all langevin 1 1 0.5 ${rseed}
+fix             3 all langevin 1 1 0.5 4928460
+run             40000000
+Neighbor list info ...
+  3 neighbor list requests
+  update every 1 steps, delay 1 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 6.4
+  ghost atom cutoff = 6.4
+  binsize = 3.2 -> bins = 7 7 8
+Memory usage per processor = 38.2898 Mbytes
+Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
+           0            3    3490.5461    25986.046   -10009.355    473.78435    13026.117    1.1696495    11197.756 
+       118.8    1.0006856    5718.2838    13221.925   -3616.3394    2386.7405    6947.8827  0.004937224    70772.393 
+       238.8   0.99187408    5957.0806    13394.648   -3020.5523    2431.6021    6546.0308 -0.0029324146    82280.948 
+       358.8   0.98546207    5927.6282    13317.116   -2864.6402    2339.8911    6452.3774  0.011439505    89317.339 
+       478.8    1.0000089    5957.6994    13456.266   -2665.5947    2267.3482     6355.946 0.0047204471    85763.767 
+       598.8     1.011583    6183.6942     13769.05   -2579.2026    2333.4088     6429.488 0.0033617098    96299.703 
+       718.8   0.97979339    6030.3905    13377.371   -2447.6169    2291.4549    6186.5525 0.0035126288    100491.42 
+       838.8   0.99286488    6239.8201    13684.817   -2462.3964    2472.6298    6229.5867 0.0051125868    106814.74 
+       958.8   0.99970934    6251.2023    13747.523   -2510.9434    2497.2088    6264.9369 -0.0045862384    103915.72 
+      1078.8    1.0096574     6059.894     13630.81   -2526.3927    2413.3584    6172.9282 0.0063442262      99351.2 
+      1198.8    1.0267313     6180.147    13879.091    -2551.331       2387.2     6344.278 0.0050482876     103624.4 
+      1318.8   0.99397876    6225.3477    13678.697    -2546.554    2347.6887    6424.2131 0.0031551076    105455.14 
+      1438.8   0.98907917    6177.9739    13594.584    -2385.953    2330.2751    6233.6518 -0.00036828112    108020.97 
+      1558.8    1.0145044    6260.6755    13867.937    -2407.152    2409.6878    6258.1397 -3.1682299e-05    106663.07 

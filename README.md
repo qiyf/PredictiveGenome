@@ -14,7 +14,7 @@ git clone https://github.com/qiyf/PredictiveGenome.git
 ```
 Download the modified LAMMPS source package by running the following comand:
 ```
-https://github.com/qiyf/LAMMPS-PreGenome.git
+git clone https://github.com/qiyf/LAMMPS-PreGenome.git
 ```
 or download the zip file from  
 [https://github.com/qiyf/PredictiveGenome/archive/master.zip](https://github.com/qiyf/PredictiveGenome/archive/master.zip)  

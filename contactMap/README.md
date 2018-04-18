@@ -26,9 +26,12 @@ Note items in [] are optional. By default is calculating: Gm12878, chromosome 1,
 **chromosome id array]** can be any non-repeated subset selected from:
 >1 ~ 22
 
-The processed output of the individual contact maps are located in the folder `./Celltype/chrId/runId/`, the combined maps are located in the folder `./cmap/`.  
+The processed output of the individual contact maps are located in the folder `./[Celltype]/[chrId]/[runId]/`, the combined maps are located in the folder `./cmap/`.  
 
 The manual would be available by executing:  
 ```
 python calContactMap.py -h
 ```
+
+To visualize the contact maps, a MATLAB script is provided located at `./src/MATLAB/main.m`. Note that the corresponding raw Hi-C maps with consistent resolution need to be downloaded beforehand, and the path needs to be indicated when executing the MATLAB script. The raw Hi-C maps can be downloaded from:  
+>Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
