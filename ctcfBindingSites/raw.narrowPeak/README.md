@@ -1,4 +1,4 @@
-# This is a extraction for narrow peak binding location of ctcf and cohesin (rad21 subunit)
+# This is a branch program to extract narrow peak binding location of ctcf and cohesin (rad21 subunit)
 
 By using the script, simply execute the python script:
 ```
@@ -17,9 +17,10 @@ by default is calculating: Gm12878, chromosome 1
 **[chromosome_id_array]** can be selected from:  
 >1 ~ 22
 
-The original narrowPeak data (located in the folder `./narrowPeak/`) is downloaded from the data sources indicated in the ExtendDataSheet. Raw NarrowPeak data can be downloaded by execuating:
+by default, the output of the binding narrow peak located in the folder `./[Celltype]/ctcf(rad21)/`.
+
+The original narrowPeak data (located in the folder `./narrowPeak/`) is downloaded from the data sources indicated in the ExtendDataSheet. Raw NarrowPeak data can be downloaded by executing:
 ```
 ./narrowPeak/download.sh
 ```
-
-by default, the output of the binding narrow peak located in the folder `./[Celltype]/ctcf(rad21)/`.
+and the downloaded files should be unzipped accordingly.

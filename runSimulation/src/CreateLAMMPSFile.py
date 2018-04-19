@@ -75,7 +75,7 @@ class CreateLAMMPSFile():
 		for line in in_tmp:
 			if line[0:10] == 'pair_style':
 				pf.write(
-'''pair_style        hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 %d 15 %s/ucs_chrom.txt %s tanhlr/cut/ideal 6.0 %s/uctcf_chrom.txt %s 0.75 %d\n'''\
+'''pair_style        hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 %d 15 %s/ucs_chrom.txt %s tanhlr/cut/ideal 6.0 %s/uctcf_chrom.txt %s %d\n'''\
 %(self._same_mol_flag_ideal,\
 self._paramsFolder,_csFile,\
 self._paramsFolder,_ctcfIndFile,self.nearCtcfThreshold))

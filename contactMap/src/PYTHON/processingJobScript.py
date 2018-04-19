@@ -32,6 +32,6 @@ def processingJobScript(celltype,runnum,jobname,ptn,chrom_lst):
 			cmd = 'cd %s;sbatch job_cg.pbs;'%(cmap_path)
 			q = Popen(cmd, shell=True, stdout=PIPE)
 			q.communicate()
-		print('''   > Jobs for calculating contact map for %s, chromosome %d are submitted.'''\
+		print('''   > Job for calculating contact map for %s, chromosome %d is submitted.'''\
 				%(celltype,chrId))
 	print

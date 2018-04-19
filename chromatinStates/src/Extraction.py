@@ -20,7 +20,7 @@ class Extraction():
 		global _todir
 		_todir = '%s/model_input/%s/'%(glb_path,celltype)
 		todirraw = _todir+'rawStates/'
-		if os.path.exists(todirraw) is not True and flag:
+		if os.path.exists(todirraw) is not True:
 			os.makedirs(todirraw)
 
 		#   ----    raw State processed file    ---- #
