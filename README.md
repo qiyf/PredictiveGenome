@@ -1,5 +1,7 @@
 # DRAGON  
-DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromosome structure and dynamics. 
+DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromosome structure and dynamics. With DRAGON, one can predict the structure of a 25Mb long chromatin region from a variety of cell types using genome-wide profiles of histone modifications and CTCF molecules. 
+
+The package is mainly written in Python, and it streamlines all the necessary steps to process [epigenomics data](./chromatinStates), 
 
 ## Dependencies  
 The package for Predictive Genome Model is mainly written in Python. The LAMMPS package is written in C++.
