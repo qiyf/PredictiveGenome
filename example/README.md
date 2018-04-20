@@ -1,5 +1,5 @@
 
-## Getting start to build the first simulation  
+## Getting started the first simulation  
 
 ### Chromatin states derived from the underlying combinatorial patterns of key histone marks.  
 To construct the chromatin states for GM12878, chromosome 1, run the following command:  
