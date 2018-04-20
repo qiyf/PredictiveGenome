@@ -1,5 +1,5 @@
-# Predictive Genome Model  
-Predictive Genome Model is a predictive and transferable model to simulate the structure and dynamics of chromosomes.
+# DRAGON  
+DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the manuscript (https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromosome structure and dynamics. 
 
 ## Dependencies  
 The package for Predictive Genome Model is mainly written in Python. The LAMMPS package is written in C++.
