@@ -24,3 +24,6 @@ A series of useful scripts are provided in the tools folder to visualize chromat
 We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF binding site in a given orientation or depending on the underlying Chip-Seq signal. 
 
 The exact process is illustrated with the following flow chart. 
+
+The example folder outline the steps to simulation chromosome 1 from GM12878 cells. 
+
