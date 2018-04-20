@@ -1,4 +1,8 @@
-## This is an instruction on how to compile LAMMPS with customized modifications. 
+## Molecular Dynamics Simulation with LAMMPS. 
+
+Implementation of the potential energy funtion is provied in the src folder.  
+
+## Installation
 
 The LAMMPS package can be downloaded by running the following command:
 ```
