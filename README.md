@@ -1,14 +1,11 @@
-# Predictive Genome Model  
-Predictive Genome Model is a predictive and transferable model to simulate the structure and dynamics of chromosomes.
+# DRAGON  
+DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromatin structure and dynamics. With DRAGON, one can predict the structure of a 25Mb long chromatin region from a variety of cell types using genome-wide profiles of histone modifications and CTCF molecules. 
 
-## Dependencies  
-The package for Predictive Genome Model is mainly written in Python. The LAMMPS package is written in C++.
+The package is mainly written in Python, and it streamlines all the necessary steps to process [epigenomics data](./chromatinStates), to perform molecular dynamics simulations and to analyze predicted conformational ensmeble for the chromatin. 
 
-## Visualization of chromosome structures  
-The information of trajectories stored in .dcd format can be visualized using VMD [http://www.ks.uiuc.edu/Research/vmd/](http://www.ks.uiuc.edu/Research/vmd/) or any other software that is capable of loading .dcd files and available online. Refer to `./PredictiveGenome/contactMap/README.md` for more details on visualization of the simulated chromosome structure.
 
 ## Installation
-Download the Predictive Genome Model source package by running the following command:
+To install DRAGON, one can download the source code by running the following command:
 ```
 git clone https://github.com/qiyf/PredictiveGenome.git
 ```
@@ -16,32 +13,14 @@ or download the zip file with the link:
 
 [https://github.com/qiyf/PredictiveGenome/archive/master.zip](https://github.com/qiyf/PredictiveGenome/archive/master.zip)  
 
-The LAMMPS package can be downloaded by running the following command:
-```
-git clone -b stable https://github.com/lammps/lammps.git
-```
-or with other links from the official site:
+We use ChromHMM to process epigenomics data. See the README file in the Epigenomics folder for its installation and usage. 
 
-[http://lammps.sandia.gov/download.html](http://lammps.sandia.gov/download.html)
+We use LAMMPS to simulate chromatin structure and dynamics. See the README file in the Molecular Dynamics folder for its installation and usage. 
 
-After download both of the packages, unpack both Predictive Genome Model and LAMMPS packages under the same directory. Then the modified potential files can be connected to the LAMMPS source code by executing the following command (rename the LAMMPS folder as `./lammps/` or change the name of the downloaded LAMMPS folder in the file `./PredictiveGenome/lammpsCode/src/connectLAMMPSPotential.sh`):
-```
-./PredictiveGenome/lammpsCode/src/connectLAMMPSPotential.sh
-```
-The corresponding potential files should be generated under `./lammps/src/`.
+A series of useful scripts are provided in the tools folder to visualize chromatin structure with VMD and to analyze contact maps using Matlab. Installation of these two software packages are highly recommended. 
 
-To compile the parallel version of LAMMPS, go to the folder `./lammps/src/`, and type the command:
-```
-make clean-all
-make openmpi
-```
-To include the packages, type the command (e.g. class2 package):
-```
-make yes-class2
-```
-For more details, please refer to the instrucion on the official site:
+## Usage
 
-[http://lammps.sandia.gov/doc/Section_start.html](http://lammps.sandia.gov/doc/Section_start.html).
 
 ## Getting start to build the first simulation  
 Enter the `./PredictiveGenome/` folder to execute the following steps.
@@ -87,3 +66,36 @@ To process other chromosomes and cell types, go to folder `./contactMap/` and re
 The experimental Hi-C data is available with GEO accession number GSE63525 [https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525).  
 
 The visualization of the simulated chromosome structure ensemble is also available. Please refer to the **Visualization of chromosome structures** section on where to download the VMD software, and `./contactMap/README.md` for details about the steps on visualizing the structures.  
+
+
+## Visualization of chromosome structures  
+The information of trajectories stored in .dcd format can be visualized using VMD [http://www.ks.uiuc.edu/Research/vmd/](http://www.ks.uiuc.edu/Research/vmd/) or any other software that is capable of loading .dcd files and available online. Refer to `./PredictiveGenome/contactMap/README.md` for more details on visualization of the simulated chromosome structure.
+
+## LAMMPS
+The LAMMPS package can be downloaded by running the following command:
+```
+git clone -b stable https://github.com/lammps/lammps.git
+```
+or with other links from the official site:
+
+[http://lammps.sandia.gov/download.html](http://lammps.sandia.gov/download.html)
+
+After download both of the packages, unpack both Predictive Genome Model and LAMMPS packages under the same directory. Then the modified potential files can be connected to the LAMMPS source code by executing the following command (rename the LAMMPS folder as `./lammps/` or change the name of the downloaded LAMMPS folder in the file `./PredictiveGenome/lammpsCode/src/connectLAMMPSPotential.sh`):
+```
+./PredictiveGenome/lammpsCode/src/connectLAMMPSPotential.sh
+```
+The corresponding potential files should be generated under `./lammps/src/`.
+
+To compile the parallel version of LAMMPS, go to the folder `./lammps/src/`, and type the command:
+```
+make clean-all
+make openmpi
+```
+To include the packages, type the command (e.g. class2 package):
+```
+make yes-class2
+```
+For more details, please refer to the instrucion on the official site:
+
+[http://lammps.sandia.gov/doc/Section_start.html](http://lammps.sandia.gov/doc/Section_start.html).
+
