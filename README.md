@@ -22,29 +22,6 @@ A series of useful scripts are provided in the tools folder to visualize chromat
 ## Usage
 
 
-## Getting start to build the first simulation  
-Enter the `./PredictiveGenome/` folder to execute the following steps.
-
-The 1D input of the model consists of two parts: chromatin states and CTCF-binding sites, which will be illrustrated in the following: 
-
-### Chromatin states derived from the underlying combinatorial patterns of key histone marks.  
-To construct the chromatin states for GM12878, chromosome 1, run the following command:  
-```
-./example/genChromState.sh
-```
-The generated chromatin states file is located at `./chromatinStates/model_input/Gm12878/Gm12878_chr1_chromatin_states.txt`  
-
-To process other chromosomes and cell types, go to folder `./chromatinStates/` and refer to `./chromatinStates/README.md` for details.  
-
-### CTCF-binding sites derived from ChIP-Seq experiments.
-To construct the CTCF-binding sites for GM12878, chromosome 1, run the following command:
-```
-./example/genCTCFbinding.sh
-```
-The generated chromatin states file is located at `./ctcfBindingSites/processedCTCF/model_input/`  
-
-To process other chromosomes and cell types, go to folder `./ctcfBindingSites/` and refer to `./ctcfBindingSites/README.md` for details.  
-
 ### Run the simulation
 To initialize the simulation for GM12878, chromosome 1, run the following command:  
 ```
