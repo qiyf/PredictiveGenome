@@ -5,7 +5,7 @@ def getSettings(argv):
 #
 # ---- default values ---- #
 	Celltype = 'Gm12878';runnum=8;
-	nNode=1;ncpu=14;ptn='mit';simtime=48;lmpsdir='../../LAMMPS-PreGenome/src/';
+	nNode=1;ncpu=14;ptn='mit';simtime=48;lmpsdir='../../../../../lammps/src/lmp_openmpi';
 	ctcfthres=4;step=40000000;
 	chrom_lst=[1];
 # ------------------------ #
