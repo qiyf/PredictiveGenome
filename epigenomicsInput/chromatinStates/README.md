@@ -1,4 +1,10 @@
-# This is a branch program to generate the chromatin states input file for the model
+## Chromatin states
+
+We built the chromatin states for six cell types using ENCODE data. These data can be downloaded from. 
+
+Once downloaded, we use ChromHMM to learn chromatin states from these genome wide data. It is important to learn the chromatin states for all the cell types together to XXX. 
+
+This is a branch program to generate the chromatin states input file for the model
 Usage:
 ```
 python genChromState.py [-C Celltype] [-c chromosome_id_array]
