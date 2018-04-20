@@ -1,0 +1,1 @@
+# This is an instruction on how to compile LAMMPS  
