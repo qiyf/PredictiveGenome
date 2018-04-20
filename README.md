@@ -14,8 +14,10 @@ or download the zip file with the link:
 [https://github.com/qiyf/PredictiveGenome/archive/master.zip](https://github.com/qiyf/PredictiveGenome/archive/master.zip)  
 
 We use ChromHMM to process epigenomics data. See the README file in the Epigenomics folder for its installation and usage. 
+
 We use LAMMPS to simulate chromatin structure and dynamics. See the README file in the Molecular Dynamics folder for its installation and usage. 
 
+A series of useful scripts are provided in the tools folder to visualize chromatin structure with VMD and to analyze contact maps using Matlab. Installation of these two software packages are highly recommended. 
 
 ## Usage
 
