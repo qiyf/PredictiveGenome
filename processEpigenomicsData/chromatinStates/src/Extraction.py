@@ -18,7 +18,8 @@ class Extraction():
 
 		#   ----    raw State processed folder  ---- #
 		global _todir
-		_todir = '%s/model_input/%s/'%(glb_path,celltype)
+		_todir = '%s/../../runMolecularDynamics/runSimulation/'\
+		'/input_files/epig_input/chromStates/%s/'%(glb_path,celltype)
 		todirraw = _todir+'rawStates/'
 		if os.path.exists(todirraw) is not True:
 			os.makedirs(todirraw)
@@ -41,9 +42,12 @@ class Extraction():
 
 	def raw2state(self,celltype,chrId,realPos=False):
 	#   ----    Chromatin state file name     ---- #
-		outfile = '%s/%s_chr%d_chromatin_states.txt'%(_todir,celltype,chrId)
-		csta = chr_region[chrId-1,1] * Mb +1
-		cend = chr_region[chrId-1,2] * Mb
+		staid = chr_region[chrId-1,1]
+		endid = chr_region[chrId-1,2]
+		csta = staid * Mb +1
+		cend = endid * Mb
+		outfile = '%s/%s_chr%d_chromatin_states_%dMbTo%dMb.txt'\
+								%(_todir,celltype,chrId,staid,endid)
 
 		#   ----    generate chrom state file     ---- #
 		fo = open(outfile, 'w')
@@ -53,7 +57,7 @@ class Extraction():
 			#   ----    output the absolute position  ---- #
 			if gpos >=csta and gpos <= cend:
 				if realPos:
-					fo.write('%8d %4d\n'%(gpos, int(items[1][1::])))
+					fo.write('%8d %4d\n'%(gpos,int(items[1][1::])))
 				else:
 					fo.write('%8d %4d\n'%((gpos-csta)/resolution+1,\
 											int(items[1][1::])))

@@ -72,17 +72,19 @@ class GenCTCFinput():
 	def generate(self,celltype,chrId,cap):
 	#	----	generate the input data format for the model 	---- #
 	#	----	common bead:3	CTCF+:1	CTCF-:2	CTCF+-:4 		---- #
+		staid = chr_region[chrId-1,1]
+		endid = chr_region[chrId-1,2]
 
 		#	----	path to raw CTCF list
 		to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
-		ctcf_path = '%s/ctcf_%d.txt'%(to_path,chrId)
+		ctcf_path = '%s/%s_chr%d_ctcf_%dMbTo%dMb.txt'\
+											%(to_path,celltype,chrId,staid,endid)
 
-		#	----	path to input CTCF list
-		gen_path = '%s/processedCTCF/model_input/%s/'%(glb_path,celltype)
-		if not os.path.exists(gen_path):
-			os.makedirs(gen_path)
+		#	----	path to input CTCF list (index)
+		gen_path = '%s/../../runMolecularDynamics/runSimulation/'\
+		'/input_files/epig_input/ctcfSites/%s/'%(glb_path,celltype)
 		gen_path_file = 'ctcf_index_%s_chr%d_From%dMbTo%dMb.txt'\
-					%(celltype,chrId,chr_region[chrId-1,1],chr_region[chrId-1,2])
+												%(celltype,chrId,staid,endid)
 
 		ctcfSeq = self.convert2sq(ctcf_path)
 		ctcfInd = self.extractCtcfConv(ctcfSeq)

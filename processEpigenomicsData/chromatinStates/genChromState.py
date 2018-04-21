@@ -13,7 +13,7 @@ from precheck import checkcell
 if __name__=='__main__':
 
     # ---- input settings ---- #
-    celltype,gSta,chrom_lst=getSettings(sys.argv[1:])
+    celltype,chrom_lst=getSettings(sys.argv[1:])
     Extn = Extraction()
 
     # ---- two-step extraction ---- #

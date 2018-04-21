@@ -51,8 +51,10 @@ def writein_2d(to_path,to_path_file,writeinfile):
 def writein_ctcf(celltype,chrId,cap,writeinfile):
 
 #	----	write in the matrix in the original form	---- #
+	staid = chr_region[chrId-1,1]
+	endid = chr_region[chrId-1,2]
 	to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
-	to_path_file = 'ctcf_%d.txt'%chrId
+	to_path_file = '%s_chr%d_ctcf_%dMbTo%dMb.txt'%(celltype,chrId,staid,endid)
 	writein_2d(to_path,to_path_file,writeinfile)
 
 
