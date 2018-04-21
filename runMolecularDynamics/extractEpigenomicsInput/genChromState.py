@@ -1,26 +1,31 @@
 # generate chromatin states from Epigenetic data
 import sys
-sys.path.append('./src/')
-from Ipt_module import *
-from Params import *
-Params()
+sys.path.append('../../src/')
 
-from getSettings import getSettings
-from Extraction import *
-from precheck import checkcell
+from chromatinState import *
 
 
 if __name__=='__main__':
 
     # ---- input settings ---- #
     celltype,chrom_lst=getSettings(sys.argv[1:])
-    Extn = Extraction()
+
+    print celltype
+
+    cs = chromatinState()
 
     # ---- two-step extraction ---- #
+    for chrId in chrom_lst:
+        cs.celltype = celltype
+        cs.chrId = chrId
+        cs.convert2raw()
+        cs.raw2state()
     try:
         for chrId in chrom_lst:
-            Extn.convert2raw(celltype, chrId)
-            Extn.raw2state(celltype, chrId)
+            cs.celltype = celltype
+            cs.chrId = chrId
+            cs.convert2raw()
+            cs.raw2state()
     except IOError:
 		print('''
 >>>> [Warning] Error in calculating chromatin states of %s!
