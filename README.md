@@ -49,7 +49,7 @@ We use LAMMPS to simulate chromatin structure and dynamics. See `./runMolecularD
 ```
 
 The 25Mb long chromatin region is indicated in the file `./src/chr_region.txt`. The format is in the following:
->chromosome_id 	start_position(Mb) 	end_position
+>chromosome_id 	start_position(Mb) 	end_position  
 >1				20					45  
 >2				20					45  
 >3				20					45  
@@ -57,7 +57,7 @@ The 25Mb long chromatin region is indicated in the file `./src/chr_region.txt`. 
 
 If a different 25Mb chromatin region for any individual chromosome is desired, simply change the start and end position.
 
-#### Extract Epigenomics input
+#### Extract epigenomics input
 
 ```
 ./3-ExtractEpigenomics.sh
@@ -69,14 +69,26 @@ If a different 25Mb chromatin region for any individual chromosome is desired, s
 ./4-BuildLammps.sh
 ```
 
-#### Run Simulation
+#### Run simulation
 
 ```
 ./5-runMD.sh
 ```
 
-### visualize 3D structure and contact map
-A series of useful scripts are provided in the folder `./analyzeChromatinConformation/` to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See `./analyzeChromatinConformation/contactMap/README.md`and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
+### Analyze Chromatin Conformation
 
-### Start the first simulation
-The `./example` folder outline the steps to simulation chromosome 1 from GM12878 cells. See `./example/README.md`for detailed instructions of usage. 
+We use VMD to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and MATLAB to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See `./analyzeChromatinConformation/contactMap/README.md`and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
+
+#### Visualize contact map
+
+```
+./6-calcCMAP.sh
+```
+(print a message to direct them to matlab)
+
+#### Visualize the 3D structure
+
+```
+./6-geneVMDScript.sh
+```
+
