@@ -31,21 +31,28 @@ The exact process is illustrated with the following flow chart.
 
 ![Flow chart](https://github.com/qiyf/PredictiveGenome/blob/dragon/images/flow_chart.png)
 
-### Select 25Mb long chromatin region
+### Process Epigenomics Data
+ChromHMM is used to process epigenomics data and define chromatin states. See `./processEpigenomicsData/README.md` for its installation and usage. ChIP-Seq signals for the CTCF-binding are used to define CTCF-binding sites. 
+
+### Run Molecular Dynamics Simulation
+We use LAMMPS to simulate chromatin structure and dynamics. See `./runMolecularDynamics/README.md` for its detailed usage. 
+
+#### Select a 25Mb chromatin region
 The 25Mb long chromatin region is indicated in the file `./src/chr_region.txt`. The format is in the following:
 >chromosome_id 	start_position(Mb) 	end_position
->1				20					45
->2				20					45
->3				20					45
->4				20					45
+>1				20					45  
+>2				20					45  
+>3				20					45  
+>4				20					45  
 
 If a different 25Mb chromatin region for any individual chromosome is desired, simply change the start and end position.
 
-### generate 1D epigenomics input
-ChromHMM is used to process epigenomics data and define chromatin states. See `./processEpigenomicsData/README.md` for its installation and usage. ChIP-Seq signals for the CTCF-binding are used to define CTCF-binding sites. 
+#### Extract Epigenomics input
 
-### run simulation with LAMMPS
-We use LAMMPS to simulate chromatin structure and dynamics. See `./runMolecularDynamics/README.md` for its detailed usage. 
+
+#### Build LAMMPS input
+
+#### Run Simulation
 
 ### visualize 3D structure and contact map
 A series of useful scripts are provided in the folder `./analyzeChromatinConformation/` to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See `./analyzeChromatinConformation/contactMap/README.md`and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
