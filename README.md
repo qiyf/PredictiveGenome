@@ -1,6 +1,6 @@
 # DRAGON  
 
-![DRAGON logo](http://github.com/ZhangGroup-MITChemistry/DRAGON/images/flow_chart.png)
+![DRAGON logo](http://github.com/qiyf/PredictiveGenome/images/logo.png)
 
 DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromatin structure and dynamics. With DRAGON, one can predict the structure of a 25Mb long chromatin region from a variety of cell types using genome-wide profiles of histone modifications and CTCF molecules. 
 
@@ -29,7 +29,7 @@ We model the chromatin as beads on a string. Each bead is assigned with a chroma
 
 The exact process is illustrated with the following flow chart. 
 
-![Flow chart](http://github.com/ZhangGroup-MITChemistry/DRAGON/images/flow_chart.png)
+![Flow chart](http://github.com/qiyf/PredictiveGenome/images/flow_chart.png)
 
 ### Select 25Mb long chromatin region
 The 25Mb long chromatin region is indicated in the file `./src/chr_region.txt`. The format is in the following:
