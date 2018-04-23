@@ -77,7 +77,7 @@ If a different 25Mb chromatin region for any individual chromosome is desired, s
 
 ### III) Analyze Chromatin Conformation
 
-We use VMD to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and MATLAB to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See `./analyzeChromatinConformation/contactMap/README.md`and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
+We use VMD to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and MATLAB to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See [cmap](./analyzeChromatinConformation/contactMap/README.md) and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
 
 #### Visualize contact map
 
