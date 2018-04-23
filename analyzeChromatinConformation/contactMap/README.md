@@ -1,4 +1,9 @@
-# This is a branch program to calculate the contact maps based on the trajectories of the MD simulation
+# This is a branch program to calculate the contact maps based on the trajectories of MD simulations
+
+## Calculate contact maps
+
+The simulated contact maps based on the result trajectories of MD simulation can be calculated by using the code `calContactMap.py` that is provided.  
+
 Usage:
 ```
 python calContactMap.py [-C Celltype] [-n runnumber] [-j jobname] [-u username] [-i partition] [-c chromosome_id_array]
@@ -33,8 +38,10 @@ The manual would be available by executing:
 python calContactMap.py -h
 ```
 
-The core program to calculate the contact map from trajectory files is a FORTRAN code located at `./src/FORTRAN/cmap.f90`. It has been compiled as './src/FORTRAN/cmap' with ifort compiler. It can also be compiled with gfortran, but please have either of these compilers installed beforehand. 
+The core program to calculate the contact map from trajectory files is a FORTRAN code located at `/Dragon/src/FORTRAN/cmap.f90`. It has been compiled as './src/FORTRAN/cmap' with ifort compiler. It can also be compiled with gfortran, but have either of these compilers installed beforehand is necessary. 
 
-To visualize the contact maps, a MATLAB script is provided located at `./src/MATLAB/main.m`. Note that the corresponding raw Hi-C maps with consistent resolution need to be downloaded beforehand, and the path for the Hi-C maps needs to be indicated when executing the MATLAB script. The raw Hi-C maps can be downloaded from:  
+## Visualize contact maps with MATLAB
+
+To visualize the contact maps, a MATLAB script `visContactMap.m` is provided. Note that the corresponding raw Hi-C maps with consistent resolution need to be downloaded beforehand, and the path for the Hi-C maps needs to be indicated when executing the MATLAB script. The raw Hi-C maps can be downloaded from:  
 >Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
 

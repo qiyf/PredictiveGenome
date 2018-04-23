@@ -11,7 +11,7 @@ class Params():
 	# ---- default: 25Mb segment, at resolution of 5kb ---- #
 	Mb=1E6
 	resolution=5000
-	nbead=25*Mb/resolution
+	nbead=int(25*Mb/resolution)
 
 	# ---- default: visulize the map at 50kb ---- #
 	cg_fac = 10

@@ -2,7 +2,7 @@ from Ipt_module import *
 from Params import *
 Params()
 
-from assitingfunc import *
+from writeinfunc import *
 
 class GenCTCFinput():
 
@@ -72,22 +72,24 @@ class GenCTCFinput():
 	def generate(self,celltype,chrId,cap):
 	#	----	generate the input data format for the model 	---- #
 	#	----	common bead:3	CTCF+:1	CTCF-:2	CTCF+-:4 		---- #
-		staid = chr_region[chrId-1,1]
-		endid = chr_region[chrId-1,2]
+		gSta = chr_region[chrId-1,1]
+		gEnd = gSta+25
 
 		#	----	path to raw CTCF list
-		to_path = '%s/processedCTCF/proc_data.%dbp/%s/'%(glb_path,cap,celltype)
+		to_path = '%s/%s/rawCTCF.%dbp/'%(glb_path,celltype,cap)
 		ctcf_path = '%s/%s_chr%d_ctcf_%dMbTo%dMb.txt'\
-											%(to_path,celltype,chrId,staid,endid)
+											%(to_path,celltype,chrId,gSta,gEnd)
 
 		#	----	path to input CTCF list (index)
-		gen_path = '%s/../../runMolecularDynamics/runSimulation/'\
-		'/input_files/epig_input/ctcfSites/%s/'%(glb_path,celltype)
-		gen_path_file = 'ctcf_index_%s_chr%d_From%dMbTo%dMb.txt'\
-												%(celltype,chrId,staid,endid)
+		gen_path = '%s/%s/'%(glb_path,celltype)
+		gen_path_pos = '%s_chr%d_ctcf_position_From%dMbTo%dMb.txt'\
+												%(celltype,chrId,gSta,gEnd)
+		gen_path_idx = '%s_chr%d_ctcf_index_From%dMbTo%dMb.txt'\
+												%(celltype,chrId,gSta,gEnd)
 
 		ctcfSeq = self.convert2sq(ctcf_path)
 		ctcfInd = self.extractCtcfConv(ctcfSeq)
 
 		#	----	write to path for output	---- #
-		writein_2d(gen_path,gen_path_file,ctcfInd)
+		writein_2d(gen_path,gen_path_pos,ctcfSeq)
+		writein_2d(gen_path,gen_path_idx,ctcfInd)

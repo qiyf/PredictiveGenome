@@ -1,29 +1,54 @@
 # DRAGON  
+
+![DRAGON logo](http://github.com/ZhangGroup-MITChemistry/DRAGON/images/flow_chart.png)
+
 DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromatin structure and dynamics. With DRAGON, one can predict the structure of a 25Mb long chromatin region from a variety of cell types using genome-wide profiles of histone modifications and CTCF molecules. 
 
-The package is mainly written in Python, and it streamlines all the necessary steps to process [epigenomics data](./chromatinStates), to perform molecular dynamics simulations and to analyze predicted conformational ensmeble for the chromatin. 
-
+The package is mainly written in Python, and it streamlines all the necessary steps to process [epigenomics data](./processEpigenomicsData/), to perform [molecular dynamics simulations](./runMolecularDynamics/) and to analyze [predicted conformational ensmeble](./analyzeChromatinConformation/) for the chromatin. 
 
 ## Installation
 To install DRAGON, one can download the source code by running the following command:
 ```
-git clone https://github.com/qiyf/PredictiveGenome.git
+git clone https://github.com/ZhangGroup-MITChemistry/DRAGON.git
 ```
-or download the zip file with the link:  
+or download the zip file with the link:
 
-[https://github.com/qiyf/PredictiveGenome/archive/master.zip](https://github.com/qiyf/PredictiveGenome/archive/master.zip)  
+[https://github.com/ZhangGroup-MITChemistry/DRAGON/archive/master.zip](https://github.com/ZhangGroup-MITChemistry/DRAGON/archive/master.zip)  
 
-We use ChromHMM to process epigenomics data. See the README file in the Epigenomics folder for its installation and usage. 
+After the installation of DRAGON, one will need to install and compile [LAMMPS package](http://lammps.sandia.gov/) to enable molecular dynamics simulations. This can be done by executing the following command:
 
-We use LAMMPS to simulate chromatin structure and dynamics. See the README file in the Molecular Dynamics folder for its installation and usage. 
+```
+./LAMMPS.sh
+```
 
-A series of useful scripts are provided in the tools folder to visualize chromatin structure with VMD and to analyze contact maps using Matlab. Installation of these two software packages are highly recommended. 
+Note that GCC compiler module need to be installed beforehand and an environment of OpenMPI is needed to compile the parallel version of LAMMPS. 
 
 ## Usage
 
-We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF binding site in a given orientation or depending on the underlying Chip-Seq signal. 
+We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF binding site in a given orientation depending on the underlying Chip-Seq signal. 
 
 The exact process is illustrated with the following flow chart. 
 
-The example folder outline the steps to simulation chromosome 1 from GM12878 cells. 
+![Flow chart](http://github.com/ZhangGroup-MITChemistry/DRAGON/images/flow_chart.png)
 
+### Select 25Mb long chromatin region
+The 25Mb long chromatin region is indicated in the file `./src/chr_region.txt`. The format is in the following:
+>chromosome_id 	start_position(Mb) 	end_position
+>1				20					45
+>2				20					45
+>3				20					45
+>4				20					45
+
+If a different 25Mb chromatin region for any individual chromosome is desired, simply change the start and end position.
+
+### generate 1D epigenomics input
+ChromHMM is used to process epigenomics data and define chromatin states. See `./processEpigenomicsData/README.md` for its installation and usage. ChIP-Seq signals for the CTCF-binding are used to define CTCF-binding sites. 
+
+### run simulation with LAMMPS
+We use LAMMPS to simulate chromatin structure and dynamics. See `./runMolecularDynamics/README.md` for its detailed usage. 
+
+### visualize 3D structure and contact map
+A series of useful scripts are provided in the folder `./analyzeChromatinConformation/` to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See `./analyzeChromatinConformation/contactMap/README.md`and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
+
+### Start the first simulation
+The `./example` folder outline the steps to simulation chromosome 1 from GM12878 cells. See `./example/README.md`for detailed instructions of usage. 

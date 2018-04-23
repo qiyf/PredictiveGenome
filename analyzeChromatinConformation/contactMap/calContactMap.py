@@ -1,6 +1,6 @@
 # build up parallel simulations for calculation of cmaps
 import sys
-sys.path.append('./src/PYTHON/')
+sys.path.append('../../src/cmap/PYTHON/')
 from Ipt_module import *
 from Params import *
 Params()

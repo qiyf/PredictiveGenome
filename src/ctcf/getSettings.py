@@ -9,21 +9,21 @@ def getSettings(argv):
 #	------------------------ #
 
 	try:
-		opts,args = getopt.getopt(argv,'hC:b:p:c:',\
+		opts,args = getopt.getopt(argv,'hC:b:a:c:',\
 								['Cell=','bindflex=','cap=','chrom='])
 		for opt,arg in opts:
 			if opt=='-h':
 				print('''
->>>> Options: genCTCFbinding.py -C <Celltype> -b <binding flexbility> -p <CTCF-cohesin nearest dist> -c <chromosome id> 
+>>>> Options: genCTCFbinding.py -C <Celltype> -b <binding flexbility> -a <CTCF-cohesin nearest dist> -c <chromosome id> 
           or: genCTCFbinding.py --Cell <Celltype> --bindflex <binding flexbility> --cap <CTCF-cohesin nearest dist> --chrom <chromosome id> 
 ''')
 				sys.exit()
 			elif opt in ('-C','--Cell'):
 				Celltype = arg
 			elif opt in ('-b','--bindflex'):
-				bind_flxb = arg
-			elif opt in ('-p','--cap'):
-				cap = arg
+				bind_flxb = int(arg)
+			elif opt in ('-a','--cap'):
+				cap = int(arg)
 			elif opt in ('-c','--chrom'):
 				chrom1st	= [int(arg)]
 				chrom2te	= map(eval, args)

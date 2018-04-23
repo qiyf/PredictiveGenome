@@ -7,7 +7,8 @@ class Extraction():
 
 	# ----    Global path 	---- #
 	_cs_folder = 'OUTPUTSAMPLE_5kb_6celltype_15states'
-	_csdir = '%s/raw_data/%s/'%(glb_path,_cs_folder)
+	_csdir = '%s/../../../../processEpigenomicsData/chromatinStates/%s/'\
+														%(glb_path,_cs_folder)
 	_csfile = ''
 	_todir = ''
 
@@ -18,8 +19,7 @@ class Extraction():
 
 		#   ----    raw State processed folder  ---- #
 		global _todir
-		_todir = '%s/../../runMolecularDynamics/runSimulation/'\
-		'/input_files/epig_input/chromStates/%s/'%(glb_path,celltype)
+		_todir = '%s/%s/'%(glb_path,celltype)
 		todirraw = _todir+'rawStates/'
 		if os.path.exists(todirraw) is not True:
 			os.makedirs(todirraw)
@@ -43,10 +43,10 @@ class Extraction():
 	def raw2state(self,celltype,chrId,realPos=False):
 	#   ----    Chromatin state file name     ---- #
 		staid = chr_region[chrId-1,1]
-		endid = chr_region[chrId-1,2]
+		endid = staid+25
 		csta = staid * Mb +1
 		cend = endid * Mb
-		outfile = '%s/%s_chr%d_chromatin_states_%dMbTo%dMb.txt'\
+		outfile = '%s/%s_chr%d_chromatin_states_From%dMbTo%dMb.txt'\
 								%(_todir,celltype,chrId,staid,endid)
 
 		#   ----    generate chrom state file     ---- #

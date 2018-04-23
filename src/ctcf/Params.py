@@ -15,4 +15,4 @@ class Params():
 	glb_path = os.getcwd()
 
 #	---- chromosome segment region	---- #
-	chr_region = np.loadtxt('%s/../../chr_region.txt'%glb_path)
+	chr_region = np.loadtxt('%s/../../../../src/chr_region.txt'%glb_path)
