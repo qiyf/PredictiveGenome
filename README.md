@@ -33,14 +33,14 @@ The exact process is illustrated with the following flow chart.
 
 Please follow the steps below to begin the simulation of chromatin structure of chr1 from GM12878. All the scripts are provided in the example folder. See main.py for more advanced simulation with multiple chrs. 
 
-### 1) Process Epigenomics Data
+### I) Process Epigenomics Data
 ```
 ./1-processEpigenomics.sh
 ```
 
 This scripts generates the chromatin states using six cell types. ChromHMM is used to process epigenomics data and define chromatin states. See `./processEpigenomicsData/README.md` for its installation and usage. ChIP-Seq signals for the CTCF-binding are used to define CTCF-binding sites. 
 
-### 2) Run Molecular Dynamics Simulation
+### II) Run Molecular Dynamics Simulation
 We use LAMMPS to simulate chromatin structure and dynamics. See `./runMolecularDynamics/README.md` for its detailed usage. 
 
 #### Select a 25Mb chromatin region
@@ -75,7 +75,7 @@ If a different 25Mb chromatin region for any individual chromosome is desired, s
 ./5-runMD.sh
 ```
 
-### 3) Analyze Chromatin Conformation
+### III) Analyze Chromatin Conformation
 
 We use VMD to visualize chromatin structure with [VMD](http://www.ks.uiuc.edu/Research/vmd/) and MATLAB to analyze contact maps using [MATLAB](https://www.mathworks.com/products/matlab.html). Installation of these two software packages are highly recommended. See `./analyzeChromatinConformation/contactMap/README.md`and `./analyzeChromatinConformation/visStructure/README.md` for detailed instructions of usage. 
 
