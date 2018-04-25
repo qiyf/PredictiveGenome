@@ -1,6 +1,6 @@
 # Process Epigenomics Data 
 
-We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF-binding site in a given orientation depending on the underlying Chip-Seq signal. Checkout the folder [`./chromatinStates`](./chromatinStates) and [`./ctcfBindingSites`](./ctcfBindingSites) to see how to obtain the chromatin states and CTCF-binding sites from genome-wide Chip-Seq data. 
+We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF-binding site in a given orientation depending on the underlying Chip-Seq signal. Check out the folder [`./chromatinStates/`](./chromatinStates/) and [`./ctcfBindingSites/`](./ctcfBindingSites/) to see how to obtain the chromatin states and CTCF-binding sites from genome-wide Chip-Seq data. 
 
 ## Chromatin states defined by ChromHMM
 
@@ -22,7 +22,7 @@ We defined the location of CTCF-binding sites using the ChIP-Seq NarrowPeak bind
 
 The NarrowPeak files are downloaded from the source provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095), and the motif files that are used to determine the orientation of CTCF-binding sites are from the following references:
 
->Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
+>Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).  
 >Kheradpour, P. & Kellis, M. *Nucleic Acids Res.* **42**, 2976-2987 (2014).
 
 ### NarrowPeak files

@@ -19,7 +19,7 @@ After generating the VMD scripts and in order to visualize the structure, open t
 ```
 play VMDColor_Gm12878_chr1.vmd
 ```
-where a chromosome structure colored by chromatin states should be appearing in the display window. Then find and go to the path where the simulated .dcd file (trajectory) is located. E.g., for Gm12878, chromosome 1, 1st parallel running, it should be located in the [folder]( ../../runSimulation/run_folder/Gm12878/chr1/run00/), and execute the following command in the VMD console:
+where a chromosome structure colored by chromatin states should be appearing in the display window. Then go to the path where the simulated .dcd file (trajectory) is located. E.g., for Gm12878, chromosome 1, 1st parallel running, it should be located in the [folder](../../runMolecularDynamics/run_folder/Gm12878/chr1/run00/), and execute the following command in the VMD console:
 ```
 animate read dcd DUMP_FILE.dcd 
 ```

@@ -1,5 +1,5 @@
 # This is a branch program to generate the CTCF-binding sites input file for the model
-This is the program to generate the CTCF-binding sites input file of the model for the specific 25Mb [chromatin region](../../../../src/chr_region.txt) that is selected for an individual chromosome of a cell type. 
+This is the program to generate the CTCF-binding sites input file of the model for the specific [25Mb chromatin region](../../../../src/chr_region.txt) that is selected for an individual chromosome of a cell type. 
 
 Usage:
 
@@ -27,7 +27,10 @@ Note items in [] are optional. By default is calculating: Gm12878, chromosome 1.
 **[chromosome_id_array]** can be any non-repeated subset selected from:
 >1 ~ 22
 
+The CTCF-binding sites input to the model is processed based on the NarrowPeak binding profiles and motifs located in this [folder](../../../../processEpigenomicsData/ctcfBindingSites/). The generated files as the input of modeling are located in the folder: `./[Celltype]/`.
+
 The manual would be available by executing:
+
 ```
 python genCTCFbinding.py -h
 ```
