@@ -1,4 +1,4 @@
-# ![DRAGON logo](https://github.com/qiyf/PredictiveGenome/blob/dragon/images/logo2.png)
+# ![DRAGON logo](https://github.com/qiyf/images/blob/master/logo3.png)
 
 DRAGON is a software package to enable De novo, and RAtional prediction of Genome organizatiON. It provides an implementation of the model proposed in the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) to simulate chromatin structure and dynamics. With DRAGON, one can predict the structure of a 25Mb long chromatin region from a variety of cell types using genome-wide profiles of histone modifications and CTCF molecules. 
 
@@ -29,7 +29,7 @@ We model the chromatin as beads on a string. Each bead is assigned with a chroma
 
 The exact process is illustrated with the following flow chart. 
 
-![Flow chart](https://github.com/qiyf/PredictiveGenome/blob/dragon/images/flow_chart.png)
+![Flow chart](https://github.com/qiyf/images/blob/master/flow_chart.png)
 
 Follow the following steps to initialize a chromatin structure simulation of chromosome 1 from GM12878 cell line. All the executable scripts are provided in the [`./example/`](./example/) folder. 
 
