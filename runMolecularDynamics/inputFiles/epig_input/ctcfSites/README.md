@@ -1,5 +1,8 @@
-# This is a branch program to generate the CTCF sites input file for the model
+# This is a branch program to generate the CTCF-binding sites input file for the model
+This is the program to generate the CTCF-binding sites input file of the model for the specific 25Mb [chromatin region](../../../../src/chr_region.txt) that is selected for an individual chromosome of a cell type. 
+
 Usage:
+
 ```
 python genCTCFbinding.py [-C Celltype] [-b motif_match_flexibility] [-a CTCF-cohesin_nearest_dist] [-c chromosome_id_array]
 ```

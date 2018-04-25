@@ -1,10 +1,10 @@
-# Epigenomics Input 
+# Process Epigenomics Data 
 
-We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF binding site in a given orientation or depending on the underlying Chip-Seq signal. Checkout the folder [chromatinStates](./chromatinStates) and [ctcfBindingSites](./ctcfBindingSites) to see how to get chromatin states and CTCF binding sites from genome wide Chip-Seq data. 
+We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF-binding site in a given orientation depending on the underlying Chip-Seq signal. Checkout the folder [`./chromatinStates`](./chromatinStates) and [`./ctcfBindingSites`](./ctcfBindingSites) to see how to obtain the chromatin states and CTCF-binding sites from genome-wide Chip-Seq data. 
 
 ## Chromatin states defined by ChromHMM
 
-We built the chromatin states for the following six cell types using ENCODE data that are provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095):
+We built the chromatin states for the following six cell types using 12 key histone modifications from ENCODE that are indicated in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095):
 >Gm12878  
 >H1hesc  
 >Hela  
@@ -12,13 +12,16 @@ We built the chromatin states for the following six cell types using ENCODE data
 >Huvec  
 >K562 
 
-Once downloaded, ChromHMM is used to learn chromatin states from these genome wide data. ChromHMM must be installed to run all the scripts provided here. Detailed installation instructions for ChromHMM can be found [here](http://compbio.mit.edu/ChromHMM/). Script `chromatinStates/run_chromHMM_5kb_6celltypes_15states.sh` is used to calculate the chromatin states.
+Once the epigenomics data are downloaded, ChromHMM is used to learn chromatin states from these genome-wide data. ChromHMM must be installed to run the [script]( ./chromatinStates/run_chromHMM_5kb_6celltypes_15states.sh). Detailed installation instructions for ChromHMM can be found [here](http://compbio.mit.edu/ChromHMM/). 
 
 Note that if new cell type(s) are added, be aware of corresponding the new chromatin states with the present-defined ones through the generated emission pattern. 
 
 ## NarrowPeak and motif files for CTCF-binding
 
-We defined the location of CTCF-binding sites using NarrowPeak files provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095), and the orientation of CTCF-binding sites using motif files from the following references:
+We defined the location of CTCF-binding sites using the ChIP-Seq NarrowPeak binding profiles of CTCF together with Rad21 (Cohesin subunit). A near binding peak of Cohesin to the binding peak of CTCF is required to define a CTCF-binding site. And we further determine the orientation of the CTCF-binding site using the CTCF-binding motifs.
+
+The NarrowPeak files are downloaded from the source provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095), and the motif files that are used to determine the orientation of CTCF-binding sites are from the following references:
+
 >Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
 >Kheradpour, P. & Kellis, M. *Nucleic Acids Res.* **42**, 2976-2987 (2014).
 

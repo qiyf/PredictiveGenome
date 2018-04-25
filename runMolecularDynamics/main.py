@@ -39,7 +39,7 @@ if __name__ == '__main__':
 			if clus_opt == 'y':
 				# ---- create and submit the job to the cluster ---- #
 				Clf.createJobScript()
-				# submitJobs(celltype,chrId,runId); time.sleep(5);
+				submitJobs(celltype,chrId,runId); time.sleep(5);
 			else:
 				# ---- create the bash script to run locally ---- #
 				Clf.createLocalBash()

@@ -1,6 +1,6 @@
 # This is the main program to run the simulation  
 
-This is the main program to initialize the simulation. It utilizes the processed epigenomics data and the LAMMPS input files located in the inputFile folder `inputFiles/epig_input/` and `inputFiles/lmps_input/` to generate the input files for LAMMPS. The simulations generate output located in the folder `run_folder/`.  
+This is the main program to initialize the simulation. It utilizes the processed epigenomics data and the LAMMPS input files located in the inputFile folder [`./inputFiles/epig_input/`](inputFiles/epig_input/) and[ `./inputFiles/lmps_input/`](inputFiles/lmps_input/) to generate the input files for LAMMPS. The simulations generate output located in the folder [`./run_folder/`](./run_folder/).  
 
 Usage:
 ```

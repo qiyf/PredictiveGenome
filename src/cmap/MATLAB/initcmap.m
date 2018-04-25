@@ -1,9 +1,10 @@
 
-function [cmap,lbl,lbl_tick,celltype,chrId] = initcmap(myparam)
+function [cmap,lbl,lbl_tick,celltype,chrId,resolution] = initcmap(myparam)
     % initialize the parameters 
     myparam = initparam(myparam);
     celltype = myparam.celltype;
     chrId = myparam.chrId;
+    resolution = myparam.resolution;
     
     % axis indicator
     lbl = [1];

@@ -5,8 +5,8 @@ Params()
 
 def calMapLocal(celltype,runnum,chrom_lst):
 # ---- calculate the contact map locally ---- #
-	src_path = '%s/src/'%glb_path
-	ipt_path = '../runSimulation/run_folder/'
+	src_path = '%s/../../src/cmap/FORTRAN/'%glb_path
+	ipt_path = '../../runMolecularDynamics/run_folder/'
 
 	for chrId in chrom_lst:
 		for runid in xrange(runnum):
@@ -20,7 +20,7 @@ def calMapLocal(celltype,runnum,chrom_lst):
 			fo = open('%s/cal_cmap.sh'%(cmap_path),'w')
 			fo.writelines('''#!/bin/bash
 
-%s/FORTRAN/cmap %s/DUMP_FILE.dcd %d %d %d %d'''\
+%s/cmap %s/DUMP_FILE.dcd %d %d %d %d'''\
 		%(src_path,dcd_path,cg_fac,startb,endb,startfr))
 			fo.close()
 

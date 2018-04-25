@@ -2,7 +2,7 @@
 
 ## Calculate contact maps
 
-The simulated contact maps based on the result trajectories of MD simulation can be calculated by using the code `calContactMap.py` that is provided.  
+The simulated contact maps based on the result trajectories of MD simulation can be calculated by using the code [`calContactMap.py`](./calContactMap.py) that is provided.  
 
 Usage:
 ```
@@ -31,17 +31,26 @@ Note items in [] are optional. By default is calculating: Gm12878, chromosome 1,
 **chromosome id array]** can be any non-repeated subset selected from:
 >1 ~ 22
 
-The processed output of the individual contact maps are located in the folder `./[Celltype]/[chrId]/[runId]/`, the combined maps are located in the folder `./cmap/`.  
+The processed output of the individual contact maps are located in the folder `./[Celltype]/[chrId]/[runId]/`, the combined maps are located in the folder [`./cmap/`](./cmap/).  
 
 The manual would be available by executing:  
 ```
 python calContactMap.py -h
 ```
 
-The core program to calculate the contact map from trajectory files is a FORTRAN code located at `/Dragon/src/FORTRAN/cmap.f90`. It has been compiled as './src/FORTRAN/cmap' with ifort compiler. It can also be compiled with gfortran, but have either of these compilers installed beforehand is necessary. 
+The core program to calculate the contact map from trajectory files is a FORTRAN code located [here](../../src/cmap/FORTRAN/). It has been compiled with ifort compiler. It can also be compiled with gfortran, but be aware that having either of these compilers installed beforehand is necessary. 
 
 ## Visualize contact maps with MATLAB
 
-To visualize the contact maps, a MATLAB script `visContactMap.m` is provided. Note that the corresponding raw Hi-C maps with consistent resolution need to be downloaded beforehand, and the path for the Hi-C maps needs to be indicated when executing the MATLAB script. The raw Hi-C maps can be downloaded from:  
->Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
+To visualize the contact maps, a MATLAB script [`visContactMap.m`](./visContactMap.m) is provided. Note that the corresponding raw Hi-C maps with consistent resolution need to be downloaded beforehand by executing the following command:
+
+```
+cd ./hic/rawMap/; ./download.sh
+```
+
+A pack file for the contact map of GM12878 would be downloaded and then unpacked, which may take a little while for the whole process. The raw Hi-C maps are downloaded from:  
+
+> Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
+
+Then open [MATLAB](https://www.mathworks.com/products/matlab.html) and execute the script [`visContactMap.m`](./visContactMap.m) to plot the contact map. Type in the parameters such as the cell type and chromosome id accordingly. Leave the option empty if the default is satisfied. Note that the path for the Hi-C maps will be directed to the location where the Hi-C maps are downloaded by default when executing the MATLAB script. 
 

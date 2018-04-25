@@ -138,5 +138,5 @@ mpirun -np %d $lammpsdir/lmp_openmpi -in in.chromosome
 		_cmd = 'chmod 744 %s'%(runFile)
 		q = Popen(_cmd, shell=True, stdout=PIPE)
 		q.communicate()
-		print('''   > Local simulation bash script is generated located at: ./run_folder/%s/chr%d/run%02d/run.sh'''\
-									%(self.celltype,self.chrId,self.runId))
+		print('''   > Local simulation bash script is generated located at: %s/run_folder/%s/chr%d/run%02d/run.sh'''\
+									%(glb_path,self.celltype,self.chrId,self.runId))

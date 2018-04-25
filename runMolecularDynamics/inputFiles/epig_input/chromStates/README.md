@@ -1,5 +1,8 @@
 # This is a branch program to generate the chromatin states input file for the model
+This is the program to generate the chromatin states input file of the model for the specific 25Mb [chromatin region](../../../../src/chr_region.txt) that is selected for an individual chromosome of a cell type. 
+
 Usage:
+
 ```
 python genChromState.py [-C Celltype] [-c chromosome_id_array]
 ```
