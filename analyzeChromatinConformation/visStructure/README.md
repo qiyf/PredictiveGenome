@@ -4,7 +4,7 @@
 
 To visualize the predicted chromatin structures, one can use the python script [`VMDmain.py`](./VMDmain.py) to generate a PDB file, a PSF file and a VMD script. 
 
-THe PDB file provides the Cartesian coordinates of the structure. The PSF file defines the topology of the chromatin and the connectivity between polymer beads. The VMD script instructs VMD to read these two files and render a 3D structure in which the chromatin is colored by chromatin states.
+The PDB file provides the Cartesian coordinates of the structure. The PSF file defines the topology of the chromatin and the connectivity between polymer beads. The VMD script instructs VMD to read these two files and render a 3D structure in which the chromatin is colored by chromatin states.
 
 Usage:
 ```
