@@ -19,7 +19,7 @@ python VMDmain.py -h
 
 To load the files generated above, open the VMD software (available at [http://www.ks.uiuc.edu/Research/vmd/](http://www.ks.uiuc.edu/Research/vmd/)) and click under `Extension/TK Console` option. This will open up a TCL command window. 
 
-First, move to the folder: [`./VMDScript/`](./VMDScript/) by typing
+First, move to the folder: [`./VMDScript/`](./VMDScript/) by typing the following in the TCL command window.
 ```
 cd ./VMDScript/
 ```
