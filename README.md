@@ -29,7 +29,7 @@ DRAGON models the chromatin as a coarse-grained bead-spring polymer, with each b
 
 We further provide step-by-step instructions below to simulate the structure of chromosome 1 from GM12878 cells. All the executable scripts are provided in the [`./example/`](./example/) folder. 
 
-A [python script](./runMolecularDynamics/main.py) is also provided to setup simulations for different chromosomes and cell types. It streamlines all the steps below together, and can lanuch multiple parallel simulations. See [README](./runMolecularDynamics/README.md) for its detailed usage.
+A [python script](./runMolecularDynamics/main.py) is also provided to setup simulations for other chromosomes from different cell types. It streamlines all the steps below together, and can lanuch multiple parallel simulations. See [README](./runMolecularDynamics/README.md) for its detailed usage.
 
 
 ### I) Process Epigenomics Data
