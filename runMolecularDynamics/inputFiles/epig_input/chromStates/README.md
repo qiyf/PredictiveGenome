@@ -1,7 +1,12 @@
-# This is a branch program to generate the chromatin states input file for the model
-This is the program to generate the chromatin states input file of the model for the specific [25Mb chromatin region](../../../../src/chr_region.txt) that is selected for an individual chromosome of a cell type. 
+## Extract chromatin states for the chromatin region of interest
 
-Usage:
+This script processes the [`output`](../../../../processEpigenomicsData/chromatinStates/OUTPUTSAMPLE_5kb_6celltype_15states/) from ChromHMM to extract chromatin states for the 25Mb chromatin region defined in the [`txt file`](../../../../src/chr_region.txt).  
+
+### Output
+
+The chromatin states input to the model is processed The generated files as the input of modeling are located in the folder: `./[Celltype]/`.
+
+### Usage:
 
 ```
 python genChromState.py [-C Celltype] [-c chromosome_id_array]
@@ -22,8 +27,6 @@ Note items in [] are optional. By default is calculating: Gm12878, chromosome 1.
 
 **[chromosome_id_array]** can be any non-repeated subset selected from:
 >1 ~ 22
-
-The chromatin states input to the model is processed based on the output from ChromHMM located in this [folder](../../../../processEpigenomicsData/chromatinStates/OUTPUTSAMPLE_5kb_6celltype_15states/). The generated files as the input of modeling are located in the folder: `./[Celltype]/`.
 
 The manual would be available by executing:
 ```
