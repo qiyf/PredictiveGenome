@@ -122,7 +122,7 @@ The calculated contact map is located at [`./analyzeChromatinConformation/contac
 To render the predicted chromatin structures in 3D, run the following script:
 
 ```
-./example/7-geneVMDScript.sh
+./example/7-genVMDScript.sh
 ```
 
 The scripts produces [`a file written in TCL language`](./analyzeChromatinConformation/visStructure/vmdScript/VMDColor_Gm12878_chr1.vmd) that can be loaded into the software VMD to visualize chromatin structures. See [README](./analyzeChromatinConformation/visStructure/README.md) for detailed instruction of visualization steps with VMD.
