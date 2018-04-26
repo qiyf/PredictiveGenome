@@ -66,7 +66,7 @@ chromosome_id     start_position(Mb)      end_position(Mb)
 4                 20                      45   
 ```
 
-If a different chromatin region is desired, one can either modify the [chromtin region file](./src/chr_region.txt) or original script [`./example/2-selectChromatinRegion.sh`](./example/2-selectChromatinRegion.sh).
+If a different chromatin region is desired, one can either modify the [chromtin region file](./src/chr_region.txt) or the original script [`./example/2-selectChromatinRegion.sh`](./example/2-selectChromatinRegion.sh).
 
 #### Extract epigenomics input
 
@@ -97,7 +97,7 @@ With all the preparation steps above, we are finally ready to predict chromatin 
 ./example/5-runMD.sh
 ```
 
-Simulated chromatin structures are stored in a binary file (DUMP_FILE.dcd) in the folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). See below on how to use VMD to read the binary file and visualize chromatin structures. Note that this script only runs one molecular dynamics simulation using one CPU. We typically perform multiple simulations to improve conformational sampling, and conduct each simulation with multiple CPUs to reduce simulation time. See the [python program](./runMolecularDynamics/main.py) on how to setup multiple parallel simulations. 
+Simulated chromatin structures will be stored in a binary file (DUMP_FILE.dcd) in the folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). See below on how to use VMD to read this binary file and visualize chromatin structures. Note that this script only runs one molecular dynamics simulation using one CPU. We typically perform multiple simulations to improve conformational sampling, and conduct each simulation with multiple CPUs to reduce simulation time. See the [python program](./runMolecularDynamics/main.py) on how to setup multiple parallel simulations. 
 
 
 ### III) Analyze Chromatin Conformation
@@ -112,7 +112,7 @@ To quantitatively compare predicted chromatin structures with genome-wide chromo
 ./example/6-calcCMAP.sh
 ```
 
-The [`core program`] (./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN, and has been precompiled with ifort compiler. One can also modify the script to compile with gfortan if ifort is not available. 
+The [`core program`](./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN, and has been precompiled with ifort compiler. One can also modify [`the script`](./src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
 
 The calculated contact map is located at [`./analyzeChromatinConformation/contactMap/cmap/`](./analyzeChromatinConformation/contactMap/cmap/). To visualize the contact map, use the provided [MATLAB script](./analyzeChromatinConformation/contactMap/visContactMap.m). See [README](./analyzeChromatinConformation/contactMap/README.md) for more detailed instructions. 
 
