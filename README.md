@@ -5,51 +5,56 @@ DRAGON is a software package to enable De novo, and RAtional prediction of Genom
 The package is mainly written in Python, and it streamlines all the necessary steps to process [epigenomics data](./processEpigenomicsData/), to perform [molecular dynamics simulations](./runMolecularDynamics/) and to analyze [predicted conformational ensemble](./analyzeChromatinConformation/) for the chromatin. 
 
 ## Installation
-DRAGON can be downloaded and installed by running the following command:
+DRAGON can be installed by running the following command:
 ```
 git clone https://github.com/ZhangGroup-MITChemistry/DRAGON.git
 ```
-or download the zip file with the link:
+or by downloading the zip file with the link:
 
 [https://github.com/ZhangGroup-MITChemistry/DRAGON/archive/master.zip](https://github.com/ZhangGroup-MITChemistry/DRAGON/archive/master.zip)  
 
-After the installation of DRAGON, one will need to install and compile [LAMMPS package](http://lammps.sandia.gov/) to enable molecular dynamics simulations. This can be done by executing the following command:
+DRAGON uses [LAMMPS](http://lammps.sandia.gov/), a molecular dynamics software package, for simulating chromatin structures. LAMMPS, together with our custom modifications, can be compiled and installed with the following command:
 
 ```
 ./src/LAMMPS.sh
 ```
 
-Note that [GCC](https://gcc.gnu.org/) compiler module need to be installed beforehand and an environment of [OpenMPI](https://www.open-mpi.org/) is needed to compile the parallel version of LAMMPS. 
-
-Note that a FORTRAN compiler (e.g. ifort or gfortran) also need to be available for calculating contact map step. Refer to **Calculate and visualize contact map** in section **III) Analyze Chromatin Conformation** in the following and [README](./analyzeChromatinConformation/contactMap/README.md) for more detailed information. 
+Note that the [GCC](https://gcc.gnu.org/) compiler needs to be installed beforehand and an environment of [OpenMPI](https://www.open-mpi.org/) is needed to compile the parallel version of LAMMPS. 
 
 ## Usage
 
-We model the chromatin as beads on a string. Each bead is assigned with a chromatin state, and will be labeled as a CTCF binding site in a given orientation depending on the underlying Chip-Seq signal. 
-
-The exact process is illustrated with the following flow chart. 
+DRAGON models the chromatin as a coarse-grained bead-spring polymer, with each bead correponding to a five kb genomic segment.  This coarse-grained polymer is made cell type and chromosome specific by assigning each bead with a chromatin state. The polymer bead will also be labeled as a orientation dependent CTCF binding site if there is a strong binding signal in the corresponding region. With its underlying biochemistry specified, the structure of the chromatin can be predicted by simulating the sequence-specific potential energy function parameterized in our [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) using LAMMPS. See the flow chart below for an illustration of the different steps for chromatin structure prediction.
 
 ![Flow chart](https://github.com/qiyf/images/blob/master/flow_chart.png)
 
-Follow the following steps to initialize a chromatin structure simulation of chromosome 1 from GM12878 cell line. All the executable scripts are provided in the [`./example/`](./example/) folder. 
+We further provide step-by-step instructions below to simulate the structure of chromosome 1 from GM12878 cells. All the executable scripts are provided in the [`./example/`](./example/) folder. 
 
 ### I) Process Epigenomics Data
+
+Before starting any structure predictions, we need to learn the chromatin states from genome-wide histone modification profiles, and identify the genomic location and orientation of CTCF binding sites. 
 
 ```
 ./example/1-processEpigenomicsData.sh
 ```
 
-This script displays the necessary components for epigenomics data processing. [ChromHMM](http://compbio.mit.edu/ChromHMM/) is used to process epigenomics data of genome-wide histone modifications from six cell types and define the chromatin states. See [README](./processEpigenomicsData/README.md) for details on its installation and usage. ChIP-Seq narrow peak signal for the CTCF and Cohesin are used to define the CTCF-binding sites. 
+This script provide detailed instructions on how to process epigenomics data using [ChromHMM](http://compbio.mit.edu/ChromHMM/) and custom python scripts. 
 
 ### II) Run Molecular Dynamics Simulation
-We use LAMMPS to simulate chromatin structure and dynamics. See [README](./runMolecularDynamics/README.md) for its detailed usage. For the steps in this section, a [main python program](./runMolecularDynamics/main.py) is provided to incorporate all necessary steps and initialize simulations with different cell types and multiple chromosomes. See [README](./runMolecularDynamics/README.md) for detailed usage of that program.
+
+To start simulating chromatin structures, the following steps are necessary in order to incorporate the processed epigenomics input into data formats recognized by LAMMPS.
+
 
 #### Select a 25Mb chromatin region
+
+First, one needs to select a 25Mb long chromatin region of interest (the default is chr1:20-45Mb from GM12878 cells) by running the following script 
+
 ```
 ./example/2-selectChromatinRegion.sh
 ```
 
-A [chromtin region file](./src/chr_region.txt) that indicates the 25Mb long chromatin region that is of interested for each chromosome is generated by executeing this script. The format is in the following:
+The software currently only simulates a fixed length of 25Mb, but generalization to whole chromosomes is straightforward. 
+
+A [txt file](./src/chr_region.txt) that lists the region of interested for each chromosome is generated by executeing this script. The format is in the following:
 ```
 chromosome_id     start_position(Mb)      end_position(Mb)  
 1                 20                      45  
@@ -62,19 +67,23 @@ If a different 25Mb chromatin region for any individual chromosome is desired, c
 
 #### Extract epigenomics input
 
+Second, one needs to extract chromatin states and CTCF binding sites for the selected chromatin region from results produced in step I).
+
 ```
 ./example/3-extractEpigenomicsInput.sh
 ```
 
-Files for Chromatin states and CTCF-binding sites as the model input for the specific 25Mb chromatin region indicated in  [chromtin region file](./src/chr_region.txt) are generated by executing this script: 20Mb to 45Mb for chromosome 1, GM12878 under this case. The input files are located at [`./runMolecularDynamics/inputFiles/epig_input/`](./runMolecularDynamics/inputFiles/epig_input/). See [Chromatin States README](./runMolecularDynamics/inputFiles/epig_input/chromStates/README.md) and [CTCF-binding Sites README](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/README.md) for details on processing the data extraction.
+Two files will be generated by the script to the folder [`./runMolecularDynamics/inputFiles/epig_input/`](./runMolecularDynamics/inputFiles/epig_input/). See [Chromatin States README](./runMolecularDynamics/inputFiles/epig_input/chromStates/README.md) and [CTCF-binding Sites README](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/README.md) for details on processing the data extraction.
 
 #### Build LAMMPS input
+
+Third, one needs to incorporate the epigenomic inputs produced from the last step into a topology file and an input file recognized by LAMMPS.
 
 ```
 ./example/4-buildLammpsInput.sh
 ```
 
-LAMMPS input files are generated by executing this script. The input files are located at [`./runMolecularDynamics/inputFiles/lmps_input/`](./runMolecularDynamics/inputFiles/lmps_input/) and in the simulation folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). 
+The files produced by this script are located at [`./runMolecularDynamics/inputFiles/lmps_input/`](./runMolecularDynamics/inputFiles/lmps_input/) and in the simulation folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). 
 
 #### Run simulation
 
@@ -83,6 +92,9 @@ LAMMPS input files are generated by executing this script. The input files are l
 ```
 
 A single simulation for chromosome 1, GM12878 is started by executing this script. The trajectory files are dumped as .dcd file located in the simulation folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). Note that this is to run the simulation in serial, which might be relatively slow but simple enough to be represented as part of the instruction. 
+
+
+For the steps in this section, a [main python program](./runMolecularDynamics/main.py) is provided to incorporate all necessary steps and initialize simulations with different cell types and multiple chromosomes. See [README](./runMolecularDynamics/README.md) for detailed usage of that program.
 
 ### III) Analyze Chromatin Conformation
 
