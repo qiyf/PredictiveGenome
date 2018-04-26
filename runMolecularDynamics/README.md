@@ -1,8 +1,8 @@
 ## Chromatin Structure Prediction using Molecular Dynamics Simulation 
 
-This is the main program to initialize the simulation. It utilizes the processed epigenomics data and the LAMMPS input files located in the inputFile folder [`./inputFiles/epig_input/`](inputFiles/epig_input/) and[ `./inputFiles/lmps_input/`](inputFiles/lmps_input/) to generate the input files for LAMMPS. The simulations generate output located in the folder [`./run_folder/`](./run_folder/).  
+The python script [`main.py`](./main.py) provides a simple interface to perform molecular dynamics simulations. It combines together the three steps listed in the Usage section of the main [`README`](../README.md) page, to extract epigenomics input, to build LAMMPS input, and to run simulations. 
 
-[What does this program do?] I thought it also extract chromatin states and launches simulation. 
+Furthermore, this script can setup multiple parallel simulations for improved sampling and computational efficiency. 
 
 Usage:
 ```
