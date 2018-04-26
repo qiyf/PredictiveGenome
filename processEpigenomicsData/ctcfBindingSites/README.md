@@ -1,21 +1,17 @@
-## NarrowPeak and motif files for CTCF-binding
+## Build orientation specific CTCF-binding sites
 
-We defined the location of CTCF-binding sites using the ChIP-Seq NarrowPeak binding profiles of CTCF together with Rad21 (Cohesin subunit). A near binding peak of Cohesin to the binding peak of CTCF is required to define a CTCF-binding site. And we further determine the orientation of the CTCF-binding site using the CTCF-binding motifs.
+We defined the location of CTCF-binding sites using the ChIP-Seq narrow-peak binding profiles of CTCF together with Rad21 (Cohesin subunit). A near binding peak of Cohesin to the binding peak of CTCF is required to define a CTCF-binding site. And we further determine the orientation of the CTCF-binding site using the CTCF-binding motifs.
 
-The NarrowPeak files are downloaded from the source provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095), and the motif files that are used to determine the orientation of CTCF-binding sites are from the following references:
-
->Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).  
->Kheradpour, P. & Kellis, M. *Nucleic Acids Res.* **42**, 2976-2987 (2014).
 
 ### NarrowPeak files
 
-Raw NarrowPeak data can be downloaded by executing:
+CTCF and Rad21 narrow-peak files can be downloaded by running the following command:
 ```
 cd ./ctcfBindingSites/raw.narrowPeak/narrowPeak/; ./download.sh
 ```
-and the downloaded files should be unzipped accordingly.
+The downloaded files should be unzipped accordingly.
 
-The python program to process the downloaded NarrowPeak files is located at `ctcfBindingSites/raw.narrowPeak/prepareNarrowPeak.py`.
+These narrow-peak files are further processed by the python program [`processingNarrowPeak.py`](./ctcfBindingSites/processingNarrowPeak.py) into txt files that contains only the genomic positions of individual binding sites for a given chromosome.
 
 Usage:
 ```
@@ -37,6 +33,11 @@ by default is calculating: Gm12878, chromosome 1.
 by default, the output of the binding narrow peak located in the folder `ctcfBindingSites/raw.narrowPeak/[Celltype]/ctcf(rad21)/`.
 
 ### Motif files
+
+The motif files that are used to determine the orientation of CTCF-binding sites are from the following references:
+
+>Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).  
+>Kheradpour, P. & Kellis, M. *Nucleic Acids Res.* **42**, 2976-2987 (2014).
 
 The python program to process the downloaded NarrowPeak files is located at `ctcfBindingSites/motif_file/prepareMotif.py`.
 
