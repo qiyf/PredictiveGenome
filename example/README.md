@@ -1,5 +1,3 @@
-# Example Scripts — start the first simulation! 
+## Structure Prediction for Chr1 from GM12878 Cells
 
-Here are the executable scripts to enable initialization of a chromatin structure simulation of chromosome 1 from GM12878 cell line. 
-
-Please refer to the [README](../README.md) file for detailed usage instructions.
+This folder contains the executable scripts referenced in the Usage section of the main [README](../README.md) page to predict the structure from chromosome 1 from GM12878 cells. 
