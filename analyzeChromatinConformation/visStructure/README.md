@@ -13,6 +13,8 @@ The manual would be available by executing:
 python VMDmain.py -h
 ```
 
+This script will produce three files. PDB is a coordinate file, PSF is a topology file that provides information on the bond and angle between atoms. The VMD script reads xx. 
+
 ### Visualize 3D structure with VMD
 
 After generating the VMD scripts and in order to visualize the structure, open the VMD software (available at [http://www.ks.uiuc.edu/Research/vmd/](http://www.ks.uiuc.edu/Research/vmd/)) and click under `Extension/TK Console` option, go to the folder: [`./VMDScript/`](./VMDScript/), find the VMD script for the corresponding chromosome and load it in the VMD console. E.g., for Gm12878, chromosome 1, execute the following command in the VMD console:
