@@ -81,13 +81,13 @@ See [Chromatin States README](./runMolecularDynamics/inputFiles/epig_input/chrom
 
 #### Build LAMMPS input
 
-Third, one needs to incorporate the epigenomic inputs produced from the step above into a topology file and an input file recognized by LAMMPS.
+Third, one needs to incorporate the epigenomic inputs produced from the step above into file formats recognized by LAMMPS for molecular dynamics simulation.
 
 ```
 ./example/4-buildLammpsInput.sh
 ```
 
-The files produced by this script are located at [`./runMolecularDynamics/inputFiles/lmps_input/`](./runMolecularDynamics/inputFiles/lmps_input/) and in the simulation folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). 
+This script produces a [`topology file`]() that stores the Cartesian coordinates of each polymer beads and the connectivity among polymer beads, an [`input file`] that instructs the specifics of the molecular dynamics simulation, and a [`bash script`] to excute LAMMPS. 
 
 #### Run simulation
 
