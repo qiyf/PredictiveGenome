@@ -4,7 +4,7 @@ This script processes the [`output`](../../../../processEpigenomicsData/chromati
 
 ### Output
 
-The chromatin states input to the model is processed The generated files as the input of modeling are located in the folder: `./[Celltype]/`.
+A two column txt file will be produced, with the first column indicates the polymer bead ID and the second for chromatin state ID. 
 
 ### Usage:
 
