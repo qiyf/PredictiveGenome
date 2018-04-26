@@ -1,8 +1,8 @@
-# This is a branch program to calculate the contact maps based on the trajectories of MD simulations
+## Calculate and visualize the contact map
 
-## Calculate contact maps
+### Calculate contact maps
 
-The simulated contact maps based on the result trajectories of MD simulation can be calculated by using the code [`calContactMap.py`](./calContactMap.py) that is provided.  
+We provide a python script [`calContactMap.py`](./calContactMap.py) to calculate the contact map from simulated chromatin structures. It produces a txt file in the [`./cmap/`](./cmap/) folder to store the contact matrix. When multiple simulations are performed, the contact map for each individual simulation will be stored in the folder `./[Celltype]/[chrId]/[runId]/`.  
 
 Usage:
 ```
@@ -31,16 +31,15 @@ Note items in [] are optional. By default is calculating: Gm12878, chromosome 1,
 **chromosome id array]** can be any non-repeated subset selected from:
 >1 ~ 22
 
-The processed output of the individual contact maps are located in the folder `./[Celltype]/[chrId]/[runId]/`, the combined maps are located in the folder [`./cmap/`](./cmap/).  
 
 The manual would be available by executing:  
 ```
 python calContactMap.py -h
 ```
 
-The core program to calculate the contact map from trajectory files is a FORTRAN code located [here](../../src/cmap/FORTRAN/). It has been compiled with ifort compiler. It can also be compiled with gfortran, but be aware that having either of these compilers installed beforehand is necessary. 
+Note that the python script calls a FORTRAN code (../../src/cmap/FORTRAN/cmap.f90) to perform the actual caculation of contact maps. The code has been precompiled with ifort compiler. One can also modify [`the script`](../../src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
 
-## Visualize contact maps with MATLAB
+### Visualize contact maps with MATLAB
 
 To visualize the contact maps, a MATLAB script [`visContactMap.m`](./visContactMap.m) is provided. Note that the corresponding raw Hi-C maps with consistent resolution need to be downloaded beforehand by executing the following command:
 
