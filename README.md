@@ -87,7 +87,7 @@ Third, one needs to incorporate the epigenomic inputs produced from the step abo
 ./example/4-buildLammpsInput.sh
 ```
 
-This script produces a [`topology file`]() that stores the Cartesian coordinates of each polymer beads and the connectivity among polymer beads, an [`input file`] that instructs the specifics of the molecular dynamics simulation, and a [`bash script`] to excute LAMMPS. 
+This script produces a [`topology file`]() that stores the Cartesian coordinates of each polymer beads and the connectivity among polymer beads, an [`input file`]() that instructs the specifics of the molecular dynamics simulation, and a [`bash script`]() to excute LAMMPS. 
 
 #### Run simulation
 
