@@ -29,6 +29,9 @@ DRAGON models the chromatin as a coarse-grained bead-spring polymer, with each b
 
 We further provide step-by-step instructions below to simulate the structure of chromosome 1 from GM12878 cells. All the executable scripts are provided in the [`./example/`](./example/) folder. 
 
+A [python script](./runMolecularDynamics/main.py) is also provided to setup simulations for different chromosomes and cell types. It streamlines all the steps below together, and can lanuch multiple parallel simulations. See [README](./runMolecularDynamics/README.md) for its detailed usage.
+
+
 ### I) Process Epigenomics Data
 
 Before starting any structure predictions, we need to learn the chromatin states from genome-wide histone modification profiles, and identify the genomic location and orientation of CTCF binding sites. 
@@ -73,12 +76,12 @@ Second, one needs to extract chromatin states and CTCF binding sites for the sel
 ./example/3-extractEpigenomicsInput.sh
 ```
 
-Three txt files are generated to provide [`the chromatin state of each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/chromStates/Gm12878/Gm12878_chr1_chromatin_states_From20MbTo45Mb.txt), [`the CTCF binding potency of each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_position_From20MbTo45Mb.txt), and [`the location of nearest CTCF binding sites for each polymer bead`] (./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_index_From20MbTo45Mb.txt). 
+Three txt files are generated to provide [`the chromatin state of each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/chromStates/Gm12878/Gm12878_chr1_chromatin_states_From20MbTo45Mb.txt), [`the CTCF binding potency of each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_position_From20MbTo45Mb.txt), and [`the location of nearest CTCF binding sites for each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_index_From20MbTo45Mb.txt). 
 See [Chromatin States README](./runMolecularDynamics/inputFiles/epig_input/chromStates/README.md) and [CTCF-binding Sites README](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/README.md) for details on file formats and data extraction.
 
 #### Build LAMMPS input
 
-Third, one needs to incorporate the epigenomic inputs produced from the last step into a topology file and an input file recognized by LAMMPS.
+Third, one needs to incorporate the epigenomic inputs produced from the step above into a topology file and an input file recognized by LAMMPS.
 
 ```
 ./example/4-buildLammpsInput.sh
@@ -88,33 +91,38 @@ The files produced by this script are located at [`./runMolecularDynamics/inputF
 
 #### Run simulation
 
+With all the preparation steps above, we are finally ready to predict chromatin structures by running the following script:
+
 ```
 ./example/5-runMD.sh
 ```
 
-A single simulation for chromosome 1, GM12878 is started by executing this script. The trajectory files are dumped as .dcd file located in the simulation folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). Note that this is to run the simulation in serial, which might be relatively slow but simple enough to be represented as part of the instruction. 
+Simulated chromatin structures are stored in a binary file (DUMP_FILE.dcd) in the folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). See below on how to use VMD to read the binary file and visualize chromatin structures. Note that this script only runs one molecular dynamics simulation using one CPU. We typically perform multiple simulations to improve conformational sampling, and conduct each simulation with multiple CPUs to reduce simulation time. See the [python program](./runMolecularDynamics/main.py) on how to setup multiple parallel simulations. 
 
-
-For the steps in this section, a [main python program](./runMolecularDynamics/main.py) is provided to incorporate all necessary steps and initialize simulations with different cell types and multiple chromosomes. See [README](./runMolecularDynamics/README.md) for detailed usage of that program.
 
 ### III) Analyze Chromatin Conformation
 
-We use [MATLAB](https://www.mathworks.com/products/matlab.html) to analyze contact maps and [VMD](http://www.ks.uiuc.edu/Research/vmd/) to visualize chromatin structure. Installation of these two software packages is highly recommended. See [contact map README](./analyzeChromatinConformation/contactMap/README.md) and [structure visualization README](./analyzeChromatinConformation/visStructure/README.md) for detailed instructions on usage. 
+We use [MATLAB](https://www.mathworks.com/products/matlab.html) to analyze contact maps and [VMD](http://www.ks.uiuc.edu/Research/vmd/) to visualize chromatin structures. Installation of these two software packages is highly recommended. See [contact map README](./analyzeChromatinConformation/contactMap/README.md) and [structure visualization README](./analyzeChromatinConformation/visStructure/README.md) for detailed instructions on usage. 
 
-#### Calculate and visualize contact map
+#### Calculate and visualize the contact map
+
+To quantitatively compare predicted chromatin structures with genome-wide chromosome conformation capture experiments (Hi-C), one needs to first calculate the contact probability map by running the script:
 
 ```
 ./example/6-calcCMAP.sh
 ```
 
-The simulated contact map for chromosome 1, GM12878 is calculated by executing this script. The core program to calculate the contact map from trajectory files is a FORTRAN code and has been compiled located at [`./src/cmap/FORTRAN/`](./src/cmap/FORTRAN/) with ifort compiler. It can also be compiled with gfortran, but have either of these compilers installed beforehand is necessary. 
+The [`core program`] (./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN, and has been precompiled with ifort compiler. One can also modify the script to compile with gfortan if ifort is not available. 
 
 The calculated contact map is located at [`./analyzeChromatinConformation/contactMap/cmap/`](./analyzeChromatinConformation/contactMap/cmap/). To visualize the contact map, use the provided [MATLAB script](./analyzeChromatinConformation/contactMap/visContactMap.m). See [README](./analyzeChromatinConformation/contactMap/README.md) for more detailed instructions. 
 
+
 #### Visualize the 3D structure
+
+To render the predicted chromatin structures in 3D, run the following script:
 
 ```
 ./example/7-geneVMDScript.sh
 ```
 
-The VMD script for the visualization of 3D structure for chromosome 1, GM12878 is generated by executing this script. The generated script is located at [`./analyzeChromatinConformation/visStructure/`](./analyzeChromatinConformation/visStructure/).  See [README](./analyzeChromatinConformation/visStructure/README.md) for detailed instruction of visualization steps with VMD.
+The scripts produces [`a file written in TCL language`](./analyzeChromatinConformation/visStructure/vmdScript/VMDColor_Gm12878_chr1.vmd) that can be loaded into the software VMD to visualize chromatin structures. See [README](./analyzeChromatinConformation/visStructure/README.md) for detailed instruction of visualization steps with VMD.
