@@ -37,7 +37,7 @@ The manual would be available by executing:
 python calContactMap.py -h
 ```
 
-Note that the python script calls a FORTRAN code (../../src/cmap/FORTRAN/cmap.f90) to perform the actual caculation of contact maps. The code has been precompiled with ifort compiler. One can also modify [`the script`](../../src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
+Note that the python script calls a [`FORTRAN code`](../../src/cmap/FORTRAN/cmap.f90) to perform the actual caculation of contact maps. The code has been precompiled with ifort compiler. One can also modify [`the script`](../../src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
 
 ### Visualize contact maps with MATLAB
 
