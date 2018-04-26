@@ -1,4 +1,4 @@
-## Chromatin states defined by ChromHMM
+## Build Chromatin States with ChromHMM
 
 We learned 15 chromatin states using 12 key histone modifications 
 >H3K4me1  
