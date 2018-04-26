@@ -1,12 +1,16 @@
 ## Extracting CTCF-binding sites for the chromatin region of interest
 This is the program to generate the CTCF-binding sites input file of the model for the specific [25Mb chromatin region](../../../../src/chr_region.txt) that is selected for an individual chromosome of a cell type. 
 
+### Output
 Two files will be produced.
 
-### list of orientation specific CTCF binding sites
+#### 1) list of orientation specific CTCF binding sites
 Each line contains two entries, with the first correponds to the polymer bead ID and the second for type of CTCF binding sites. Four types are defined.
 >3 for non-binding sites.  
 >1 for 3-5 orieted 
+
+#### 2) index file
+This provides the nearest CTCF binding site in 3-5 and 5-3 orientations.
 
 ### Usage:
 
