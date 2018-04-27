@@ -112,7 +112,7 @@ To quantitatively compare predicted chromatin structures with genome-wide chromo
 ./example/6-calcCMAP.sh
 ```
 
-The [core program](./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN and has been precompiled with ifort compiler. One can also modify the [script](./src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
+The [core program](./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN and has been precompiled with ifort compiler. One can also modify the [script](./src/cmap/FORTRAN/compile.sh) to compile it with gfortan if ifort is not available. 
 
 The calculated contact map is located at [`./analyzeChromatinConformation/contactMap/cmap/`](./analyzeChromatinConformation/contactMap/cmap/). To visualize the contact map, use the provided [MATLAB script](./analyzeChromatinConformation/contactMap/visContactMap.m). See [README](./analyzeChromatinConformation/contactMap/README.md) for more detailed instructions. 
 
