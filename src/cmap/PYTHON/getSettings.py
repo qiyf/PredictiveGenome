@@ -2,7 +2,7 @@ import sys
 import getopt
 
 def getSettings(argv):
-#
+
 # ---- default values ---- #
 	Celltype = 'Gm12878';runnum=8;
 	jobname='cmap';usrname='user';ptn='mit';

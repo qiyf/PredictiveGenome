@@ -1,6 +1,6 @@
 ## Extract chromatin states for the chromatin region of interest
 
-This script processes the [`output`](../../../../processEpigenomicsData/chromatinStates/OUTPUTSAMPLE_5kb_6celltype_15states/) from ChromHMM to extract chromatin states for the 25Mb long chromatin regions defined in the [`txt file`](../../../../src/chr_region.txt).  
+This script processes the [output](../../../../processEpigenomicsData/chromatinStates/OUTPUTSAMPLE_5kb_6celltype_15states/) from ChromHMM to extract chromatin states for the 25Mb long chromatin regions defined in the [txt file](../../../../src/chr_region.txt).  
 
 ### Output
 

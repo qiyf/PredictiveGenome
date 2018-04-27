@@ -1,10 +1,8 @@
 Program main
-
 !
 ! part of the code for reading DCD file is copied from
 ! http://www.ks.uiuc.edu/Research/namd/wiki/index.cgi?ReadingDCDinFortran
 !
-
     ! =~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~ !
     ! variable definitions
     ! =~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~ !

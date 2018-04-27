@@ -1,34 +1,19 @@
+## LAMMPS Files for DRAGON 
 
-## Molecular Dynamics Simulation with LAMMPS. 
+Several LAMMPS files that are necessary for the structure prediction simulation are provided in this src folder. Implementation of these files is automatically realized by the time LAMMPS is downloaded. See the Installation section of the main [README](../../README.md) page for detail.
 
-Implementation of the potential energy funtion is provied in the src folder.  
+### Description
 
-## Installation
+[`pair_tanhlr_cut_ideala.cpp`](./pair_tanhlr_cut_ideal.cpp) is a LAMMPS source code for the sequence dependent chromatin state specific interaction between pairs of loci. This function takes the [sequence of chromatin states](../../runMolecularDynamics/inputFiles/epig_input/chromStates/) and the [optimized contact energies for chromatin states interactions](../md/lmps_input/ucs_chrom.txt) as input. 
 
-The LAMMPS package can be downloaded by running the following command:
-```
-git clone -b stable https://github.com/lammps/lammps.git
-```
-or with other links from the official site:
+[`pair_tanhlr_cut_ideala.h`](./pair_tanhlr_cut_ideal.h) is the header file for [`pair_tanhlr_cut_ideala.cpp`](./pair_tanhlr_cut_ideal.cpp).
 
-[http://lammps.sandia.gov/download.html](http://lammps.sandia.gov/download.html)
+[`pair_tanhlr_cut_ideal.cpp`](./pair_tanhlr_cut_ideal.cpp) is a LAMMPS source code for interactions between pairs of genomic loci enclosed by convergent CTCF pairs. This function takes the [sequence of CTCF indices](../../runMolecularDynamics/inputFiles/epig_input/ctcfSites/), the [optimized contact energies for CTCF interactions](../md/lmps_input/uctcf_chrom.txt) and the threshold for nearest CTCF pair that mimics the finite processivity in the extrusion model as input. 
 
-After download both of the packages, unpack both Predictive Genome Model and LAMMPS packages under the same directory. Then the modified potential files can be connected to the LAMMPS source code by executing the following command (rename the LAMMPS folder as `./lammps/` or change the name of the downloaded LAMMPS folder in the file `./PredictiveGenome/lammpsCode/src/connectLAMMPSPotential.sh`):
-```
-./PredictiveGenome/lammpsCode/src/connectLAMMPSPotential.sh
-```
-The corresponding potential files should be generated under `./lammps/src/`.
+[`pair_tanhlr_cut_ideal.h`](./pair_tanhlr_cut_ideal.h) is the header file for [`pair_tanhlr_cut_ideal.cpp`](./pair_tanhlr_cut_ideal.cpp).
 
-To compile the parallel version of LAMMPS, go to the folder `./lammps/src/`, and type the command:
-```
-make clean-all
-make openmpi
-```
-To include the packages, type the command (e.g. class2 package):
-```
-make yes-class2
-```
-For more details, please refer to the instrucion on the official site:
+For detailed descriptions of the energy functions associated with above source code, please refer to the [Supplementary Material](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/0/282095-1.pdf) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095).
 
-[http://lammps.sandia.gov/doc/Section_start.html](http://lammps.sandia.gov/doc/Section_start.html).
+[`force.cpp`](./force.cpp) is an ordinary LAMMPS source code. It is put here simply to avoid the possible incompatibility between different versions of LAMMPS.
 
+[`Makefile.openmpi`](./Makefile.openmpi) is a make file that is used to compile the parallel version of LAMMPS.

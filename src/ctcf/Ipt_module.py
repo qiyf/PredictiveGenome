@@ -1,4 +1,3 @@
-
 print '''
 >>>> Initializing CTCF-binding sites calculation ......'''
 

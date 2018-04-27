@@ -34,3 +34,4 @@ def getSettings(argv):
      python genChromState.py -h
 ''')
 		sys.exit()
+

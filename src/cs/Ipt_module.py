@@ -1,4 +1,3 @@
-
 print '''
 >>>> Initializing chromatin states calculation ......'''
 

@@ -1,19 +1,20 @@
 ## Extracting CTCF-binding sites for the chromatin region of interest
-This script produces orientation specific CTCF-binding sites for the 25Mb long chromatin regions defined in the [`txt file`](../../../../src/chr_region.txt).  
+This script produces orientation specific CTCF-binding sites for the 25Mb long chromatin regions defined in the [txt file](../../../../src/chr_region.txt).  
 
 ### Output
 Two txt files will be produced from this script.
 
 #### 1) list of orientation specific CTCF binding sites
-This file contains two columns, with the first one correponding to the polymer bead ID and the second for type of CTCF binding sites. Four CTCF types are defined.
->3 for non-binding sites.  
->1 for 3-5 oriented binding sites
->2 for 5-3 oriented binding sites
->4 for multiple binding sites with both orientations
+This file contains two columns, with the first one correponding to the polymer bead ID and the second for type of CTCF-binding sites. Four CTCF types are defined.
+
+>1 for 5-3 oriented binding sites  
+>2 for 3-5 oriented binding sites  
+>3 for non-binding sites  
+>4 for multiple binding sites with both orientations  
 
 #### 2) index file
 
-This file contains two columns that provide the location of nearest 3-5 and 5-3 CTCF binding sites for a given polymer bead respectively.
+This file contains two columns that provide the location of nearest 5-3 and 3-5 CTCF binding sites for a given polymer bead respectively.
 
 ### Usage:
 

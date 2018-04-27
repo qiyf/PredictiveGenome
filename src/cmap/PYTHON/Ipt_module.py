@@ -1,4 +1,3 @@
-
 print '''
 >>>> Initializing contact map calculation ......'''
 

@@ -17,3 +17,4 @@ def checkStatus(usr_name,job_name):
 			break
 		else:
 			time.sleep(4)
+
