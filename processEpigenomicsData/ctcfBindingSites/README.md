@@ -1,6 +1,6 @@
 ## Build orientation specific CTCF-binding sites
 
-We use the ChIP-Seq narrow-peak binding profiles of both CTCF and Rad21 (Cohesin subunit) to determine the list of loop forming CTCF-binding sites. For a CTCF site to be included in this list, there must be a Rad21 peak nearby as well. We encourage the interested reader to look into the supporting information of our manuscript and the python scripts provided below. The orientation of each CTCF-binding site is defined using CTCF-binding motifs as detailed below.
+We use ChIP-Seq narrow-peak binding profiles for both CTCF and Rad21 (Cohesin subunit) to determine the list of loop forming CTCF-binding sites. For a CTCF site to be included in this list, there must be a Rad21 peak nearby as well. We encourage the interested reader to look into the supporting information of our manuscript and the python scripts provided below. The orientation of each CTCF-binding site is defined using CTCF-binding motifs as detailed below.
 
 
 ### NarrowPeak files
