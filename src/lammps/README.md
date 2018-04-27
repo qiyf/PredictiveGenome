@@ -1,6 +1,6 @@
 ## LAMMPS Files for DRAGON 
 
-Several LAMMPS files that are necessary for the structure prediction simulation are provided in this src folder. Implementation of these files is automatically realized by the time LAMMPS is downloaded. See the Installation section of the main [README](../../README.md) page for detail.
+This folder contains our custom modifications to the LAMMPS software package to enable structure prediction for chromatin. These files are compiled together with the main page using the script [`LAMMPS.sh`](./LAMMPS.sh). See the Installation section of the main [README](../../README.md) page for details.
 
 ### Description
 
