@@ -23,24 +23,24 @@ Note that the [GCC](https://gcc.gnu.org/) compiler needs to be installed beforeh
 
 ## Usage
 
-DRAGON models the chromatin as a coarse-grained bead-spring polymer, with each bead correponding to a five kb genomic segment.  This coarse-grained polymer is made cell type and chromosome specific by assigning each bead with a chromatin state. The polymer bead will also be labeled as a orientation dependent CTCF binding site if there is a strong binding signal in the corresponding region. With its underlying biochemistry specified, the structure of the chromatin can be predicted by simulating the sequence-specific potential energy function parameterized in our [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) using LAMMPS. See the flow chart below for an illustration of the different steps for chromatin structure prediction.
+DRAGON models the chromatin as a coarse-grained bead-spring polymer, with each bead corresponding to a five kb genomic segment.  This coarse-grained polymer is made cell type and chromosome specific by assigning each bead with a chromatin state. The polymer bead will also be labeled as an orientation dependent CTCF binding site if there is a strong binding signal in the corresponding region. With its underlying biochemistry specified, the structure of the chromatin can be predicted by simulating the sequence-specific potential energy function parameterized in our [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095) using LAMMPS. See the flowchart below for an illustration of the different steps for chromatin structure prediction.
 
 ![Flow chart](https://github.com/qiyf/images/blob/master/flow_chart.png)
 
 We further provide step-by-step instructions below to simulate the structure of chromosome 1 from GM12878 cells. All the executable scripts are provided in the [`./example/`](./example/) folder. 
 
-A [python script](./runMolecularDynamics/main.py) is also provided to setup simulations for other chromosomes from different cell types. It streamlines all the steps below together, and can lanuch multiple parallel simulations. See [README](./runMolecularDynamics/README.md) for its detailed usage.
+A [python script](./runMolecularDynamics/main.py) is also provided to set up simulations for other chromosomes from different cell types. It streamlines all the steps below together and can launch multiple parallel simulations. See [README](./runMolecularDynamics/README.md) for its detailed usage.
 
 
 ### I) Process Epigenomics Data
 
-Before starting any structure predictions, we need to learn the chromatin states from genome-wide histone modification profiles, and identify the genomic location and orientation of CTCF binding sites. 
+Before starting any structure predictions, we need to learn the chromatin states from genome-wide histone modification profiles and identify the genomic location and orientation of CTCF binding sites. 
 
 ```
 ./example/1-processEpigenomicsData.sh
 ```
 
-This script provide detailed instructions on how to process epigenomics data using [ChromHMM](http://compbio.mit.edu/ChromHMM/) and custom python scripts. 
+This script provides detailed instructions on how to process epigenomics data using [ChromHMM](http://compbio.mit.edu/ChromHMM/) and custom python scripts. 
 
 ### II) Run Molecular Dynamics Simulation
 
@@ -49,7 +49,7 @@ To start simulating chromatin structures, the following steps are necessary in o
 
 #### Select a 25Mb chromatin region
 
-First, one needs to select a 25Mb long chromatin region of interest (the default is chr1:20-45Mb from GM12878 cells) by running the following script 
+First, one needs to select a 25Mb long chromatin region of interest (the default setting for this example running is chr1:20-45Mb from GM12878 cells) by running the following script 
 
 ```
 ./example/2-selectChromatinRegion.sh
@@ -66,17 +66,17 @@ chromosome_id     start_position(Mb)      end_position(Mb)
 4                 20                      45   
 ```
 
-If a different chromatin region is desired, one can either modify the [chromtin region file](./src/chr_region.txt) or the original script [`./example/2-selectChromatinRegion.sh`](./example/2-selectChromatinRegion.sh).
+If a different chromatin region is desired, one can either directly modify the generated chromatin region [txt file](./src/chr_region.txt) or modified the parameters in the original script [`./example/2-selectChromatinRegion.sh`](./example/2-selectChromatinRegion.sh) and then regenerate the file.
 
 #### Extract epigenomics input
 
-Second, one needs to extract chromatin states and CTCF binding sites for the selected chromatin region from results produced in step I).
+Second, one needs to extract chromatin states and CTCF binding sites for the selected chromatin region from results produced in **section I)**.
 
 ```
 ./example/3-extractEpigenomicsInput.sh
 ```
 
-Three txt files are generated to provide [`the chromatin state of each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/chromStates/Gm12878/Gm12878_chr1_chromatin_states_From20MbTo45Mb.txt), [`the CTCF binding potency of each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_position_From20MbTo45Mb.txt), and [`the location of nearest CTCF binding sites for each polymer bead`](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_index_From20MbTo45Mb.txt). 
+Three txt files are generated to provide the [chromatin state of each polymer bead](./runMolecularDynamics/inputFiles/epig_input/chromStates/Gm12878/Gm12878_chr1_chromatin_states_From20MbTo45Mb.txt), the [CTCF binding potency of each polymer bead](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_position_From20MbTo45Mb.txt), and the [location of nearest CTCF binding sites for each polymer bead](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_index_From20MbTo45Mb.txt). 
 See [Chromatin States README](./runMolecularDynamics/inputFiles/epig_input/chromStates/README.md) and [CTCF-binding Sites README](./runMolecularDynamics/inputFiles/epig_input/ctcfSites/README.md) for details on file formats and data extraction.
 
 #### Build LAMMPS input
@@ -87,7 +87,7 @@ Third, one needs to incorporate the epigenomic inputs produced from the step abo
 ./example/4-buildLammpsInput.sh
 ```
 
-This script produces a [`topology file`]() that stores the Cartesian coordinates of each polymer beads and the connectivity among polymer beads, an [`input file`]() that instructs the specifics of the molecular dynamics simulation, and a [`bash script`]() to excute LAMMPS. 
+This script produces a [topology file](./runMolecularDynamics/inputFiles/lmps_input/Gm12878/data.chromosome.chr1) that stores the Cartesian coordinates of each polymer beads and the connectivity among polymer beads, an [input file](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/in.chromosome) that instructs the specifics of the molecular dynamics simulation, and a [bash script](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/run.sh) to execute LAMMPS. 
 
 #### Run simulation
 
@@ -97,7 +97,7 @@ With all the preparation steps above, we are finally ready to predict chromatin 
 ./example/5-runMD.sh
 ```
 
-Simulated chromatin structures will be stored in a binary file (DUMP_FILE.dcd) in the folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). See below on how to use VMD to read this binary file and visualize chromatin structures. Note that this script only runs one molecular dynamics simulation using one CPU. We typically perform multiple simulations to improve conformational sampling, and conduct each simulation with multiple CPUs to reduce simulation time. See the [python program](./runMolecularDynamics/main.py) on how to setup multiple parallel simulations. 
+Simulated chromatin structures will be stored in a binary file (DUMP_FILE.dcd) in the folder [`./runMolecularDynamics/run_folder/Gm12878/chr1/run00/`](./runMolecularDynamics/run_folder/Gm12878/chr1/run00/). See below on how to use VMD to read this binary file and visualize chromatin structures. Note that this script only runs one molecular dynamics simulation using one CPU. We typically perform multiple simulations to improve conformational sampling and conduct each simulation with multiple CPUs to reduce simulation time. See the [python program](./runMolecularDynamics/main.py) on how to setup multiple parallel simulations. 
 
 
 ### III) Analyze Chromatin Conformation
@@ -112,7 +112,7 @@ To quantitatively compare predicted chromatin structures with genome-wide chromo
 ./example/6-calcCMAP.sh
 ```
 
-The [`core program`](./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN, and has been precompiled with ifort compiler. One can also modify [`the script`](./src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
+The [core program](./src/cmap/FORTRAN/cmap.f90) to calculate the contact map from trajectory files is written in FORTRAN and has been precompiled with ifort compiler. One can also modify the [script](./src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
 
 The calculated contact map is located at [`./analyzeChromatinConformation/contactMap/cmap/`](./analyzeChromatinConformation/contactMap/cmap/). To visualize the contact map, use the provided [MATLAB script](./analyzeChromatinConformation/contactMap/visContactMap.m). See [README](./analyzeChromatinConformation/contactMap/README.md) for more detailed instructions. 
 
@@ -125,4 +125,4 @@ To render the predicted chromatin structures in 3D, run the following script:
 ./example/7-genVMDScript.sh
 ```
 
-The scripts produces [`a file written in TCL language`](./analyzeChromatinConformation/visStructure/vmdScript/VMDColor_Gm12878_chr1.vmd) that can be loaded into the software VMD to visualize chromatin structures. See [README](./analyzeChromatinConformation/visStructure/README.md) for detailed instruction of visualization steps with VMD.
+The script produces a [VMD file](./analyzeChromatinConformation/visStructure/vmdScript/VMDColor_Gm12878_chr1.vmd) written in TCL language that can be loaded into the software VMD to visualize chromatin structures. See [README](./analyzeChromatinConformation/visStructure/README.md) for detailed instruction of visualization steps with VMD.

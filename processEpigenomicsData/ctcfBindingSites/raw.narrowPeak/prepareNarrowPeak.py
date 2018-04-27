@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../../../../src/ctcf/')
+sys.path.append('../../../src/ctcf/')
 from Ipt_module import *
 
 from getSettings import getNarrowPeakSettings
@@ -16,8 +16,10 @@ if __name__ == '__main__':
 			raw_data = './narrowPeak/%s_%s.narrowPeak'%(celltype,tf)
 			raw_mat = np.genfromtxt(raw_data,dtype = 'str',comments = '@',usecols=(0,1,2))
 			region = prepNarrowPeak(raw_mat,chrId)
-			writein_2d(celltype,tf,chrId,region)
-			print('''   > %s, %s is completed!'''%(celltype,tf))
+			to_path = './%s/%s/'%(celltype,tf)
+			to_path_file = 'chip-seq_peak_%d.txt'%(chrId)
+			writein_2d(to_path,to_path_file,region)
+			print('''   > Processing of %s for %s, chromosome %d is completed!'''%(tf,celltype,chrId))
 
 		except IOError:
 			print('''

@@ -26,19 +26,26 @@ class ProcessCTCFSites():
 	#	----	This function is to process the CTCF-binding sites with orientation	---- #
 	#	----	the output would be the atomic types with ctcf+ as 1, ctcf- as 2, other as 3, ctcf+- as 4	---- #
 	#
+		posSta = chr_region[chrId-1][1]*Mb
+		posEnd = posSta+25*Mb
+
 		np_path = '%s/../../../../processEpigenomicsData/ctcfBindingSites'\
 						'/raw.narrowPeak'%(glb_path)
-		ctcf_peaks = np.loadtxt('%s/%s/ctcf/chip-seq_peak_%d.txt' \
+		ctcf_peaks_all = np.loadtxt('%s/%s/ctcf/chip-seq_peak_%d.txt' \
 								%(np_path,celltype,chrId))
-		rad21_peaks = np.loadtxt('%s/%s/rad21/chip-seq_peak_%d.txt' \
+		rad21_peaks_all = np.loadtxt('%s/%s/rad21/chip-seq_peak_%d.txt' \
 								%(np_path,celltype,chrId))
+
+		ctcf_peaks = [peak for peak in ctcf_peaks_all if peak[0] >= posSta \
+												and peak[1] <= posEnd]
+		rad21_peaks = [peak for peak in rad21_peaks_all if peak[0] >= posSta \
+												and peak[1] <= posEnd]
 
 		ctcf_states = []
 		final_ctcf_states = []
 		count_with_rad = 0		# count for the number of ctcf whose orientation has to be decided by cohesin
 		count_no_rad = 0		# count for the number of ctcf who do not have near cohesin
-		posSta = chr_region[chrId-1][1]*Mb
-
+		
 		for i in range(len(ctcf_peaks)):
 			temp_pls_mns = []
 

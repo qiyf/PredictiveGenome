@@ -9,7 +9,7 @@ boundary        s   s   s
 
 special_bonds   lj 0.0 0.0 1.0 extra 512
 
-read_data       ../../lmps_data/data.chromosome
+read_data       XXXX
 
 neighbor        0.4 bin
 neigh_modify    every 1 delay 1

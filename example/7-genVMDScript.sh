@@ -12,5 +12,5 @@ cd $MAIN_SCRIPT_PATH
 python VMDmain.py
 
 echo -n '>>>> The generated script is located at `./analyzeChromatinConformation/visStructure/`, '
-echo 'and please refer to the README.md file located in that folder for detailed instruction of visualization steps with VMD.'
+echo 'and please refer to the README file located in that folder for detailed instruction of visualization steps with VMD.'
 echo

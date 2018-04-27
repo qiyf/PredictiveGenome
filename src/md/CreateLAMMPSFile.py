@@ -8,7 +8,7 @@ import lammps_tools as lmp
 class CreateLAMMPSFile():
 
 	_same_mol_flag_ideal = 0	
-	_paramsFolder = '%s/inputFiles/lmps_input/'%glb_path
+	_paramsFolder = '%s/../src/md/lmps_input/'%glb_path
 	_lmpsTemplate = _paramsFolder+'lammps_template.in'
 
 	def __init__(self,celltype,chrId,runId,nNode,ncpu,ptn,simtime,lmpsdir,nearCtcfThreshold,runStep):
@@ -45,7 +45,7 @@ class CreateLAMMPSFile():
 		_ctcfFile 	= '%s/inputFiles/epig_input/ctcfSites/' \
 			'%s/%s_chr%d_ctcf_position_From%dMbTo%dMb.txt'\
 			%(glb_path,self.celltype,self.celltype,self.chrId,_gSta,_gEnd)
-		_lmpsFolder	='%s/run_folder/%s/lmps_data'%(glb_path,self.celltype)
+		_lmpsFolder	='%s/inputFiles/lmps_input/%s/'%(glb_path,self.celltype)
 
 		# ----  specify bond and angle
 		hp = lmp.Data()
@@ -58,7 +58,7 @@ class CreateLAMMPSFile():
 		
 		if not os.path.exists(_lmpsFolder):
 			os.makedirs(_lmpsFolder)
-		hp.write_to_file('%s/data.chromosome'%_lmpsFolder,ellipsoidFlag=0)		
+		hp.write_to_file('%s/data.chromosome.chr%d'%(_lmpsFolder,self.chrId),ellipsoidFlag=0)		
 
 
 	def createLAMMPSInputFile(self):
@@ -80,15 +80,18 @@ class CreateLAMMPSFile():
 		pf = open(_inFile, 'w')
 		pf.write('variable        rseed equal   %d\n'%(4928459+self.runId) )
 		for line in in_tmp:
-			if line[0:10] == 'pair_style':
+			if line[0:9] == 'read_data':
 				pf.write(
-'''pair_style        hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 %d 15 %s/ucs_chrom.txt %s tanhlr/cut/ideal 6.0 %s/uctcf_chrom.txt %s %d\n'''\
+'''read_data       ../../../../inputFiles/lmps_input/%s/data.chromosome.chr%d\n'''%(self.celltype,self.chrId))
+			elif line[0:10] == 'pair_style':
+				pf.write(
+'''pair_style      hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 %d 15 %s/ucs_chrom.txt %s tanhlr/cut/ideal 6.0 %s/uctcf_chrom.txt %s %d\n'''\
 %(self._same_mol_flag_ideal,\
 self._paramsFolder,_csFile,\
 self._paramsFolder,_ctcfIndFile,self.nearCtcfThreshold))
 			elif line[0:16] == 'pair_coeff_softc':
 				pf.write(
-'''pair_coeff        * * table %s/soft_core_lj_4kT.table soft_core_lj 1.12\n'''%(self._paramsFolder))
+'''pair_coeff       * * table %s/soft_core_lj_4kT.table soft_core_lj 1.12\n'''%(self._paramsFolder))
 			elif line[0:3] == 'run':
 				pf.write('run             %d'%(self.runStep))
 			else:

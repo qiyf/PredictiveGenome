@@ -1,8 +1,8 @@
 ## Chromatin Structure Prediction using Molecular Dynamics Simulation 
 
-The python script [`main.py`](./main.py) provides a simple interface to perform molecular dynamics simulations. It combines together the three steps listed in the Usage section of the main [`README`](../README.md) page, to extract epigenomics input, to build LAMMPS input, and to run simulations. 
+The python script [`main.py`](./main.py) provides a simple interface to perform molecular dynamics simulations. It combines together the three steps listed in the Usage section of the main [README](../README.md) page, to extract epigenomics input, to build LAMMPS input, and to run simulations. 
 
-Furthermore, this script can setup multiple parallel simulations for improved sampling and computational efficiency. 
+Furthermore, this script can set up multiple parallel simulations for improved sampling and computational efficiency. 
 
 Usage:
 ```

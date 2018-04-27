@@ -17,8 +17,9 @@ class VMD():
 		
 		global pf_cs
 		pf_cs = np.loadtxt(cs_path)
-		global xyz
-		xyz = np.loadtxt('./data_file/atom_cor.txt',usecols=(4,5,6))
+		global data_file_path
+		data_file_path = '../../src/vmd/data_file'
+		xyz = np.loadtxt('%s/atom_cor.txt'%data_file_path,usecols=(4,5,6))
 		xyz = xyz.tolist()
 
 		####
@@ -54,7 +55,7 @@ class VMD():
 		pf_1.write('\n')
 		pf_1.close()
 
-		f_out = open('./data_file/psf_template.txt','r')
+		f_out = open('%s/psf_template.txt'%data_file_path,'r')
 		f_in = open('%s/chr%d_cs.psf'%(psf_path,chrId),'a+')
 		for lines in f_out.readlines():
 			f_in.writelines(lines)
@@ -67,7 +68,7 @@ class VMD():
 		# ---- generate the VMD script ---- #
 		# ---- visualize the individual chromosome ---- #
 
-		vmd_tmp = fi.input('./vmdScript/VMDColorTemplate.vmd')
+		vmd_tmp = fi.input('%s/VMDColorTemplate.vmd'%data_file_path)
 		vmd = open('./vmdScript/VMDColor_%s_chr%d.vmd'%(celltype,chrId),'w')
 		for line in vmd_tmp:
 			if line[0:19] == 'mol new chr1_cs.pdb':

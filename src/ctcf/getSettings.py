@@ -46,7 +46,7 @@ def getMotifSettings(argv):
 #	----	This function is to obtain the settings for motif processing 	---- #
 
 #	---- default values ---- #
-	motif_fi = 'hg19.motifs.txt';option='lbm';chrom_lst=[1];
+	motif_fi = './motifs/hg19.motifs.txt';option='lbm';chrom_lst=[1];
 #	------------------------ #
 	
 	try:

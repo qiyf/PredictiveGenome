@@ -22,16 +22,16 @@ for the following six cell types :
 >Huvec  
 >K562 
 
-Genome wide histone modification profiles can be downloaded from ENCODE using the links provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095).
+Genome-wide histone modification profiles can be downloaded from [ENCODE](https://www.encodeproject.org) using the links provided in the [Extend Data Sheet](https://www.biorxiv.org/highwire/filestream/86852/field_highwire_adjunct_files/1/282095-2.xlsx) of the [manuscript](https://www.biorxiv.org/content/early/2018/03/15/282095).
 
-The software [`ChromHMM`](http://compbio.mit.edu/ChromHMM/) is used to learn chromatin states from these genome-wide data and must be installed for the analysis below.
+The software [ChromHMM](http://compbio.mit.edu/ChromHMM/) is used to learn chromatin states from these genome-wide data and must be installed for the analysis below.
 
 To learn chromatin states, run the following script:
 ```
 ./run_chromHMM_5kb_6celltypes_15states.sh
 ```
-For the script to run successfully, one need to modify 'path_to_ChromHMM' to the directory where the ChromHMM software is located, and 'path_to_bedfiles' to the directory where the downloaded histone modification files are located. 
+For the script to run successfully, one needs to modify 'path_to_ChromHMM' to the directory where the ChromHMM software is located, and 'path_to_bedfiles' to the directory where the downloaded histone modification files are located. 
 
-Example outputs are provided in the folder ./OUTPUTSAMPLE_5kb_6celltype_15states and ./binarizedData_5kb_6celltype_15states. 
+Example outputs are provided in the folder [`./OUTPUTSAMPLE_5kb_6celltype_15states/`](./OUTPUTSAMPLE_5kb_6celltype_15states/) and [`./binarizedData_5kb_6celltype_15states/`](./binarizedData_5kb_6celltype_15states/). 
 
 Note that if new cell types are added, be aware of corresponding the new chromatin states with the present-defined ones through the generated emission pattern. 

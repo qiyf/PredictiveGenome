@@ -11,7 +11,7 @@ boundary        s   s   s
 
 special_bonds   lj 0.0 0.0 1.0 extra 512
 
-read_data       ../../lmps_data/data.chromosome
+read_data       ../../../../inputFiles/lmps_input/Gm12878/data.chromosome.chr1
   orthogonal box = (-10.802 -10.361 -10.553) to (10.411 10.522 10.247)
   1 by 1 by 1 MPI processor grid
   reading atoms ...
@@ -39,8 +39,8 @@ angle_style  	cosine
 angle_coeff   	1 2.0
 
 #   ----    Energy funtion  ----
-pair_style        hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 0 15 /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/lmps_input//ucs_chrom.txt /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/epig_input/chromStates/Gm12878/Gm12878_chr1_chromatin_states_From20MbTo45Mb.txt tanhlr/cut/ideal 6.0 /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/lmps_input//uctcf_chrom.txt /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_index_From20MbTo45Mb.txt 4
-pair_coeff        * * table /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/lmps_input//soft_core_lj_4kT.table soft_core_lj 1.12
+pair_style      hybrid/overlay table linear 10000 tanhlr/cut/ideala 6.0 0 15 /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/../src/md/lmps_input//ucs_chrom.txt /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/epig_input/chromStates/Gm12878/Gm12878_chr1_chromatin_states_From20MbTo45Mb.txt tanhlr/cut/ideal 6.0 /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/../src/md/lmps_input//uctcf_chrom.txt /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/inputFiles/epig_input/ctcfSites/Gm12878/Gm12878_chr1_ctcf_index_From20MbTo45Mb.txt 4
+pair_coeff       * * table /nobackup1b/users/qiyf/project_3d_genome/swf-Dragon/runMolecularDynamics/../src/md/lmps_input//soft_core_lj_4kT.table soft_core_lj 1.12
 WARNING: 4174 of 10006 force values in table are inconsistent with -dE/dr.
   Should only be flagged at inflection points (../pair_table.cpp:481)
 WARNING: 9976 of 10006 distance values in table with relative error
@@ -88,7 +88,7 @@ Per MPI rank memory allocation (min/avg/max) = 38.58 | 38.58 | 38.58 Mbytes
 Time Temp PotEng TotEng E_pair E_bond E_angle Press Volume 
            0            0    208399.66    208399.66   -15308.675    217346.75    6361.5834    14.154312    9188.2709 
          0.5            0    3569.3772    3569.3772   -9968.0641    472.44748    13064.994  -0.17251928     11274.59 
-Loop time of 21.2124 on 1 procs for 100 steps with 5000 atoms
+Loop time of 21.3454 on 1 procs for 100 steps with 5000 atoms
 
 100.0% CPU use with 1 MPI tasks x no OpenMP threads
 
@@ -104,13 +104,13 @@ Minimization stats:
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 19.002     | 19.002     | 19.002     |   0.0 | 89.58
-Bond    | 0.051898   | 0.051898   | 0.051898   |   0.0 |  0.24
-Neigh   | 2.1193     | 2.1193     | 2.1193     |   0.0 |  9.99
-Comm    | 0.0017965  | 0.0017965  | 0.0017965  |   0.0 |  0.01
-Output  | 0.00014997 | 0.00014997 | 0.00014997 |   0.0 |  0.00
-Modify  | 0.013588   | 0.013588   | 0.013588   |   0.0 |  0.06
-Other   |            | 0.02386    |            |       |  0.11
+Pair    | 19.146     | 19.146     | 19.146     |   0.0 | 89.70
+Bond    | 0.05195    | 0.05195    | 0.05195    |   0.0 |  0.24
+Neigh   | 2.1086     | 2.1086     | 2.1086     |   0.0 |  9.88
+Comm    | 0.0017617  | 0.0017617  | 0.0017617  |   0.0 |  0.01
+Output  | 0.00019097 | 0.00019097 | 0.00019097 |   0.0 |  0.00
+Modify  | 0.013535   | 0.013535   | 0.013535   |   0.0 |  0.06
+Other   |            | 0.02361    |            |       |  0.11
 
 Nlocal:    5000 ave 5000 max 5000 min
 Histogram: 1 0 0 0 0 0 0 0 0 0

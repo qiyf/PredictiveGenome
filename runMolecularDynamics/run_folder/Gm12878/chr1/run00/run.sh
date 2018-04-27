@@ -1,5 +1,5 @@
 # ---- Chromosome simulation locally in serial ---- #
-# ---- Created Time: Tue Apr 24 23:19:34 2018 ---- #
+# ---- Created Time: Thu Apr 26 21:03:11 2018 ---- #
 
 #!/bin/bash
 ../../../../../lammps/src//lmp_openmpi -in in.chromosome

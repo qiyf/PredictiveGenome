@@ -37,7 +37,7 @@ The manual would be available by executing:
 python calContactMap.py -h
 ```
 
-Note that the python script calls a [`FORTRAN code`](../../src/cmap/FORTRAN/cmap.f90) to perform the actual caculation of contact maps. The code has been precompiled with ifort compiler. One can also modify [`the script`](../../src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
+Note that the python script calls a [FORTRAN code](../../src/cmap/FORTRAN/cmap.f90) to perform the actual calculation of contact maps. The code has been precompiled with ifort compiler. One can also modify the [script](../../src/cmap/FORTRAN/compile.sh) to compile with gfortan if ifort is not available. 
 
 ### Visualize contact maps with MATLAB
 
@@ -52,4 +52,3 @@ A pack file for the contact map of GM12878 would be downloaded and then unpacked
 > Rao, Suhas S.P. et al. *Cell* **159**, 1665-1680 (2014).
 
 Then open [MATLAB](https://www.mathworks.com/products/matlab.html) and execute the script [`visContactMap.m`](./visContactMap.m) to plot the contact map. Type in the parameters such as the cell type and chromosome id accordingly. Leave the option empty if the default is satisfied. Note that the path for the Hi-C maps will be directed to the location where the Hi-C maps are downloaded by default when executing the MATLAB script. 
-

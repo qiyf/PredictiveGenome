@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../../../../src/ctcf/')
+sys.path.append('../../../src/ctcf/')
 from Ipt_module import *
 
 from getSettings import getMotifSettings
@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
 	for chrId in chrom_lst:
 		try:
-			oriList = prepMotif(motif_fi,chrId)
+			oriList = prepMotif(motif_fi,option,chrId)
 			writein_motif(chrId,option,oriList)
 
 		except IOError:
