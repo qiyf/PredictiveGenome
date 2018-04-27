@@ -1,6 +1,6 @@
 ## LAMMPS Files for DRAGON 
 
-This folder contains our custom modifications to the LAMMPS software package to enable structure prediction for chromatin. These files are compiled together with the main page using the script [`LAMMPS.sh`](../LAMMPS.sh). See the Installation section of the main [README](../../README.md) page for details.
+This folder contains our custom modifications to the LAMMPS software package to enable structure prediction for chromatin. These files are compiled together with the main package using the script [`LAMMPS.sh`](../LAMMPS.sh). See the Installation section of the main [README](../../README.md) page for details.
 
 ### Description
 
