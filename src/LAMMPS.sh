@@ -22,4 +22,4 @@ cd $LMPS_FOLDER_SRC
 make clean-all
 make yes-molecule
 make yes-class2
-make -j 4 openmpi
+make openmpi
